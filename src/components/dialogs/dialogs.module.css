@@ -1,0 +1,71 @@
+.wrap_dialogs{
+display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+
+.dialogs{
+    border-right:2px solid black;
+}
+
+
+
+
+
+.user_img{
+    position: relative;
+    margin-left:40px;
+    margin-bottom: 15px;
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    background-color: #e5e9f2;
+    margin-right: 20px;
+
+}
+
+.user_name{
+    position: absolute;
+    margin-top: 50px;
+    font-weight: bold;
+    text-align: center;
+    width:100%;
+
+}
+
+
+/*.user-img:after{*/
+/*position: absolute;*/
+/*margin-top: 50px;*/
+/*content:"Dmitry";*/
+/*}*/
+
+/*.nm:after{*/
+/*content:"Me";*/
+/*margin-left: 15px;*/
+
+/*}*/
+
+
+.dialogs ul{
+    line-height:3;
+}
+
+
+
+
+
+.wrap_messages{
+    align-items:center;
+    display:flex;
+    margin-top:25px;
+}
+
+
+.dialog{
+    height: 20px;
+    border:2px solid red;
+}
+
+.dialog a{
+color:black}

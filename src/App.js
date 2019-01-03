@@ -1,28 +1,40 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
+import Header from './components/header/header';
+import Sidebar from './components/navbar/sidebar';
+import Dialogs from './components/dialogs/dialogs';
+import Profile from './components/profile/profile.jsx';
+import Login from "./components/login/login.jsx";
+import Photos from "./components/photos/photos";
+import { Route} from "react-router-dom";
 
-class App extends Component {
-  render() {
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faSignInAlt, faHeart} from '@fortawesome/free-solid-svg-icons';
+
+library.add(faSignInAlt,faHeart);
+
+let App = (props) => {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+
+            <div className="App">
+
+                <Header/>
+                <Sidebar/>
+                <div className='content'>
+                    <Route exact path='/login' component={Login}/>
+                    <Route exact path='/' render={() => <Profile myPosts={props.state.myPosts} dispatch={props.dispatch}/>}/>
+                    <Route exact path='/profile' render={() => <Profile myPosts={props.state.myPosts} dispatch={props.dispatch}/>}/>
+                    <Route exact path='/dialogs' render={() => <Dialogs state={props.state}   />}/>
+                    <Route exact path='/photos' render={() => <Photos dispatch={props.dispatch}   imagesUrls={props.state.photoPage.photos}/>}/>
+
+                </div>
+            </div>
+
+    )
 }
+
+
+
+
 
 export default App;

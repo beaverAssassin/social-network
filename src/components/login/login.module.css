@@ -1,0 +1,75 @@
+
+
+.login_page{
+    height:100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+.login_form {
+
+    max-width: 300px;
+    min-width: 300px;
+}
+
+.login_form input{
+    padding: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color:#e1e1e1;
+}
+.login_reg{
+    margin-bottom: 20px;
+}
+
+.login_reg a {
+    color:#47525e;
+    text-decoration: none;
+    font-weight: bold;
+    margin-bottom: 50px;
+}
+
+.login_reg a:hover {
+    color:#e1e1e1;
+
+}
+
+.login_reg a:last-child{
+    margin-left: 163px;
+}
+
+.input_area{
+    display: flex;
+    flex-direction:column;
+}
+
+
+
+
+input[type="submit"]{
+    background-color: #13ce66;
+
+}
+
+
+input[type="checkbox"]{
+    background-color: #13ce66;
+
+}
+
+input[type=checkbox]:checked {
+    background-color: #a77e2d !important;
+    color: #ffffff !important;
+}
+
+
+
+.inputLogin{
+
+    width:100px;
+    margin-left: 80px;
+
+}

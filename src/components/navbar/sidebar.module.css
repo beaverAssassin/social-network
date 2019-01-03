@@ -1,0 +1,28 @@
+nav{
+    grid-area: nav;
+}
+
+
+.sidebar_block{
+
+    background-color:#13ce66;
+}
+
+.sidebar_block a{
+    text-decoration: none;
+    color:black;
+}
+
+.sidebar_block a:hover{
+    box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5), 1px 1px 5px rgba(255, 255, 255, 1);
+    color:blue;
+}
+
+
+.sidebar_block ul{
+    padding: 10px;
+    text-align: center;
+    list-style-type: none;
+
+
+}

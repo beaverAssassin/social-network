@@ -1,0 +1,38 @@
+
+.profilebg {
+    width: 100%;
+    height: 100px;
+    background-image: url('../../profile.jpg');
+    background-color: #13ce66;
+    background-size: cover;
+
+}
+
+.personal_data {
+    padding-top: 10px;
+    display: grid;
+    grid-template-columns: 125px 3fr;
+
+}
+
+.profile_img {
+    width: 110px;
+    height: 140px;
+}
+
+.description {
+
+    margin-left: 15px;
+
+    font-size: 12px;
+}
+
+.description_name {
+    font-weight: bold;
+    font-size: 15px;
+
+}
+
+p {
+    line-height: 1;
+}
