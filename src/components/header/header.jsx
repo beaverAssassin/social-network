@@ -15,7 +15,7 @@ let Header = () => {
                 {/*<a href="#" className={style.enter}>Войти</a>*/}
 
                 <Link to ="/profile"><img src={logo} className={style.header_logo} alt="logo"/></Link>
-                <Link to ="/login">  <div><FontAwesomeIcon icon="sign-in-alt" />Войти</div></Link>
+                <Link to ="/login">  <div><FontAwesomeIcon icon="sign-in-alt" />Войrrrrrrrrrrrrти</div></Link>
             </div>
 
 
