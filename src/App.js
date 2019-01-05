@@ -24,7 +24,7 @@ let App = (props) => {
                     <Route exact path='/login' component={Login}/>
                     <Route exact path='/' render={() => <Profile myPosts={props.state.myPosts} dispatch={props.dispatch}/>}/>
                     <Route exact path='/profile' render={() => <Profile myPosts={props.state.myPosts} dispatch={props.dispatch}/>}/>
-                    <Route exact path='/dialogs' render={() => <Dialogs state={props.state}   />}/>
+                    <Route exact path='/dialogs' render={() => <Dialogs state={props.state}/>}/>
                     <Route exact path='/photos' render={() => <Photos dispatch={props.dispatch}   imagesUrls={props.state.photoPage.photos}/>}/>
 
                 </div>
