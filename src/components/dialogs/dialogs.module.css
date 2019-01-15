@@ -69,3 +69,10 @@ display: grid;
 
 .dialog a{
 color:black}
+
+.selected{
+    text-decoration: none;
+    color:black;
+    font-weight: bold;
+    border:2px solid orange;
+}

@@ -6,7 +6,7 @@ import Message from "./message";
 const Messages = (props) => {
 
      let messagesComponents = props.messagesTexts.map((el) => {
-         debugger
+
         return <Message text ={el.text} name ={el.name} id ={el.id}/>
      });
 

@@ -32,7 +32,7 @@ store.subscribe(()=>{
 const renderAll = () => {
     ReactDOM.render(
         <BrowserRouter>
-            <App state={store.getState()} dispatch={store.dispatch.bind(store)} />
+            <App state={store.getState()} dispatch={store.dispatch.bind(store)}  />
         </BrowserRouter>, document.getElementById('root'));
 
 }
