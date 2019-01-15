@@ -3,13 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import store from './store';
-
 import * as serviceWorker from './serviceWorker';
 import {BrowserRouter} from "react-router-dom";
-
-
-
-
+import {Provider} from "react-redux";
 
 
 // let addMessage = () => {
@@ -21,19 +17,18 @@ import {BrowserRouter} from "react-router-dom";
 //     renderAll()
 // }
 
-store.subscribe(()=>{
+store.subscribe(() => {
     renderAll();
 });
 
 
-
-
-
 const renderAll = () => {
     ReactDOM.render(
-        <BrowserRouter>
-            <App state={store.getState()} dispatch={store.dispatch.bind(store)} />
-        </BrowserRouter>, document.getElementById('root'));
+        <Provider>
+            <BrowserRouter>
+                <App state={store.getState()} dispatch={store.dispatch.bind(store)}/>
+            </BrowserRouter>
+        </Provider>, document.getElementById('root'));
 
 }
 

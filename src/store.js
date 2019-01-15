@@ -1,9 +1,24 @@
+import {createStore} from "redux";
+
+let superReducer = combineReducers();
+
+let dialogPageReducer = (state,action) => {
+    switch (action.type){
+        case
+    }
+
+}
+
+const store = createStore();
+
+
+export default store;
 
 
 // noinspection JSAnnotator
 const store = {
 
-     _state: {
+    _state: {
         messagesTexts: [
             {
                 id: 1,
@@ -77,48 +92,48 @@ const store = {
         }
 
     },
-    subscribe(func){
-         this._callback = func;
+    subscribe(func) {
+        this._callback = func;
     },
-     // addMessage(text, likesCount){
-     //
-     //
-     //    this._state.myPosts.unshift({text, likesCount});
-     //    this._callback();
-     // },
-     //
+    // addMessage(text, likesCount){
+    //
+    //
+    //    this._state.myPosts.unshift({text, likesCount});
+    //    this._callback();
+    // },
+    //
     //  addPhoto(url){
     //     this._state.photoPage.photos.unshift(url);
     //     this._callback();
     // },
-    _counter:0,
+    _counter: 0,
 
-    getState(){
-         this._counter++;
-         return this._state;
+    getState() {
+        this._counter++;
+        return this._state;
     },
-    _callback(){},
+    _callback() {
+    },
 
 
-
-    dispatch(action){
-         switch(action.type){
-             case 'ADD_MESSAGE':
-                 this._state.myPosts.unshift({text: action.text, likesCount: action.likesCount});
-                 this._callback();
-                 break;
-             case 'ADD_PHOTO':
-                 this._state.photoPage.photos.unshift({url: action.url});
-                 this._callback();
-                 break;
-         }
+    dispatch(action) {
+        switch (action.type) {
+            case 'ADD_MESSAGE':
+                this._state.myPosts.unshift({text: action.text, likesCount: action.likesCount});
+                this._callback();
+                break;
+            case 'ADD_PHOTO':
+                this._state.photoPage.photos.unshift({url: action.url});
+                this._callback();
+                break;
+        }
     }
 
 
 }
 
 
-export default  store;
+export default store;
 
 
 // let addMessage = () => {
