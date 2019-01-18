@@ -22,11 +22,16 @@ let Profile = (props) => {
                     <p>Веб-сайт:https://it-kamasutra.com/JSKMB</p>
                 </div>
             </div>
-            <MyPosts dispatch={props.dispatch}  myPosts={props.myPosts} currentTextAreaValue={props.currentTextAreaValue} currentlikesCount={props.currentlikesCount} currentlikesState={props.currentlikesState}/>
+            <MyPosts/>
         </div>
     )
 
 }
 
-
 export default Profile;
+
+/*<MyPosts dispatch={props.dispatch}  myPosts={props.myPosts} currentTextAreaValue={props.currentTextAreaValue} />*/
+
+
+
+

@@ -23,10 +23,10 @@ let App = (props) => {
                 <Sidebar/>
                 <div className='content'>
                     <Route exact path='/login' component={Login}/>
-                    <Route exact path='/' render={() => <Profile myPosts={props.state.myPosts} dispatch={props.dispatch} currentTextAreaValue={props.state.currentTextAreaValue} currentlikesCount={props.state.currentlikesCount} currentlikesState={props.state.currentlikesState}/>}/>
-                    <Route exact path='/profile' render={() => <Profile myPosts={props.state.myPosts} dispatch={props.dispatch} currentTextAreaValue={props.state.currentTextAreaValue} currentlikesCount={props.state.currentlikesCount} currentlikesState={props.state.currentlikesState}/>}/>
-                    <Route exact path='/dialogs' render={() => <Dialogs state={props.state} dispatch={props.dispatch} />}/>
-                    <Route exact path='/photos' render={() => <Photos dispatch={props.dispatch}   imagesUrls={props.state.photoPage.photos}/>}/>
+                    <Route exact path='/' render={() => <Profile/>}/>
+                    <Route exact path='/profile' render={() => <Profile />}/>
+                    <Route exact path='/dialogs' render={() => <Dialogs/>}/>
+                    <Route exact path='/photos' render={() => <Photos/>}/>
 
                 </div>
             </div>
@@ -39,3 +39,8 @@ let App = (props) => {
 
 
 export default App;
+
+/*<Route exact path='/dialogs' render={() => <Dialogs  dispatch={props.dispatch} />}/>*/
+/*<Route exact path='/photos' render={() => <Photos dispatch={props.dispatch}   imagesUrls={props.state.photoPage.photos}/>}/>*/
+/*<Route exact path='/' render={() => <Profile myPosts={props.state.myPosts} dispatch={props.dispatch} currentTextAreaValue={props.state.currentTextAreaValue} currentlikesCount={props.state.currentlikesCount} currentlikesState={props.state.currentlikesState}/>}/>*/
+ /*<Route exact path='/profile' render={() => <Profile myPosts={props.state.myPosts} dispatch={props.dispatch} currentTextAreaValue={props.state.currentTextAreaValue} currentlikesCount={props.state.currentlikesCount} currentlikesState={props.state.currentlikesState}/>}/>*/

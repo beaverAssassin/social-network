@@ -3,62 +3,55 @@ import PropTypes from 'prop-types';
 
 import styles from "./photos.module.css";
 import {ADD_PHOTO} from "../../actiontypes";
+import {connect} from "react-redux";
 
+const Photos = (props) => {
 
- const Photos = (props) => {
-
-
-
-
- // let addPhoto = props.addPhoto;
-
-
-     // let addPhoto = props.dispatch({
-     //     type:ADD_PHOTO,
-     // });
-
-
-     let url = React.createRef();
-     let images = null;
-     if(!!props.imagesUrls){
-     images = props.imagesUrls.map((url) => {
-
-     return <img  src={url.url} />;
-     })
-
-
-
-
-     }
-
-
-debugger;
+    let url = React.createRef();
+    let images = null;
+    if (!!props.photoPage.imagesUrls) {
+        images = props.photoPage.imagesUrls.map((url) => {
+            return <img src={url.url}/>;
+        })
+    }
     return (
         <div className={styles.photos}>
             {images}
             <hr/>
             <input ref={url}/>
-            <button onClick={()=>{
-
+            <button onClick={() => {
                 props.dispatch({
-                    type:ADD_PHOTO,
-                   url: url.current.value
+                    type: ADD_PHOTO,
+                    url: url.current.value
                 });
-
-
-
-
-
             }}>
                 Add photo
             </button>
         </div>
-
-
     )
-
 }
+
 Photos.propTypes = {
     imagesUrls: PropTypes.array
 }
-export default Photos;
+
+
+
+
+const mapStateToProps = (state) => {
+    return {
+        photoPage: state.photoPage
+    }
+}
+
+
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        dispatch
+    }
+}
+
+
+const ConnectedPhotos = connect(mapStateToProps, mapDispatchToProps)(Photos);
+export default ConnectedPhotos;

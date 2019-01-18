@@ -2,13 +2,14 @@ import React from 'react';
 import style from './MyPosts.module.css';
 import Post from "./post/Post";
 import {ADD_MESSAGE, WRITE_TEXTAREA_VALUE} from "../../../actiontypes";
+import {connect} from "react-redux";
 
 
 let MyPosts = (props) => {
 
 
 
-    console.log(props.currentTextAreaValue);
+    console.log(props.profilePage.currentTextAreaValue);
 
     //let message = React.createRef();??????????????????????????? задать вопрос аналог getelementByid рефеаральная ссылка
 
@@ -21,24 +22,24 @@ let MyPosts = (props) => {
     }
 
 
-    let messageTags = props.myPosts.map((el) => {
+    let messageTags = props.profilePage.myPosts.map((el) => {
         return <Post text={el.text} postId={el.id} likesCount={el.likesCount} dislikeCount={el.dislikeCount} dispatch={props.dispatch}/>
     });
 
 
     return (
-
         <div className={style.my_notes}>
             <h3>Мои записи</h3>
 
-            <textarea value={props.currentTextAreaValue} placeholder="to write some else" onChange={onChangeTextarea}
+            <textarea value={props.profilePage.currentTextAreaValue} placeholder="to write some else" onChange={onChangeTextarea}
                       cols="80" rows="5"></textarea><br/>
 
             <button onClick={() => {
                 props.dispatch({
                     type: ADD_MESSAGE,
-                    text: props.currentTextAreaValue,
-                    likesCount: props.currentTextAreaValue.length
+                    text: props.profilePage.currentTextAreaValue,
+                    likesCount: props.profilePage.currentTextAreaValue.length,
+                    dislikeCount: props.profilePage.currentTextAreaValue.length-2
                 }); }  } className={style.sentForm}>
 
 
@@ -64,5 +65,19 @@ let MyPosts = (props) => {
 
 }
 
+const mapStateToProps = (state)=>{
+    return{
+        profilePage: state.profilePage
+    }
+}
 
-export default MyPosts;
+const mapDispatchToProps = (dispatch)=>{
+    return{
+        dispatch
+    }
+}
+
+
+const ConnectedMyPosts = connect(mapStateToProps, mapDispatchToProps)(MyPosts)
+
+export default ConnectedMyPosts;

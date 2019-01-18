@@ -2,7 +2,7 @@ import React from 'react';
 import mainphoto from '../../../../mainphoto.jpg';
 import style from './Post.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {LIKES_COUNT_MINUS, LIKES_COUNT_PLUS} from "../../../../actiontypes";
+import {DISLIKES_COUNT, LIKES_COUNT} from "../../../../actiontypes";
 let Post = (props) => {
 
     // let a = 0;
@@ -23,14 +23,14 @@ let Post = (props) => {
             <div>
                 <FontAwesomeIcon  icon="heart" onClick={() => {
                     props.dispatch({
-                        type: LIKES_COUNT_PLUS,
+                        type: LIKES_COUNT,
                         postId: props.postId
                     })
                 }}  />{props.likesCount}
 
                 <FontAwesomeIcon className={style.iconThumbDown} icon="thumbs-down" onClick={()=>{
                     props.dispatch({
-                        type:LIKES_COUNT_MINUS,
+                        type:DISLIKES_COUNT,
                         postId: props.postId
                     })
                 }}/>{props.dislikeCount}
