@@ -7,7 +7,7 @@ import {connect} from "react-redux";
 
 
 let Dialogs = (props) => {
-debugger
+
     return (
         <div className={style.wrap_dialogs}>
             <div className={style.dialogs}>
@@ -34,26 +34,17 @@ debugger
                 {/*</div>*/}
             </div>
         </div>
-
     )
 }
 
 const mapStateToProps =(state)=>{
     return{
-
         dialogsPage : state.dialogsPage
-
     }
 }
 
-const mapDispatchToProps =(dispatch)=>{
-    return{
 
-        dispatch
-    }
 
-}
-
-const ConnectedDialogs = connect(mapStateToProps,mapDispatchToProps)(Dialogs);
+const ConnectedDialogs = connect(mapStateToProps,null)(Dialogs);
 
 export default ConnectedDialogs;

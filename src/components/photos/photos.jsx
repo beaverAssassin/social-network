@@ -20,11 +20,9 @@ const Photos = (props) => {
             <hr/>
             <input ref={url}/>
             <button onClick={() => {
-                props.dispatch({
-                    type: ADD_PHOTO,
-                    url: url.current.value
-                });
+                props.addPhoto(url)
             }}>
+
                 Add photo
             </button>
         </div>
@@ -36,8 +34,6 @@ Photos.propTypes = {
 }
 
 
-
-
 const mapStateToProps = (state) => {
     return {
         photoPage: state.photoPage
@@ -45,13 +41,27 @@ const mapStateToProps = (state) => {
 }
 
 
-
 const mapDispatchToProps = (dispatch) => {
     return {
-        dispatch
+        addPhoto: (url) => {
+            dispatch({
+                type: ADD_PHOTO,
+                url: url.current.value
+            })
+
+        }
+
+
     }
+    //     props.dispatch({
+    //     type: ADD_PHOTO,
+    //     url: url.current.value
+    // });
+    //     dispatch
+    // }
 }
 
 
 const ConnectedPhotos = connect(mapStateToProps, mapDispatchToProps)(Photos);
 export default ConnectedPhotos;
+

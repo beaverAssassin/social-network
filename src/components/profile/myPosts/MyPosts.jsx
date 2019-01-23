@@ -15,32 +15,23 @@ let MyPosts = (props) => {
 
     let onChangeTextarea = (event) => {
 
-        props.dispatch({
-            type: WRITE_TEXTAREA_VALUE,
-            symbol: event.target.value
-        })
+        props.onchangeTextarea(event)
     }
 
 
     let messageTags = props.profilePage.myPosts.map((el) => {
-        return <Post text={el.text} postId={el.id} likesCount={el.likesCount} dislikeCount={el.dislikeCount} dispatch={props.dispatch}/>
+        return <Post key = {el.id} text={el.text} postId={el.id} likesCount={el.likesCount} dislikeCount={el.dislikeCount} dispatch={props.dispatch}/>
     });
 
 
     return (
         <div className={style.my_notes}>
             <h3>Мои записи</h3>
-
             <textarea value={props.profilePage.currentTextAreaValue} placeholder="to write some else" onChange={onChangeTextarea}
                       cols="80" rows="5"></textarea><br/>
-
-            <button onClick={() => {
-                props.dispatch({
-                    type: ADD_MESSAGE,
-                    text: props.profilePage.currentTextAreaValue,
-                    likesCount: props.profilePage.currentTextAreaValue.length,
-                    dislikeCount: props.profilePage.currentTextAreaValue.length-2
-                }); }  } className={style.sentForm}>
+            <button onClick={(event) => {
+                props.addMessage(event)
+                }  } className={style.sentForm}>
 
 
 
@@ -73,9 +64,31 @@ const mapStateToProps = (state)=>{
 
 const mapDispatchToProps = (dispatch)=>{
     return{
-        dispatch
+        addMessage:(event)=>{
+            debugger
+
+            dispatch({
+                type: ADD_MESSAGE,
+                text: event.profilePage.currentTextAreaValue,
+                likesCount:event.profilePage.currentTextAreaValue.length,
+                dislikeCount: event.profilePage.currentTextAreaValue.length-2
+
+            })
+
+
+
+        },
+        onchangeTextarea:(event)=>{
+
+            dispatch({
+                type: WRITE_TEXTAREA_VALUE,
+                symbol: event.target.value
+            })
+        }
+
     }
 }
+
 
 
 const ConnectedMyPosts = connect(mapStateToProps, mapDispatchToProps)(MyPosts)
