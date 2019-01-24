@@ -1,5 +1,7 @@
 import React from 'react';
 
+const addPhoto = "PHOTO/ADD_PHOTO"
+
 let initialStateForPhotoPage = {
     imagesUrls: [
         {
@@ -17,7 +19,7 @@ let initialStateForPhotoPage = {
 const photoPageReducer = (state = initialStateForPhotoPage, action) => {
 
     switch (action.type) {
-        case 'ADD_PHOTO':
+        case addPhoto:
             let stateCopy = {...state};
             stateCopy.imagesUrls.unshift({url: action.url});
             return stateCopy;
@@ -27,3 +29,7 @@ const photoPageReducer = (state = initialStateForPhotoPage, action) => {
 
 }
 export default photoPageReducer;
+
+export const addPhotoUrl =(url)=>{
+    return { type:addPhoto,  url: url.current.value};
+}

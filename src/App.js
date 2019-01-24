@@ -7,7 +7,6 @@ import Profile from './components/profile/profile.jsx';
 import Login from "./components/login/login.jsx";
 import Photos from "./components/photos/photos";
 import { Route} from "react-router-dom";
-
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faSignInAlt, faHeart, faThumbsDown} from '@fortawesome/free-solid-svg-icons';
 
@@ -22,10 +21,10 @@ let App = (props) => {
                 <Header/>
                 <Sidebar/>
                 <div className='content'>
-                    <Route exact path='/login' component={Login}/>
+                    <Route  path='/' exact render={()=><Login/>}/>
                     <Route exact path='/' render={() => <Profile/>}/>
                     <Route exact path='/profile' render={() => <Profile />}/>
-                    <Route exact path='/dialogs' render={() => <Dialogs/>}/>
+                    <Route exact path='/dialogs'  render={() => <Dialogs/>}/>
                     <Route exact path='/photos' render={() => <Photos/>}/>
 
                 </div>
@@ -34,7 +33,20 @@ let App = (props) => {
     )
 }
 
-
+// Андрей Турецкий, [24.01.19 16:47]
+// <Route path="/" exact render={() => <Login />} />
+// <Route path="/Profile" render={() => {
+//     return <ProfilePage
+//         informationProfileBlock={this.props.state.informationProfileBlock}
+//         imgUrls={this.props.state.imgUrls}
+//         posts={this.props.state.posts}
+//         dispatch={this.props.dispatch}
+//         textAreaPhotoValue={this.props.state.textAreaPhotoValue}
+//         textAreaMassagesValue={this.props.state.textAreaMassagesValue}
+//     />
+// }
+// }
+// />
 
 
 

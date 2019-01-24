@@ -12,7 +12,7 @@ let Dialogs = (props) => {
         <div className={style.wrap_dialogs}>
             <div className={style.dialogs}>
                 <h3>DIALOGS</h3>
-                <Dialog dialogs={props.dialogsPage} dispatch={props.dispatch}/>
+                <Dialog dialogs={props.dialogsPage} />
             </div>
 
             <div className={style.messages_container}>

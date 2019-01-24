@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './MyPosts.module.css';
 import Post from "./post/Post";
-import {ADD_MESSAGE, WRITE_TEXTAREA_VALUE} from "../../../actiontypes";
+import {ADD_MESSAGE, LIKES_COUNT, WRITE_TEXTAREA_VALUE} from "../../../actiontypes";
 import {connect} from "react-redux";
 
 
@@ -10,17 +10,15 @@ let MyPosts = (props) => {
 
 
     console.log(props.profilePage.currentTextAreaValue);
-
     //let message = React.createRef();??????????????????????????? задать вопрос аналог getelementByid рефеаральная ссылка
-
     let onChangeTextarea = (event) => {
-
         props.onchangeTextarea(event)
     }
 
 
     let messageTags = props.profilePage.myPosts.map((el) => {
-        return <Post key = {el.id} text={el.text} postId={el.id} likesCount={el.likesCount} dislikeCount={el.dislikeCount} dispatch={props.dispatch}/>
+        debugger
+        return <Post key = {el.id} text={el.text} postId={el.id} likesCount={el.likesCount} dislikeCount={el.dislikeCount} likesCo={props.likesCo}/>
     });
 
 
@@ -29,8 +27,8 @@ let MyPosts = (props) => {
             <h3>Мои записи</h3>
             <textarea value={props.profilePage.currentTextAreaValue} placeholder="to write some else" onChange={onChangeTextarea}
                       cols="80" rows="5"></textarea><br/>
-            <button onClick={(event) => {
-                props.addMessage(event)
+            <button onClick={() => {
+                props.addMessage(props.profilePage.currentTextAreaValue)
                 }  } className={style.sentForm}>
 
 
@@ -64,14 +62,15 @@ const mapStateToProps = (state)=>{
 
 const mapDispatchToProps = (dispatch)=>{
     return{
-        addMessage:(event)=>{
+        addMessage:(currentTextAreaValue)=>{
             debugger
 
             dispatch({
                 type: ADD_MESSAGE,
-                text: event.profilePage.currentTextAreaValue,
-                likesCount:event.profilePage.currentTextAreaValue.length,
-                dislikeCount: event.profilePage.currentTextAreaValue.length-2
+                text: currentTextAreaValue,
+                likesCount:currentTextAreaValue.length,
+                dislikeCount: currentTextAreaValue.length-2
+
 
             })
 
@@ -84,7 +83,16 @@ const mapDispatchToProps = (dispatch)=>{
                 type: WRITE_TEXTAREA_VALUE,
                 symbol: event.target.value
             })
-        }
+        },
+
+        // likesCo:(id)=>{
+        //     dispatch({
+        //         type: LIKES_COUNT,
+        //         postId:id.postId
+        //     })
+        //
+        //
+        // }
 
     }
 }
@@ -94,3 +102,4 @@ const mapDispatchToProps = (dispatch)=>{
 const ConnectedMyPosts = connect(mapStateToProps, mapDispatchToProps)(MyPosts)
 
 export default ConnectedMyPosts;
+

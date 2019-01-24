@@ -1,4 +1,7 @@
 
+const addMessage ="PROFILE/ADD_MESSAGE'"
+
+
 let initialStateForProfilePage = {
 
     myPosts: [
@@ -47,6 +50,7 @@ const profilePageReducer = (state = initialStateForProfilePage, action) => {
             stateCopy.currentTextAreaValue = action.symbol;
             return stateCopy;
         case 'LIKES_COUNT':
+            debugger
             const currentPostsPlus = stateCopy.myPosts.filter((el) => {
                 return el.id === action.postId;
             })

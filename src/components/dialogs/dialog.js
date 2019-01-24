@@ -1,8 +1,8 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
 import style from './dialogs.module.css';
-import {SET_CURRENTUSER} from "../../actiontypes";
 import {connect} from "react-redux";
+import {setCurrentUserById} from "../../redux/dialogPageReducer";
 
 const Dialog = (props) => {
 
@@ -31,14 +31,11 @@ const Dialog = (props) => {
 }
 
 const mapDispatchToProps =(dispatch)=>{
+    debugger
     return {
         selectCurrentUser: (el) => {
-            dispatch({
-                type: SET_CURRENTUSER,
-                id: el.id
-
-
-            })
+            let action = setCurrentUserById(el);
+            dispatch(action);
         },
 
 

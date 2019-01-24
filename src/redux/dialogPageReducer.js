@@ -1,3 +1,4 @@
+
 const setCurrentUser = 'DIALOG/SET_CURRENTUSER';
 
 
@@ -52,7 +53,6 @@ const dialogPageReducer = (state = initialStateForDialog, action) => {
     switch (action.type) {
         case setCurrentUser:
             let stateCopy = {...state};
-
             stateCopy.currentUserId = action.id;
             return stateCopy;
         default:
@@ -62,4 +62,7 @@ const dialogPageReducer = (state = initialStateForDialog, action) => {
 
 
 export default dialogPageReducer;
-export d
+export const setCurrentUserById =(el)=>{
+    return { type:setCurrentUser, id:el.id};
+}
+

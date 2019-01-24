@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import styles from "./photos.module.css";
 import {ADD_PHOTO} from "../../actiontypes";
 import {connect} from "react-redux";
+import {addPhotoUrl} from "../../redux/photoPageReducer";
 
 const Photos = (props) => {
 
@@ -44,10 +44,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         addPhoto: (url) => {
-            dispatch({
-                type: ADD_PHOTO,
-                url: url.current.value
-            })
+            let action = addPhotoUrl(url);
+            dispatch(action);
+
 
         }
 
