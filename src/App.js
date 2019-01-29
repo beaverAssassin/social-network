@@ -14,19 +14,18 @@ library.add(faSignInAlt,faHeart, faThumbsDown);
 
 let App = (props) => {
 
-    // let path = "/";
-    //
-    // if(path==="/"){
-    //     return(
-    //
-    //
-    //
-    //
-    //     )
-    // }
+    let path = "/";
+
+    if(path==="/"){
+        return(
+
+            <Route  path='/' exact render={()=><Login/>}/>
 
 
+        )
+    }
 
+console.log()
     return (
 
             <div className="App">
@@ -34,14 +33,14 @@ let App = (props) => {
 
                 <Route  path='/' exact render={()=><Login/>}/>
 
-                <Route  path='/profile'  render={()=><Header/>}/>
-                <Route  path='/profile'  render={()=><Sidebar/>}/>
-                <Route  path='/dialogs'   render={()=><Header/>}/>
-                <Route  path='/dialogs'   render={()=><Sidebar/>}/>
-                <Route  path='/photos'  render={()=><Header/>}/>
-                <Route  path='/photos'  render={()=><Sidebar/>}/>
-                {/*<Header/>*/}
-                {/*<Sidebar/>*/}
+                {/*<Route  path='/profile'  render={()=><Header/>}/>*/}
+                {/*<Route  path='/profile'  render={()=><Sidebar/>}/>*/}
+                {/*<Route  path='/dialogs'   render={()=><Header/>}/>*/}
+                {/*<Route  path='/dialogs'   render={()=><Sidebar/>}/>*/}
+                {/*<Route  path='/photos'  render={()=><Header/>}/>*/}
+                {/*<Route  path='/photos'  render={()=><Sidebar/>}/>*/}
+                <Header/>
+                <Sidebar/>
 
                 <div className='content'>
                     <Route  path='/profile' render={() => <Profile />}/>

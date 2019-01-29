@@ -69,7 +69,7 @@ const dialogPageReducer = (state = initialStateForDialog, action) => {
             stateCopy.currentUserId = action.id;
             return stateCopy;
         case selectDialog:
-            stateCopy.currentUserId = action.id && state.messagesTexts.filter(p => p.id == action.id)[0];
+            stateCopy.currentUserId =  state.messagesTexts.filter(p => p.id == action.id)[0];
             return stateCopy;
         default:
             return state;
@@ -79,10 +79,10 @@ const dialogPageReducer = (state = initialStateForDialog, action) => {
 
 export default dialogPageReducer;
 
-export const setCurrentUserById =(el)=>{
-
-    return { type:setCurrentUser, id:el.id};
-}
+// export const setCurrentUserById =(el)=>{
+//
+//     return { type:setCurrentUser, id:el.id};
+// }
 
 export const selectDialogById = (id)=> {
     return {

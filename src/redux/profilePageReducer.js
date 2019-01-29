@@ -54,12 +54,15 @@ const profilePageReducer = (state = initialStateForProfilePage, action) => {
             return stateCopy;
         case likesCalculate:
             const currentPostsPlus = stateCopy.myPosts.filter((el) => {
+                debugger
                 return el.id === action.postId;
             })
+console.log(currentPostsPlus[0]);
             currentPostsPlus[0].likesCount++;
             return stateCopy;
         case disLikesCalculate:
             const currentPostsSubtr = stateCopy.myPosts.filter((el) => {
+
                 return el.id === action.postId;
             })
             currentPostsSubtr[0].dislikeCount++;

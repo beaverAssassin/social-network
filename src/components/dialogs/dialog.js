@@ -5,18 +5,18 @@ import {connect} from "react-redux";
 import {selectDialogById, setCurrentUserById} from "../../redux/dialogPageReducer";
 
 const Dialog = (props) => {
+
 debugger
-    console.log(+props.match)
-    console.log(props.dialogs.currentUserId)
 
     let currentUserId = props.dialogs.currentUserId;
+    let idFromUrl = + props.match;
     let getDialogs = props.dialogs.messagesTexts.map((el) => {
-        let isUserSelected = currentUserId === el.id;
+        let isUserSelected = idFromUrl === el.id;
+
+
+
         let cssClasses = isUserSelected ? style.selected : '';
 
-
-
-        let idFromUrl = + props.match;
          let unsyncState = (!currentUserId && !!idFromUrl) || (!!currentUserId && !!idFromUrl && idFromUrl != currentUserId.id) ;
 
          if (unsyncState) {
@@ -26,50 +26,27 @@ debugger
             )
         }
 
-        return <NavLink to={"/dialogs/" + el.id}  onClick={()=>props.selectDialog(el)}  key={el.key} className={style.NavLink}>
-
+        return <NavLink to={"/dialogs/" + el.id}   key={el.key} className={style.NavLink}>
             <li className={cssClasses}>{el.name}</li>
         </NavLink>
     })
-
     return (
-
         <ul>{getDialogs}</ul>
-
     )
 }
 
-
-
-
-
-
-
-
 const mapDispatchToProps = (dispatch) => {
-
     return {
-        selectCurrentUser: (el) => {
-            let action = setCurrentUserById(el);
-            dispatch(action);
-        },
+
         selectDialog: (id) => {
             let action = selectDialogById(id);
-
             dispatch(action);
-
         }
-
-
     }
-
-
 }
 
 
 const ConnectedDialog = connect(null, mapDispatchToProps)(Dialog);
-
-
 export default  ConnectedDialog;
 
 // const Dialog = (props) => {
