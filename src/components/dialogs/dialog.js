@@ -1,23 +1,35 @@
 import React from 'react';
-import {NavLink} from "react-router-dom";
+import {NavLink, withRouter} from "react-router-dom";
 import style from './dialogs.module.css';
 import {connect} from "react-redux";
 import {selectDialogById, setCurrentUserById} from "../../redux/dialogPageReducer";
 
 const Dialog = (props) => {
+debugger
+    console.log(+props.match)
+    console.log(props.dialogs.currentUserId)
 
     let currentUserId = props.dialogs.currentUserId;
     let getDialogs = props.dialogs.messagesTexts.map((el) => {
-
-        // let setCurrentUser = props.dispatch({
-        //     type:SET_CURRENTUSER,
-        //     id:el.id
-        // });
-
         let isUserSelected = currentUserId === el.id;
         let cssClasses = isUserSelected ? style.selected : '';
 
-        return <li  className={cssClasses} to={"/dialogs/"+ el.name} onClick={()=>props.selectDialog(el.id,el)}>{el.name}</li>
+
+
+        let idFromUrl = + props.match;
+         let unsyncState = (!currentUserId && !!idFromUrl) || (!!currentUserId && !!idFromUrl && idFromUrl != currentUserId.id) ;
+
+         if (unsyncState) {
+             props.selectDialog(idFromUrl);
+            return (
+                <div>async</div>
+            )
+        }
+
+        return <NavLink to={"/dialogs/" + el.id}  onClick={()=>props.selectDialog(el)}  key={el.key} className={style.NavLink}>
+
+            <li className={cssClasses}>{el.name}</li>
+        </NavLink>
     })
 
     return (
@@ -27,15 +39,22 @@ const Dialog = (props) => {
     )
 }
 
-const mapDispatchToProps =(dispatch)=>{
-debugger
+
+
+
+
+
+
+
+const mapDispatchToProps = (dispatch) => {
+
     return {
         selectCurrentUser: (el) => {
             let action = setCurrentUserById(el);
             dispatch(action);
         },
-        selectDialog:(id,el)=>{
-            let action = selectDialogById(id,el) ;
+        selectDialog: (id) => {
+            let action = selectDialogById(id);
 
             dispatch(action);
 
@@ -48,11 +67,10 @@ debugger
 }
 
 
-const ConnectedDialog = connect(null,mapDispatchToProps)(Dialog);
+const ConnectedDialog = connect(null, mapDispatchToProps)(Dialog);
 
 
-
-export default ConnectedDialog;
+export default  ConnectedDialog;
 
 // const Dialog = (props) => {
 //

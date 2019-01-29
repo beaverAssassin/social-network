@@ -2,22 +2,22 @@ import React from 'react';
 import style from './dialogs.module.css';
 import Messages from "./messages/messages";
 import Dialog from "./dialog";
-import {Route} from "react-router-dom";
+import {Route, withRouter} from "react-router-dom";
 import {connect} from "react-redux";
 
 
 let Dialogs = (props) => {
-
+debugger
     return (
         <div className={style.wrap_dialogs}>
             <div className={style.dialogs}>
                 <h3>DIALOGS</h3>
-                <Dialog dialogs={props.dialogsPage} />
+                <Dialog match={props.match.params.dialogId} dialogs={props.dialogsPage} />
             </div>
 
             <div className={style.messages_container}>
                 <div className={style.wrap_messages}>
-                    <Messages dialogs={props.dialogsPage}/>
+                    <Messages  dialogs={props.dialogsPage}/>
                     {/*<Route exact path='/{props.currentDialogId}' render={() => <Messages currentMessagesById={props.currentMessagesById} filterMessages={props.filterMessages}/>}/>*/}
                 </div>
                 {/*<div className={style.wrap_messages}>*/}
@@ -49,4 +49,4 @@ const mapStateToProps =(state)=>{
 const ConnectedDialogs = connect(mapStateToProps,null)(Dialogs);
 
 
-export default ConnectedDialogs;
+export default withRouter(ConnectedDialogs);

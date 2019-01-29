@@ -8,7 +8,9 @@ display: grid;
     border-right:2px solid black;
 }
 
-
+.dialogs h3{
+    text-align: center;
+}
 
 
 
@@ -40,7 +42,7 @@ display: grid;
 /*content:"Dmitry";*/
 /*}*/
 
-/*.nm:after{*/
+/*.nm:after{*/NavLink
 /*content:"Me";*/
 /*margin-left: 15px;*/
 
@@ -70,9 +72,20 @@ display: grid;
 .dialog a{
 color:black}
 
+
+.dialog a:hover{
+    color:red
+}
+
 .selected{
     text-decoration: none;
     color:black;
     font-weight: bold;
     border:2px solid orange;
+}
+
+
+.NavLink{
+    text-decoration: none;
+    color: #000000;
 }

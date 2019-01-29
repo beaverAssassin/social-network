@@ -6,7 +6,7 @@ import Dialogs from './components/dialogs/dialogs';
 import Profile from './components/profile/profile.jsx';
 import Login from "./components/login/login.jsx";
 import Photos from "./components/photos/photos";
-import { Route} from "react-router-dom";
+import {Route, Switch} from "react-router-dom";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faSignInAlt, faHeart, faThumbsDown} from '@fortawesome/free-solid-svg-icons';
 
@@ -14,25 +14,48 @@ library.add(faSignInAlt,faHeart, faThumbsDown);
 
 let App = (props) => {
 
+    // let path = "/";
+    //
+    // if(path==="/"){
+    //     return(
+    //
+    //
+    //
+    //
+    //     )
+    // }
+
+
+
     return (
 
             <div className="App">
+
+
                 <Route  path='/' exact render={()=><Login/>}/>
+
                 <Route  path='/profile'  render={()=><Header/>}/>
                 <Route  path='/profile'  render={()=><Sidebar/>}/>
-                <Route  path='/dialogs'  render={()=><Header/>}/>
-                <Route  path='/dialogs'  render={()=><Sidebar/>}/>
+                <Route  path='/dialogs'   render={()=><Header/>}/>
+                <Route  path='/dialogs'   render={()=><Sidebar/>}/>
                 <Route  path='/photos'  render={()=><Header/>}/>
                 <Route  path='/photos'  render={()=><Sidebar/>}/>
                 {/*<Header/>*/}
                 {/*<Sidebar/>*/}
+
                 <div className='content'>
                     <Route  path='/profile' render={() => <Profile />}/>
-                    <Route  path='/dialogs'  render={() => <Dialogs/>}/>
+                    <Switch>
+                        <Route  path='/dialogs/:dialogId'  render={() => <Dialogs/>}/>
+                        <Route  path='/dialogs'  render={() => <Dialogs/>}/>
+
+                    </Switch>
                     <Route  path='/photos' render={() => <Photos/>}/>
 
                 </div>
+
             </div>
+
 
     )
 }

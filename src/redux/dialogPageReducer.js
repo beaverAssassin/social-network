@@ -5,7 +5,7 @@ const selectDialog = 'DIALOG/SELECT_USER';
 
 
 let initialStateForDialog = {
-    animate:false,
+
     users: [
         {
             dialogId: 1234,
@@ -69,7 +69,7 @@ const dialogPageReducer = (state = initialStateForDialog, action) => {
             stateCopy.currentUserId = action.id;
             return stateCopy;
         case selectDialog:
-            stateCopy.currentUserId = state.messagesTexts.filter(p => p.id == action.id)[0];
+            stateCopy.currentUserId = action.id && state.messagesTexts.filter(p => p.id == action.id)[0];
             return stateCopy;
         default:
             return state;
