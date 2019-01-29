@@ -26,7 +26,7 @@ import {Provider} from "react-redux";
 const renderAll = () => {
     ReactDOM.render(
         <Provider store={store}><BrowserRouter>
-            <App state={store.getState()} dispatch={store.dispatch.bind(store)}/>
+            <App state={store.getState()} />
         </BrowserRouter></Provider>, document.getElementById('root'));
 
 }

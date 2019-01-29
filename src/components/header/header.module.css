@@ -9,18 +9,25 @@ header{
     justify-content: space-between;
     width: 100%;
     height: 100px;
-    background-color:#13ce66;
+    background:linear-gradient( #4d7fb2, #184b83);
+
 
 
 }
 
 .header_logo{
-    margin-left: 75px;
-    width: 50px;
-    height: 50px;
+    margin-left: 95px;
+    width: 80px;
+    height: 80px;
     /*margin: 0 0 0 5px;*/
 }
 
 .enter{
     margin-right: 50px;
+    color:#fff;
+    font-size: 18px;
+    text-decoration: none;
+}
+.enter:hover{
+    color: #ffc81e;
 }

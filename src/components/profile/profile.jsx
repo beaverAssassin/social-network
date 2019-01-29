@@ -13,7 +13,7 @@ let Profile = (props) => {
 
             </div>
             <div className={style.personal_data}>
-                <img src={mainphoto} className={style.profile_img} alt="profile_img"/>
+                <img src="https://s.gamer-info.com/gl/f/a/l/l/fallout-2_w240.jpg" className={style.profile_img} alt="profile_img"/>
                 <div className={style.description}>
                     <p className={style.description_name}>Майкл Иванович Джордан</p>
                     <p>День рождения:2 января</p>

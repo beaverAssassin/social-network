@@ -14,24 +14,22 @@ let Post = (props) => {
     //
     //     };
 
-console.log(props.dispatch);
-    debugger
+
+
     return (
 
         <div className={style.post}>
-            <img src={mainphoto} alt=""/>
+            <img src="https://s.gamer-info.com/gl/f/a/l/l/fallout-2_w240.jpg" alt=""/>
 
             {props.text}
             <div>
                 <FontAwesomeIcon  icon="heart" onClick={() => {
-                    props.likesCo(props.postId)
+                    props.likesCalc(props.postId)
                 }}  />{props.likesCount}
 
                 <FontAwesomeIcon className={style.iconThumbDown} icon="thumbs-down" onClick={()=>{
-                    props.dispatch({
-                        type:DISLIKES_COUNT,
-                        postId: props.postId
-                    })
+                    props.dislikeCalc(props.postId)
+
                 }}/>{props.dislikeCount}
             </div>
         </div>
@@ -41,28 +39,12 @@ console.log(props.dispatch);
     )
 }
 
-const mapDispatchToProps =(dispatch)=> {
-    return {
-        likesCo: (postId) => {
 
 
-            dispatch({
-                type: LIKES_COUNT,
-                postId: postId
 
 
-            })
 
-
-        }
-    }
-
-}
-
-
-const ConnectedMyPost = connect(null, mapDispatchToProps)(Post)
-
-export default ConnectedMyPost;
+export default Post
 
 
 

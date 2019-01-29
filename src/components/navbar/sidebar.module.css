@@ -3,19 +3,19 @@ nav{
 }
 
 
-.sidebar_block{
+.sidebar_block {
 
-    background-color:#13ce66;
+    background: linear-gradient(#4d7fb2, #184b83);
 }
 
 .sidebar_block a{
     text-decoration: none;
-    color:black;
+    color:#fff;
+    font-size: 18px;
 }
 
-.sidebar_block a:hover{
-    box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5), 1px 1px 5px rgba(255, 255, 255, 1);
-    color:blue;
+.sidebar_block a:hover,.sidebar_block a:focus{
+    color:#ffc81e;
 }
 
 

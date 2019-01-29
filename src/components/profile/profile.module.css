@@ -3,8 +3,9 @@
     width: 100%;
     height: 100px;
     background-image: url('../../profile.jpg');
-    background-color: #13ce66;
-    background-size: cover;
+    /*background-color:   background:linear-gradient(   #4d7fb2, #184b83);*/
+
+    background-size:contain;
 
 }
 
@@ -16,8 +17,8 @@
 }
 
 .profile_img {
-    width: 110px;
-    height: 140px;
+    width: 130px;
+    height: 160px;
 }
 
 .description {

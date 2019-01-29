@@ -1,11 +1,16 @@
 
 
 .login_page{
-    height:100%;
+    position: absolute;
+    margin:auto;
+    height:auto;
     display:flex;
     justify-content: center;
     align-items: center;
-
+    left:50%; margin-left:-150px;
+    top:50%;margin-top:-150px;
+    border: 5px outset #1E90FF;
+    padding: 14px;
 }
 
 
@@ -50,13 +55,13 @@
 
 
 input[type="submit"]{
-    background-color: #13ce66;
+    background-color: #1E90FF;
 
 }
 
 
 input[type="checkbox"]{
-    background-color: #13ce66;
+    background-color: #1E90FF;
 
 }
 

@@ -11,8 +11,6 @@ let initialStateForPhotoPage = {
             url: 'https://cdn.motor1.com/images/mgl/qxZrL/s3/25-future-cars-worth-waiting-for.jpg'
         }
     ]
-
-
 }
 
 

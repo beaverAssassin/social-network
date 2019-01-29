@@ -1,9 +1,11 @@
 
 const setCurrentUser = 'DIALOG/SET_CURRENTUSER';
+const selectDialog = 'DIALOG/SELECT_USER';
 
 
 
 let initialStateForDialog = {
+    animate:false,
     users: [
         {
             dialogId: 1234,
@@ -18,42 +20,56 @@ let initialStateForDialog = {
         {
             dialogId: 4321,
             id: 3,
-            name: 'джан франко'
+            name: 'Джан Франко Фердыщенко'
+        },
+        {
+            dialogId: 4321,
+            id: 4,
+            name: 'Валера'
         }
     ],
     messagesTexts: [
         {
             id: 1,
             text: 'Че каво',
-            name: "Andrew"
+            name: "Andrew",
+            imageUrl:"https://image.shutterstock.com/image-vector/man-character-face-avatar-fallout-450w-1164551314.jpg"
         },
         {
             id: 2,
-            text: 'Нормас, а ты чё по чём?',
-            name: "Владлен"
+            text: 'йоу?',
+            name: "Вася",
+            imageUrl:"https://image.shutterstock.com/image-vector/young-man-head-beard-avatar-260nw-1071900710.jpg"
         },
         {
             id: 3,
             text: 'привет,задроты',
-            name: "Andrew"
+            name: "Джан Франко Фердыщенко",
+            imageUrl:"https://image.shutterstock.com/image-vector/man-character-face-avatar-fallout-450w-1164551314.jpg"
         },
         {
             id: 4,
-            text: 'сами вы задроты',
-            name: "Владлен"
+            text: 'бонжур но',
+            name: "Валера",
+            imageUrl:"https://image.shutterstock.com/image-vector/isolated-avatar-happy-man-on-260nw-632290802.jpg"
         }
     ],
-    currentUserId: 3
+    currentUserId: null
+
 
 
 }
 
 
 const dialogPageReducer = (state = initialStateForDialog, action) => {
+    let stateCopy = {...state};
+
     switch (action.type) {
         case setCurrentUser:
-            let stateCopy = {...state};
             stateCopy.currentUserId = action.id;
+            return stateCopy;
+        case selectDialog:
+            stateCopy.currentUserId = state.messagesTexts.filter(p => p.id == action.id)[0];
             return stateCopy;
         default:
             return state;
@@ -62,7 +78,14 @@ const dialogPageReducer = (state = initialStateForDialog, action) => {
 
 
 export default dialogPageReducer;
+
 export const setCurrentUserById =(el)=>{
+
     return { type:setCurrentUser, id:el.id};
 }
 
+export const selectDialogById = (id)=> {
+    return {
+        type: selectDialog, id: id
+    }
+}

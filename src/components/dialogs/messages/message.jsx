@@ -5,15 +5,17 @@ import style from './message.module.css';
 let Message = (props) => {
 
     return (
+        props.dialogs.currentUserId ?
         <div className={style.message}>
-            <img src="https://via.placeholder.com/50"/>
+            <span><b>{props.dialogs.currentUserId.name}</b></span><br/>
+            <img className={style.avatarImage} src={props.dialogs.currentUserId.imageUrl}/><br/>
 
 
-            <span>{props.name}</span>:
-            <span>{props.text}</span>
-            <span>id="{props.id}"</span>
 
-        </div>
+            <span>{props.dialogs.currentUserId.text}</span>
+
+
+        </div> : null
 
     )
 }

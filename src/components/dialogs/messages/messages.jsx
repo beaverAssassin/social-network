@@ -5,15 +5,17 @@ import Message from "./message";
 
 const Messages = (props) => {
 
-     let messagesComponents = props.messagesTexts.map((el) => {
+     let messages = props.dialogs.messagesTexts.map(el => {
 
-        return <Message text ={el.text} name ={el.name} id ={el.id}/>
+        return <Message dialogs ={props.dialogs} text ={el.text} name ={el.name} id ={el.id} url={el.imageUrl}/>
      });
 
      return(
-        <div>
-            {messagesComponents}
-        </div>
+          <div>
+              <Message dialogs ={props.dialogs} />
+             {/*{messages}*/}
+         </div>
+
     );
 
 }

@@ -3,6 +3,11 @@ import style from './MyPosts.module.css';
 import Post from "./post/Post";
 import {ADD_MESSAGE, LIKES_COUNT, WRITE_TEXTAREA_VALUE} from "../../../actiontypes";
 import {connect} from "react-redux";
+import {
+    addMessageByClick,
+     profileDisLikesCalculate, profilelikesCalculate,
+    profileOnChangeTextArea
+} from "../../../redux/profilePageReducer";
 
 
 let MyPosts = (props) => {
@@ -17,8 +22,8 @@ let MyPosts = (props) => {
 
 
     let messageTags = props.profilePage.myPosts.map((el) => {
-        debugger
-        return <Post key = {el.id} text={el.text} postId={el.id} likesCount={el.likesCount} dislikeCount={el.dislikeCount} likesCo={props.likesCo}/>
+
+        return <Post key = {el.id} text={el.text} postId={el.id} likesCount={el.likesCount} dislikeCount={el.dislikeCount} likesCalc={props.likesCalc} dislikeCalc={props.dislikeCalc}/>
     });
 
 
@@ -60,39 +65,27 @@ const mapStateToProps = (state)=>{
     }
 }
 
-const mapDispatchToProps = (dispatch)=>{
+const mapDispatchToProps = (dispatch)=> {
+    debugger
     return{
-        addMessage:(currentTextAreaValue)=>{
-            debugger
-
-            dispatch({
-                type: ADD_MESSAGE,
-                text: currentTextAreaValue,
-                likesCount:currentTextAreaValue.length,
-                dislikeCount: currentTextAreaValue.length-2
-
-
-            })
-
-
-
+        addMessage:(currentTextAreaValue) => {
+            let action = addMessageByClick(currentTextAreaValue);
+            dispatch(action);
         },
         onchangeTextarea:(event)=>{
-
-            dispatch({
-                type: WRITE_TEXTAREA_VALUE,
-                symbol: event.target.value
-            })
+            let action = profileOnChangeTextArea(event);
+            dispatch(action);
         },
+        likesCalc: (postId)=>{
+            let action = profilelikesCalculate(postId);
+            dispatch(action);
+        },
+        dislikeCalc:(postId)=>{
+            let action = profileDisLikesCalculate(postId);
+            dispatch(action)
 
-        // likesCo:(id)=>{
-        //     dispatch({
-        //         type: LIKES_COUNT,
-        //         postId:id.postId
-        //     })
-        //
-        //
-        // }
+        }
+
 
     }
 }

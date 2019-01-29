@@ -17,7 +17,7 @@ let Dialogs = (props) => {
 
             <div className={style.messages_container}>
                 <div className={style.wrap_messages}>
-                    <Messages messagesTexts={props.dialogsPage.messagesTexts}/>
+                    <Messages dialogs={props.dialogsPage}/>
                     {/*<Route exact path='/{props.currentDialogId}' render={() => <Messages currentMessagesById={props.currentMessagesById} filterMessages={props.filterMessages}/>}/>*/}
                 </div>
                 {/*<div className={style.wrap_messages}>*/}
@@ -38,6 +38,7 @@ let Dialogs = (props) => {
 }
 
 const mapStateToProps =(state)=>{
+
     return{
         dialogsPage : state.dialogsPage
     }
@@ -46,5 +47,6 @@ const mapStateToProps =(state)=>{
 
 
 const ConnectedDialogs = connect(mapStateToProps,null)(Dialogs);
+
 
 export default ConnectedDialogs;
