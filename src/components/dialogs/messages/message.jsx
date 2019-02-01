@@ -8,11 +8,8 @@ let Message = (props) => {
         props.dialogs.currentUserId ?
         <div className={style.message}>
             <span><b>{props.dialogs.currentUserId.name}</b></span><br/>
-            <img className={style.avatarImage} src={props.dialogs.currentUserId.imageUrl}/><br/>
-
-
-
-            <span>{props.dialogs.currentUserId.text}</span>
+            <img className={style.avatarImage} src={props.dialogs.currentUserId.imageUrl}/>
+            <span className={style.messageText}>{props.dialogs.currentUserId.text}</span>
 
 
         </div> : null

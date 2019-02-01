@@ -13,44 +13,42 @@ import { faSignInAlt, faHeart, faThumbsDown} from '@fortawesome/free-solid-svg-i
 library.add(faSignInAlt,faHeart, faThumbsDown);
 
 let App = (props) => {
-
+//
     let path = "/";
-
-    if(path==="/"){
-        return(
-
-            <Route  path='/' exact render={()=><Login/>}/>
-
-
-        )
-    }
-
-console.log()
+//
+//     if(path==="/"){
+//         return(
+//
+//             <Route  path='/' exact render={()=><Login/>}/>
+//
+//
+//         )
+//     }
+//
+// console.log()
     return (
 
             <div className="App">
 
 
-                <Route  path='/' exact render={()=><Login/>}/>
-
+              <Route  path='/' exact render={()=><Login/>}/>
                 {/*<Route  path='/profile'  render={()=><Header/>}/>*/}
                 {/*<Route  path='/profile'  render={()=><Sidebar/>}/>*/}
                 {/*<Route  path='/dialogs'   render={()=><Header/>}/>*/}
                 {/*<Route  path='/dialogs'   render={()=><Sidebar/>}/>*/}
                 {/*<Route  path='/photos'  render={()=><Header/>}/>*/}
                 {/*<Route  path='/photos'  render={()=><Sidebar/>}/>*/}
-                <Header/>
-                <Sidebar/>
-
+                {/*<Header/>*/}
+                {/*<Sidebar/>*/}
+                <Route  path ='/content' render={() => <Header/>}/>
+                <Route  path ='/content' render={() =>   <Sidebar/>}/>
                 <div className='content'>
-                    <Route  path='/profile' render={() => <Profile />}/>
+                    <Route  path ='/content/profile' render={() => <Profile />}/>
                     <Switch>
-                        <Route  path='/dialogs/:dialogId'  render={() => <Dialogs/>}/>
-                        <Route  path='/dialogs'  render={() => <Dialogs/>}/>
-
+                        <Route  path='/content/dialogs/:dialogId'  render={() => <Dialogs/>}/>
+                        <Route  path='/content/dialogs'  render={() => <Dialogs/>}/>
                     </Switch>
                     <Route  path='/photos' render={() => <Photos/>}/>
-
                 </div>
 
             </div>

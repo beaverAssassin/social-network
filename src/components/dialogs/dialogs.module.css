@@ -1,40 +1,36 @@
-.wrap_dialogs{
-display: grid;
+.wrap_dialogs {
+    display: grid;
     grid-template-columns: 1fr 1fr;
 }
 
-
-.dialogs{
-    border-right:2px solid black;
+.dialogs {
+    border-right: 2px solid black;
 }
 
-.dialogs h3{
+.dialogs h3 {
     text-align: center;
 }
 
-
-
-.user_img{
+.user_img {
     position: relative;
-    margin-left:40px;
+    margin-left: 40px;
     margin-bottom: 15px;
-    width:50px;
-    height:50px;
-    border-radius:50%;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
     background-color: #e5e9f2;
     margin-right: 20px;
 
 }
 
-.user_name{
+.user_name {
     position: absolute;
     margin-top: 50px;
     font-weight: bold;
     text-align: center;
-    width:100%;
+    width: 100%;
 
 }
-
 
 /*.user-img:after{*/
 /*position: absolute;*/
@@ -42,50 +38,45 @@ display: grid;
 /*content:"Dmitry";*/
 /*}*/
 
-/*.nm:after{*/NavLink
-/*content:"Me";*/
-/*margin-left: 15px;*/
+/*.nm:after{*/
+NavLink
+    /*content:"Me";*/
+    /*margin-left: 15px;*/
+    /*}*/
 
-/*}*/
 
-
-.dialogs ul{
-    line-height:3;
+.wrap_messages {
+    align-items: center;
+    display: flex;
+    margin-top: 25px;
 }
 
-
-
-
-
-.wrap_messages{
-    align-items:center;
-    display:flex;
-    margin-top:25px;
-}
-
-
-.dialog{
+.dialog {
     height: 20px;
-    border:2px solid red;
+    border: 2px solid red;
 }
 
-.dialog a{
-color:black}
-
-
-.dialog a:hover{
-    color:red
+.dialog a {
+    color: black
 }
 
-.selected{
+.dialog a:hover {
+    color: red
+}
+
+.selected {
     text-decoration: none;
-    color:black;
+    color: black;
     font-weight: bold;
-    border:2px solid orange;
 }
 
-
-.NavLink{
+.NavLink {
     text-decoration: none;
     color: #000000;
+
 }
+
+.lii{
+    margin-bottom:20px;
+}
+

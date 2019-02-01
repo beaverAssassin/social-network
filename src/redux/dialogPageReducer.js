@@ -31,19 +31,19 @@ let initialStateForDialog = {
     messagesTexts: [
         {
             id: 1,
-            text: 'Че каво',
-            name: "Andrew",
+            text: 'Привет,задроты!!',
+            name: "Бздашек Западловский",
             imageUrl:"https://image.shutterstock.com/image-vector/man-character-face-avatar-fallout-450w-1164551314.jpg"
         },
         {
             id: 2,
             text: 'йоу?',
-            name: "Вася",
+            name: "Ганс Трахенбюргер",
             imageUrl:"https://image.shutterstock.com/image-vector/young-man-head-beard-avatar-260nw-1071900710.jpg"
         },
         {
             id: 3,
-            text: 'привет,задроты',
+            text: 'Сами вы задроты',
             name: "Джан Франко Фердыщенко",
             imageUrl:"https://image.shutterstock.com/image-vector/man-character-face-avatar-fallout-450w-1164551314.jpg"
         },

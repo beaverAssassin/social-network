@@ -6,34 +6,44 @@ import {selectDialogById, setCurrentUserById} from "../../redux/dialogPageReduce
 
 const Dialog = (props) => {
 
-debugger
+
 
     let currentUserId = props.dialogs.currentUserId;
-    let idFromUrl = + props.match;
+    let idFromUrl = +props.match;
     let getDialogs = props.dialogs.messagesTexts.map((el) => {
         let isUserSelected = idFromUrl === el.id;
 
 
-
         let cssClasses = isUserSelected ? style.selected : '';
 
-         let unsyncState = (!currentUserId && !!idFromUrl) || (!!currentUserId && !!idFromUrl && idFromUrl != currentUserId.id) ;
+        let unsyncState = (!currentUserId && !!idFromUrl) || (!!currentUserId && !!idFromUrl && idFromUrl != currentUserId.id);
 
-         if (unsyncState) {
-             props.selectDialog(idFromUrl);
+        if (unsyncState) {
+            props.selectDialog(idFromUrl);
             return (
                 <div>async</div>
             )
         }
 
-        return <NavLink to={"/dialogs/" + el.id}   key={el.key} className={style.NavLink}>
-            <li className={cssClasses}>{el.name}</li>
+        return <NavLink to={"/content/dialogs/" + el.id} key={el.key} className={style.NavLink}>
+            <li className={`${style.lii} ${cssClasses}`}>{el.name}</li>
         </NavLink>
+
+
+
     })
+
     return (
-        <ul>{getDialogs}</ul>
+        <ul  >{getDialogs}</ul>
     )
 }
+
+
+
+
+
+
+
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -47,7 +57,7 @@ const mapDispatchToProps = (dispatch) => {
 
 
 const ConnectedDialog = connect(null, mapDispatchToProps)(Dialog);
-export default  ConnectedDialog;
+export default ConnectedDialog;
 
 // const Dialog = (props) => {
 //

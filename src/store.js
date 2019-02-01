@@ -3,6 +3,7 @@ import {combineReducers, createStore} from "redux";
 import photoPageReducer from "./redux/photoPageReducer";
 import dialogPageReducer from "./redux/dialogPageReducer";
 import profilePageReducer from "./redux/profilePageReducer";
+import loginPageReducer from "./redux/loginPageReducer";
 
 
 
@@ -13,7 +14,8 @@ import profilePageReducer from "./redux/profilePageReducer";
 const superReducer = combineReducers({
     dialogsPage: dialogPageReducer,
     photoPage: photoPageReducer,
-    profilePage: profilePageReducer
+    profilePage: profilePageReducer,
+    loginPage: loginPageReducer
 
 });
 

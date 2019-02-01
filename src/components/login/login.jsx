@@ -2,15 +2,12 @@ import React,{ Component }from 'react';
 import style from './login.module.css';
 import {Link} from "react-router-dom";
 import WOW from 'wowjs';
+import {connect} from "react-redux";
 
 
 
 
 class Login extends Component{
-
-
-
-
     componentDidMount() {
         new WOW.WOW().init();
     }
@@ -19,6 +16,9 @@ class Login extends Component{
 
     render(){
 
+
+        let login = this.props.loginPage.login;
+        let password = this.props.loginPage.password;
 
         return (
 
@@ -32,13 +32,13 @@ class Login extends Component{
                     </div>
                     <div className={style.input_area}>
                         < label htmlFor=""> Email</label>
-                        <input type="email" value="email"/>
+                        <input type="email"  defaultValue={login}/>
                         <label htmlFor="">Password</label>
-                        <input value="password" type="password"/>
+                        <input type="password" defaultValue={password}/>
                     </div>
                     <div className={style.checkbox}>
                         <label htmlFor=""><input type="checkbox"/>remember me</label>
-                        <Link to="/profile"><input className={style.inputLogin} type="submit" value="Login"/></Link>
+                        <Link to="/content/profile"><input className={style.inputLogin} type="submit" value="Login"/></Link>
                     </div>
 
                 </form>
@@ -47,18 +47,27 @@ class Login extends Component{
     }
 }
 
-// const mapStateToProps =(state)=>{
-//
-//     return{
-//         dialogsPage : state.dialogsPage
-//     }
-// }
-//
-//
-//
-// const ConnectedLogin = connect(mapStateToProps,null)(Login);
+const mapStateToProps =(state)=>{
+
+    return{
+        loginPage : state.loginPage
+    }
+}
+
+const MapDispatchToProps = (dispatch)=>{
+    return {
+        onChange: () => {
+            dispatch({
+                type: state.loginPage.login
+            })
+        }
+    }
+}
 
 
-export default Login;
+const ConnectedLogin = connect(mapStateToProps,MapDispatchToProps)(Login);
+
+
+export default ConnectedLogin;
 
 // export default Login;

@@ -22,6 +22,7 @@ class Header extends Component{
                     <Link to="/profile"><img
                         src="https://cs6.pikabu.ru/images/previews_comm/2015-08_2/1438951906382231414.png"
                         className={`${style.header_logo} ${"wow bounceInRight"}`} alt="logo" data-wow-duration="4s" /></Link>
+
                     <Link style={{ textDecoration: 'none' }} to="/">
                         <div className={`${style.enter} ${"wow hinge"}`} data-wow-duration="5s" data-wow-delay="2s"><FontAwesomeIcon icon="sign-in-alt" /> Войти</div>
                     </Link>
