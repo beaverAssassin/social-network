@@ -9,6 +9,7 @@ import Photos from "./components/photos/photos";
 import {Route, Switch} from "react-router-dom";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faSignInAlt, faHeart, faThumbsDown} from '@fortawesome/free-solid-svg-icons';
+import Snake from "./snake/snakeComponent";
 
 library.add(faSignInAlt,faHeart, faThumbsDown);
 
@@ -44,6 +45,7 @@ let App = (props) => {
                 <Route  path ='/content' render={() =>   <Sidebar/>}/>
                 <div className='content'>
                     <Route  path ='/content/profile' render={() => <Profile />}/>
+                    <Route  path ='/content/snake' render={() => <Snake />}/>
                     <Switch>
                         <Route  path='/content/dialogs/:dialogId'  render={() => <Dialogs/>}/>
                         <Route  path='/content/dialogs'  render={() => <Dialogs/>}/>

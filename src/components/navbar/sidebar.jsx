@@ -13,7 +13,7 @@ let SideBar = () => {
                     <ul>
                         <li><Link to="/content/profile">Профиль</Link></li>
                         <li><Link to="/content/dialogs">Сообщения</Link></li>
-                        <li><Link to="/content/dialogs">Музыка</Link></li>
+                        <li><Link to="/content/snake">snakeGame</Link></li>
                         <li><Link to="/content/photos">Фото</Link></li>
                         <br/>
                         <li><Link to="/profile">Настройки</Link></li>

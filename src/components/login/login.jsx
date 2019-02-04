@@ -1,20 +1,18 @@
-import React,{ Component }from 'react';
+import React, {Component} from 'react';
 import style from './login.module.css';
 import {Link} from "react-router-dom";
 import WOW from 'wowjs';
 import {connect} from "react-redux";
+import {loginOnChange, onSubmitClick, passwordOnChange} from "../../redux/loginPageReducer";
 
 
-
-
-class Login extends Component{
+class Login extends Component {
     componentDidMount() {
         new WOW.WOW().init();
     }
 
 
-
-    render(){
+    render() {
 
 
         let login = this.props.loginPage.login;
@@ -22,7 +20,7 @@ class Login extends Component{
 
         return (
 
-            <div className={`${style.login_page} ${"wow bounceInDown"}`} data-wow-duration="3s" >
+            <div className={`${style.login_page} ${"wow bounceInDown"}`} data-wow-duration="3s">
 
 
                 <form className={style.login_form} action="https://echo.htmlacademy.ru" method="post">
@@ -32,13 +30,18 @@ class Login extends Component{
                     </div>
                     <div className={style.input_area}>
                         < label htmlFor=""> Email</label>
-                        <input type="email"  defaultValue={login}/>
+                        <input type="email" value={login} onChange={(e) => {
+                            this.props.onLoginChange(e.currentTarget.value)
+                        }}/>
                         <label htmlFor="">Password</label>
-                        <input type="password" defaultValue={password}/>
+                        <input type="password" value={password} onChange={(e)=>{
+                            this.props.onPasswordChange(e.currentTarget.value)
+                        }}/>
                     </div>
                     <div className={style.checkbox}>
                         <label htmlFor=""><input type="checkbox"/>remember me</label>
-                        <Link to="/content/profile"><input className={style.inputLogin} type="submit" value="Login"/></Link>
+                        <Link to="/content/profile"><input className={style.inputLogin} type="submit"
+                                                           value="Login"/></Link>
                     </div>
 
                 </form>
@@ -47,25 +50,40 @@ class Login extends Component{
     }
 }
 
-const mapStateToProps =(state)=>{
+const mapStateToProps = (state) => {
 
-    return{
-        loginPage : state.loginPage
+    return {
+        loginPage: state.loginPage
     }
 }
 
-const MapDispatchToProps = (dispatch)=>{
+const MapDispatchToProps = (dispatch) => {
     return {
-        onChange: () => {
+        onLoginChange: (login) => {
             dispatch({
-                type: state.loginPage.login
+                type: loginOnChange,
+                login: login
+            })
+        },
+        onPasswordChange: (password) => {
+            dispatch({
+                type: passwordOnChange,
+                password: password
+            })
+        },
+        onSubmitButtonClick:(click)=>{
+            dispatch({
+                type:onSubmitClick
+
             })
         }
+
+
     }
 }
 
 
-const ConnectedLogin = connect(mapStateToProps,MapDispatchToProps)(Login);
+const ConnectedLogin = connect(mapStateToProps, MapDispatchToProps)(Login);
 
 
 export default ConnectedLogin;
