@@ -7,7 +7,7 @@ import {connect} from "react-redux";
 
 
 let Dialogs = (props) => {
-debugger
+
     return (
         <div className={style.wrap_dialogs}>
             <div className={style.dialogs}>

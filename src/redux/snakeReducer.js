@@ -1,30 +1,30 @@
 const SET_DIRECTION = 'SNAKE/SET_DIRECTION';
 const SET_SNAKE_POSITION = 'SNAKE/SET_SNAKE_POSITION';
 
+const Directions= {
+    right: 'right',
+    left: 'left',
+    down: 'down',
+    up: 'up'
+}
 
 
 const initialStateForSnakeComponent ={
+
     areaWidth:500,
     areaHeight:200,
     snakeSize:20,
     direction:Directions.right,
-    snakePosition:{x:0, y:0}
+    snakePosition:{x:130, y:150}
 
 }
 
 
-const Directions= {
-    right:'right',
-    left: 'left',
-    down:'down',
-    up:'up'
-}
 
-
-
-let reducer =(state,action)=> {
+ const snakePageReducer =(state=initialStateForSnakeComponent ,action)=> {
     let stateCopy
-    switch (action.type) {
+    switch (action.type)
+    {
         case SET_DIRECTION:
             stateCopy = {...state};
             stateCopy.direction = action.action;
@@ -41,3 +41,5 @@ let reducer =(state,action)=> {
     }
 
 }
+
+export default snakePageReducer;

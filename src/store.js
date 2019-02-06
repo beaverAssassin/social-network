@@ -1,9 +1,13 @@
 
-import {combineReducers, createStore} from "redux";
+import {combineReducers, createStore, applyMiddleware} from "redux";
 import photoPageReducer from "./redux/photoPageReducer";
 import dialogPageReducer from "./redux/dialogPageReducer";
 import profilePageReducer from "./redux/profilePageReducer";
 import loginPageReducer from "./redux/loginPageReducer";
+import snakePageReducer from "./redux/snakeReducer";
+import thunk from "redux-thunk";
+import authReducer from "./redux/authReducer";
+import thunkExampleReducer from "./redux/thunkReducer";
 
 
 
@@ -15,12 +19,15 @@ const superReducer = combineReducers({
     dialogsPage: dialogPageReducer,
     photoPage: photoPageReducer,
     profilePage: profilePageReducer,
-    loginPage: loginPageReducer
+    loginPage: loginPageReducer,
+    snakePage: snakePageReducer,
+    authPage:authReducer,
+    thunkPage:thunkExampleReducer
 
 });
 
 
-const store = createStore(superReducer);
+const store = createStore(superReducer,applyMiddleware(thunk));
 
 
 export default store;

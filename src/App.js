@@ -4,29 +4,18 @@ import Header from './components/header/header';
 import Sidebar from './components/navbar/sidebar';
 import Dialogs from './components/dialogs/dialogs';
 import Profile from './components/profile/profile.jsx';
-import Login from "./components/login/login.jsx";
+import Login from "./components/login/loginContainer";
 import Photos from "./components/photos/photos";
 import {Route, Switch} from "react-router-dom";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faSignInAlt, faHeart, faThumbsDown} from '@fortawesome/free-solid-svg-icons';
 import Snake from "./snake/snakeComponent";
+import Thunk from "./components/ThunkExample/thunk";
 
 library.add(faSignInAlt,faHeart, faThumbsDown);
 
 let App = (props) => {
-//
-    let path = "/";
-//
-//     if(path==="/"){
-//         return(
-//
-//             <Route  path='/' exact render={()=><Login/>}/>
-//
-//
-//         )
-//     }
-//
-// console.log()
+
     return (
 
             <div className="App">
@@ -50,7 +39,8 @@ let App = (props) => {
                         <Route  path='/content/dialogs/:dialogId'  render={() => <Dialogs/>}/>
                         <Route  path='/content/dialogs'  render={() => <Dialogs/>}/>
                     </Switch>
-                    <Route  path='/photos' render={() => <Photos/>}/>
+                    <Route  path='/content/photos' render={() => <Photos/>}/>
+                    <Route  path='/content/thunkExample' render={() => <Thunk/>}/>
                 </div>
 
             </div>
