@@ -2,27 +2,23 @@ import React, {Component} from 'react';
 import style from './login.module.css';
 import {Link, Redirect} from "react-router-dom";
 import WOW from 'wowjs';
-import {connect} from "react-redux";
 import {loginOnChange, onSubmitClick, passwordOnChange} from "../../redux/loginPageReducer";
 
 
-
-
 class Login extends Component {
-
-
 
     componentDidMount() {
         new WOW.WOW().init();
     }
 
 
-
     render() {
-debugger
+        debugger
+
         if (this.props.isLoggedIn) {
-            return <Redirect to='/content/dialogs/2'/>
+            return <Redirect to='/content/profile'/>
         }
+
 
         // let login = this.props.loginPage.currentLogin;
         // let password = this.props.loginPage.currentPassword;
@@ -32,7 +28,7 @@ debugger
             <div className={`${style.login_page} ${"wow bounceInDown"}`} data-wow-duration="3s">
 
 
-                <form className={style.login_form} >
+                <form className={style.login_form}>
                     <div className={style.login_reg}>
                         <a href="#">Login</a>
                         <a href="#">Registration</a>
@@ -56,8 +52,11 @@ debugger
                         <label htmlFor=""><input
                             type="checkbox"
                             value={this.props.rememberMe}
-                            onchange={(c) => {
-                                this.props.rememberUser(c)
+                            onChange={(c) => {
+                                this.props.rememberUser(c);
+
+                                alert(c.currentTarget.checked)
+
                             }
                             }
                         />remember me</label>
@@ -66,7 +65,7 @@ debugger
                         <button
                             onClick={this.props.authUser}
                             className={style.inputLogin}
-                            type="submit">
+                            type="button">
                             login
                         </button>
                     </div>

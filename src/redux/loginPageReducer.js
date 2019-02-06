@@ -10,7 +10,7 @@ export const currentPasswordCreator =(value)=>({type:PASSWORD_ONCHANGE, symbol:v
 export const currentLoginCreator =(value)=>({type:LOGIN_ONCHANGE, symbol:value});
 export const currentResetLoginCreator =()=>({type:RESET_LOGIN_VALUE});
 export const currentResetPasswordCreator =()=>({type:RESET_PASSWORD_VALUE});
-export const currentResetCheckboxCreator =()=>({type:REMEMBER_USER});
+export const CheckboxCreator =()=>({type:REMEMBER_USER});
 
 
 // export const currentLoginCreator =()=>({loginOnChange, symbol:value});
@@ -19,7 +19,7 @@ export const currentResetCheckboxCreator =()=>({type:REMEMBER_USER});
 let initialStateForLoginPage = {
     login: '',
     password: '',
-    rememberMe: true,
+    currentRememberMe: true,
     currentLogin: '',
     currentPassword: ''
 

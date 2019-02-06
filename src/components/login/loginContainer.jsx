@@ -4,10 +4,10 @@ import Login from "./login";
 import {
     currentLoginCreator,
     currentPasswordCreator,
-    currentResetCheckboxCreator, currentResetLoginCreator, currentResetPasswordCreator,
+    CheckboxCreator, currentResetLoginCreator, currentResetPasswordCreator,
 
 } from "../../redux/loginPageReducer";
-import {loginThunk} from "../../redux/authReducer";
+import {loginThunk, logOutThunk} from "../../redux/authReducer";
 
 
 const mapStateToProps = (state) => {
@@ -15,7 +15,8 @@ const mapStateToProps = (state) => {
     return {
         currentLogin: state.loginPage.currentLogin,
         currentPassword: state.loginPage.currentPassword,
-        isLoggedIn: state.authPage.isLoggedIn
+        isLoggedIn: state.authPage.isLoggedIn,
+        rememberMe: state.loginPage.rememberMe
         // Remember:
 
     }
@@ -44,13 +45,17 @@ const mapDispatchToProps = (dispatch) => {
             },
         rememberUser:
             (e) => {
-                let action = currentResetCheckboxCreator(e.currentTarget.value);
-                dispatch(action)
+                dispatch(CheckboxCreator(e.currentTarget.value));
             },
         authUser:
             ()=>{
             dispatch(loginThunk())
-            }
+            },
+        // logOutUser:
+        //     ()=>{
+        //     dispatch(logOutThunk())
+        //     }
+
     }
 }
 
