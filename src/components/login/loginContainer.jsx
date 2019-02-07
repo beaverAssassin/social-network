@@ -7,7 +7,7 @@ import {
     CheckboxCreator, currentResetLoginCreator, currentResetPasswordCreator,
 
 } from "../../redux/loginPageReducer";
-import {loginThunk, logOutThunk} from "../../redux/authReducer";
+import {loginThunk} from "../../redux/authReducer";
 
 
 const mapStateToProps = (state) => {
@@ -49,6 +49,7 @@ const mapDispatchToProps = (dispatch) => {
             },
         authUser:
             ()=>{
+                debugger
             dispatch(loginThunk())
             },
         // logOutUser:

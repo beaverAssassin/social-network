@@ -1,18 +1,16 @@
 export const AUTHENTIFICATION = 'AUTH_REDUCER/AUTHENTIFICATION';
-export const LOGIN_OUT = 'AUTH_REDUCER/LOGIN_OUT';
-const authActionCreator = () => ({type: AUTHENTIFICATION})
-const logoutActionCreator = () => ({type: LOGIN_OUT})
 
+const changeLoginStatus = (value)=>({type:AUTHENTIFICATION,value:value})
 
-// export  const loginThunk=()=>(dispatch)=>{
-// dispatch(authActionCreator())
-// }
 
 
 export const loginThunk = () => (dispatch) => {
-
+debugger
     setTimeout(() => {
-        dispatch(authActionCreator())
+
+        debugger
+        dispatch(changeLoginStatus(true))
+
     }, 3000)
 
 }
@@ -22,7 +20,7 @@ export const loginThunk = () => (dispatch) => {
 export const logOutThunk = () => (dispatch) => {
 
     setTimeout(() => {
-        dispatch(logoutActionCreator())
+        dispatch(changeLoginStatus(false))
     }, 3000)
 
 }
@@ -33,7 +31,7 @@ let initialStateForAuthPAge = {
     name: 'Vasya',
     avatar: 'https://s.gamer-info.com/gl/f/a/l/l/fallout-2_w240.jpg',
     isLoggedIn: false,
-    isLoggedOut:false
+
 
 
 }
@@ -43,14 +41,13 @@ const AuthReducer = (state = initialStateForAuthPAge, action) => {
     let stateCopy;
     switch (action.type) {
         case AUTHENTIFICATION:
+            debugger
             stateCopy = {...state}
-            stateCopy.isLoggedIn = true;
-            stateCopy.isLoggedOut = false;
+            stateCopy.isLoggedIn = action.value;
             return stateCopy;
-        case LOGIN_OUT:
-            stateCopy.isLoggedOut = true;
-            stateCopy.isLoggedIn = false;
-            return stateCopy;
+        // case LOGIN_OUT:
+        //     stateCopy.isLoggedIn = false;
+        //     return stateCopy;
         default:
             return state;
     }

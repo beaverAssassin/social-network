@@ -25,7 +25,7 @@ const intialStateForThunkExampleComponent = {
 
 const thunkExampleReducer = (state = intialStateForThunkExampleComponent, action) => {
 
-    debugger;
+
     switch (action.type) {
         case SET_STATUS: {
 

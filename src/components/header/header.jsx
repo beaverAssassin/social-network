@@ -19,7 +19,7 @@ class Header extends Component{
     render() {
 
         debugger;
-        if (this.props.isLoggedOut) {
+        if (!this.props.isLoggedIn) {
 
             return <Redirect to='/'/>
         }

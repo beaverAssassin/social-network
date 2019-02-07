@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import style from './login.module.css';
 import {Link, Redirect} from "react-router-dom";
 import WOW from 'wowjs';
-import {loginOnChange, onSubmitClick, passwordOnChange} from "../../redux/loginPageReducer";
 
 
 class Login extends Component {
