@@ -1,7 +1,7 @@
 const SET_DIRECTION = 'SNAKE/SET_DIRECTION';
 const SET_SNAKE_POSITION = 'SNAKE/SET_SNAKE_POSITION';
 
-const Directions= {
+export const Directions = {
     right: 'right',
     left: 'left',
     down: 'down',
@@ -9,31 +9,29 @@ const Directions= {
 }
 
 
-const initialStateForSnakeComponent ={
+const initialStateForSnakeComponent = {
 
-    areaWidth:500,
-    areaHeight:200,
-    snakeSize:20,
-    direction:Directions.right,
-    snakePosition:{x:130, y:150}
+    areaWidth: 500,
+    areaHeight: 500,
+    snakeSize: 20,
+    direction: Directions.right,
+    snakePosition: {x: 20, y: 150}
 
 }
 
 
-
- const snakePageReducer =(state=initialStateForSnakeComponent ,action)=> {
+const snakePageReducer = (state = initialStateForSnakeComponent, action) => {
     let stateCopy
-    switch (action.type)
-    {
+    switch (action.type) {
         case SET_DIRECTION:
             stateCopy = {...state};
-            stateCopy.direction = action.action;
+            stateCopy.direction = action.direction;
             return stateCopy;
         case SET_SNAKE_POSITION:
             stateCopy = {...state};
-            stateCopy.snakePosition ={
-                x:action.x,
-                y:action.y
+            stateCopy.snakePosition = {
+                x: action.x,
+                y: action.y
             };
             return stateCopy;
         default:
@@ -42,4 +40,60 @@ const initialStateForSnakeComponent ={
 
 }
 
+let interval;
+export const startSnake = () => {
+
+    return (dispatch, getState) => {
+clearInterval(interval);
+        interval = setInterval(
+            () => {
+                let state = getState().snakePage;
+                let x = state.snakePosition.x;
+                let y = state.snakePosition.y;
+debugger
+                switch (state.direction) {
+                    case Directions.right:
+                        if(x<state.areaHeight -state.snakeSize)
+                        x++;
+                        break;
+                    case Directions.left:
+                        if(x>0)
+                        x--;
+                        break;
+                    case Directions.up:
+                        debugger
+                        if(y>0)
+                          y--;
+                        break;
+                    case Directions.down:
+                        if(y<state.areaHeight -state.snakeSize)
+                            y++;
+                        break;
+                }
+
+                dispatch(setSnakePosition(x, y));
+            }, 20)
+
+    }
+
+}
+
+const setSnakePosition = (x, y) => ({type: SET_SNAKE_POSITION, x, y})
+export const setDirection = (direction) => ({type: SET_DIRECTION, direction})
+
+
 export default snakePageReducer;
+
+
+
+
+
+
+
+
+
+
+
+
+
+

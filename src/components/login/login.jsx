@@ -14,9 +14,9 @@ class Login extends Component {
     render() {
         debugger
 
-        if (this.props.isLoggedIn) {
-            return <Redirect to='/content/profile'/>
-        }
+        // if (this.props.isLoggedIn) {
+        //     return <Redirect to='/content/profile'/>
+        // }
 
 
         // let login = this.props.loginPage.currentLogin;
@@ -59,8 +59,8 @@ class Login extends Component {
                             }
                             }
                         />remember me</label>
-                        {/*  <Link to="/content/profile"><input className={style.inputLogin}  type="submit"
-                                                           value="Login"/></Link>*/}
+                          <Link to="/content/profile"><input className={style.inputLogin}  type="submit"
+                                                           value="Login"/></Link>
                         <button
                             onClick={this.props.authUser}
                             className={style.inputLogin}

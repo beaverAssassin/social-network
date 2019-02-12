@@ -2,12 +2,17 @@ import React from 'react';
 import {connect} from "react-redux";
 import {SetMessage, SetStatus, start, statuses} from "../../redux/thunkReducer";
 
+import putToTemplate1 from "../../HOCs/putComponent";
+import isIEHoc from "../../HOCs/isIEHoc";
+import {compose} from "redux";
+
 
 const Thunk = (props) => {
+    debugger
 
     return (
         <>
-
+            {props.isChrome && 'CHROM'}
             <button onClick={props.start}>Start</button>
             <br/>
             {props.status}<br/>
@@ -33,4 +38,11 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Thunk)
+const abc = connect(mapStateToProps, mapDispatchToProps)(Thunk);
+
+let composedHoc = compose(
+    isIEHoc,putToTemplate1);
+
+
+
+export default composedHoc(abc);

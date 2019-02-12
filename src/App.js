@@ -11,7 +11,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { faSignInAlt, faHeart, faThumbsDown} from '@fortawesome/free-solid-svg-icons';
 import Snake from "./snake/snakeComponent";
 import Thunk from "./components/ThunkExample/thunk";
-
+import WrappedComponent from './HOCs/putComponent'
 library.add(faSignInAlt,faHeart, faThumbsDown);
 
 let App = (props) => {
