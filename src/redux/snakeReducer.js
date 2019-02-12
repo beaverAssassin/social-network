@@ -50,7 +50,7 @@ clearInterval(interval);
                 let state = getState().snakePage;
                 let x = state.snakePosition.x;
                 let y = state.snakePosition.y;
-debugger
+
                 switch (state.direction) {
                     case Directions.right:
                         if(x<state.areaHeight -state.snakeSize)
@@ -61,7 +61,7 @@ debugger
                         x--;
                         break;
                     case Directions.up:
-                        debugger
+
                         if(y>0)
                           y--;
                         break;

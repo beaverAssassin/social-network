@@ -12,6 +12,7 @@ import { faSignInAlt, faHeart, faThumbsDown} from '@fortawesome/free-solid-svg-i
 import Snake from "./snake/snakeComponent";
 import Thunk from "./components/ThunkExample/thunk";
 import WrappedComponent from './HOCs/putComponent'
+import Users from "./components/users/users";
 library.add(faSignInAlt,faHeart, faThumbsDown);
 
 let App = (props) => {
@@ -41,6 +42,7 @@ let App = (props) => {
                     </Switch>
                     <Route  path='/content/photos' render={() => <Photos/>}/>
                     <Route  path='/content/thunkExample' render={() => <Thunk/>}/>
+                    <Route  path='/content/Users' render={() => <Users/>}/>
                 </div>
 
             </div>

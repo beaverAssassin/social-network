@@ -1,0 +1,9 @@
+.user {
+    display: grid;
+    grid-template-columns: 3fr 9fr;
+}
+
+.user img {
+    width: 150px;
+    height: 150px;
+}

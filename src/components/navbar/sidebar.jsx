@@ -19,6 +19,7 @@ let SideBar = () => {
                         <hr/>
                         <li><Link to="/content/snake">snakeGame</Link></li>
                         <li><Link to="/content/thunkExample">ThunkExample</Link></li>
+                        <li><Link to="/content/Users">users</Link></li>
 
 
 

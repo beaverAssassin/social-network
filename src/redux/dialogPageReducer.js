@@ -4,30 +4,35 @@ const selectDialog = 'DIALOG/SELECT_USER';
 
 
 
+
+
+
+
 let initialStateForDialog = {
 
-    users: [
-        {
-            dialogId: 1234,
-            id: 1,
-            name: 'Владлен '
-        },
-        {
-            dialogId: 4321,
-            id: 2,
-            name: 'Вася'
-        },
-        {
-            dialogId: 4321,
-            id: 3,
-            name: 'Джан Франко Фердыщенко'
-        },
-        {
-            dialogId: 4321,
-            id: 4,
-            name: 'Валера'
-        }
-    ],
+
+    // users: [
+    //     {
+    //         dialogId: 1234,
+    //         id: 1,
+    //         name: 'Владлен '
+    //     },
+    //     {
+    //         dialogId: 4321,
+    //         id: 2,
+    //         name: 'Вася'
+    //     },
+    //     {
+    //         dialogId: 4321,
+    //         id: 3,
+    //         name: 'Джан Франко Фердыщенко'
+    //     },
+    //     {
+    //         dialogId: 4321,
+    //         id: 4,
+    //         name: 'Валера'
+    //     }
+    // ],
     messagesTexts: [
         {
             id: 1,

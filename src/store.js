@@ -8,6 +8,7 @@ import snakePageReducer from "./redux/snakeReducer";
 import thunk from "redux-thunk";
 import authReducer from "./redux/authReducer";
 import thunkExampleReducer from "./redux/thunkReducer";
+import UsersReducer from "./redux/usersReducer";
 
 
 
@@ -22,7 +23,8 @@ const superReducer = combineReducers({
     loginPage: loginPageReducer,
     snakePage: snakePageReducer,
     authPage:authReducer,
-    thunkPage:thunkExampleReducer
+    thunkPage:thunkExampleReducer,
+    usersPage:UsersReducer
 
 });
 
