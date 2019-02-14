@@ -4,27 +4,39 @@ import Login from "./login";
 import {
     currentLoginCreator,
     currentPasswordCreator,
-    CheckboxCreator, currentResetLoginCreator, currentResetPasswordCreator,
-
+    CheckboxCreator, currentResetLoginCreator, currentResetPasswordCreator, loginAjax
 } from "../../redux/loginPageReducer";
-import {loginThunk} from "../../redux/authReducer";
+
+/*import {loginThunk} from "../../redux/authReducer";*/
 
 
 const mapStateToProps = (state) => {
 
     return {
+         isAuth:state.authPage.isAuth,
+        status:state.loginPage.status,
+        message:state.loginPage.message,
+        captchaUrl:state.loginPage.captchaUrl,
+
         currentLogin: state.loginPage.currentLogin,
         currentPassword: state.loginPage.currentPassword,
         isLoggedIn: state.authPage.isLoggedIn,
-        rememberMe: state.loginPage.rememberMe
+        rememberMe: state.loginPage.currentRememberMe
         // Remember:
 
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch,getState) => {
+
 
     return {
+
+        login:
+            (login,password,rememberMe)=> {
+            dispatch(loginAjax(login,password,rememberMe))
+
+        },
         onButtonClickLogin:
             () => {
                 dispatch(currentResetLoginCreator())
@@ -47,11 +59,11 @@ const mapDispatchToProps = (dispatch) => {
             (e) => {
                 dispatch(CheckboxCreator(e.currentTarget.value));
             },
-        authUser:
+      /*  authUser:
             ()=>{
                 debugger
             dispatch(loginThunk())
-            },
+            },*/
         // logOutUser:
         //     ()=>{
         //     dispatch(logOutThunk())

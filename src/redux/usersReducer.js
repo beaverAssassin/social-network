@@ -12,13 +12,17 @@ export const statuses={
 
 
 let stateForUsers = {
-    status: statuses.NOT_INITIALIZED,
-    users: [{photo:}]
 
+    status: statuses.NOT_INITIALIZED,
+    items: [{photo:'https://gc.onliner.by/images/logo/onliner_logo.v3.png?token=1549977790',
+    name:'adddd',
+    id:12
+    }]
 }
 
 
 export const setUsers =(users)=>({type:SET_USERS, users});
+export const setStatus =(status)=>({type:SET_STATUS, status});
 
 const UsersReducer=(state=stateForUsers,action)=>{
     switch (action.type){
