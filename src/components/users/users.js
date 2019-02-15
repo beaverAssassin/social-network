@@ -2,58 +2,48 @@ import React from 'react';
 import styles from './users.module.css';
 import {NavLink} from "react-router-dom";
 import {connect} from "react-redux";
-import {setStatus, statuses} from "../../redux/usersReducer";
-import axios from 'axios';
+import {getUsers, statuses} from "../../redux/usersReducer";
+import axios from "../../dal/axios-instance";
 
 
+const Users = ({users = [],status,getUsers}) => {
 
 
-const Users = ({users=[], status,setStatus}) => {
-
-
-    if (status == statuses.NOT_INITIALIZED){
-
-        // axios.get('users').then(r => alert("users receaved"));
-        axios.get('users').then(r => {
-
-            setStatus(statuses.SUCCES);
-        });
-
+    if (status == statuses.NOT_INITIALIZED) {
+        getUsers();
         return <span>...</span>
     }
 
-    return <div>
-
+    return (
+        <div>
             {!users.length && <span>users not found</span>}
-
             {
                 users.map(u => <div className={styles.user}>
                     <div>
-                        <img src={u.photo}/>
+
+                        {/*<img src={u.photo}/>*/}
+                        {u.name}     status:{u.status}
+
                     </div>
-                    <br/>
-                    <div>
-                        <NavLink to={`users/${u.id}`}>{u.name}</NavLink>
-                    </div>
+
+                    {/*<NavLink to={`users/${u.id}`}>ssss</NavLink>*/}
                 </div>)
             }
         </div>
-
-
-
+    )
 }
 
-
-
-
-const mapStateToProps = (state)=>({
+const mapStateToProps = (state) => ({
     users: state.usersPage.items,
-    status:state.usersPage.status
+    status: state.usersPage.status
 })
 
-const mapDispatchToProps =(dispatch)=>({
-    setStatus:(status)=>{dispatch(setStatus(status))
+const mapDispatchToProps = (dispatch) => ({
+
+    getUsers:() => {
+        dispatch(getUsers())
     }
 
+
 })
-export default connect(mapStateToProps,mapDispatchToProps)(Users);
+export default connect(mapStateToProps, mapDispatchToProps)(Users);

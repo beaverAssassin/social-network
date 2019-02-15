@@ -25,7 +25,7 @@ export const loginThunk = () => (dispatch) => {
 export const logOutThunk = () => (dispatch) => {
 
     axios.post('auth/logout', {}).then((res) => {
-debugger;
+
         if (res.data.resultCode === 0) {
             dispatch(setIsAuth(false));
             dispatch(setUserInfo(null, null));
@@ -54,7 +54,7 @@ export const giveInfoAboutMe = () => (dispatch) => {
 
         if (res.data.resultCode === 0) {
             dispatch(setIsAuth(true));
-            dispatch(setUserInfo(res.data.data.userId, res.data.data.login));
+            dispatch(setUserInfo(res.data.data.id, res.data.data.login));
         }
     });
 }
@@ -63,7 +63,7 @@ export const giveInfoAboutMe = () => (dispatch) => {
 let initialStateForAuthPAge = {
     isAuth: false,
     userInfo: {
-        iserId: null,
+        userId: null,
         userName: null,
         avatarUrl: ''
     },
@@ -88,11 +88,12 @@ const AuthReducer = (state = initialStateForAuthPAge, action) => {
             }
         }
         case SET_USER_INFO:
+
             return {
                 ...state,
                 userInfo: {
                     ...state.userInfo,
-                    userId: action.login,
+                    userId: action.userId,
                     userName: action.userName
                 }
             }

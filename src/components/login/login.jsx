@@ -12,25 +12,20 @@ class Login extends Component {
     }
 
 
+    componentWillMount(){
+        this.props.giveInfo();
+    }
+
+
     render() {
         const login = () => {
             this.props.login && this.props.login(this.props.currentLogin, this.props.currentPassword, this.props.rememberMe)
         }
 
-
-
         if(this.props.isAuth){
             return <Redirect to='/content/profile'/>
         }
 
-
-        // if (this.props.isLoggedIn) {
-        //     return <Redirect to='/content/profile'/>
-        // }
-
-
-        // let login = this.props.loginPage.currentLogin;
-        // let password = this.props.loginPage.currentPassword;
         return (
 
             <div className={`${style.login_page} ${"wow bounceInDown"}`} data-wow-duration="3s">
@@ -60,13 +55,9 @@ class Login extends Component {
                             }}/>
                     </div>
                     <div className={style.checkbox}>
-                        <label htmlFor=""><input
-                            type="checkbox"
-                            checked={this.props.rememberMe}
-                            onChange={(c) => {
-                                this.props.rememberUser(c);
+                        <label htmlFor=""><input type="checkbox" checked={this.props.rememberMe} onChange={(c) => {
 
-                                alert(c.currentTarget.checked)
+                                this.props.rememberUser(c);
 
                             }
                             }

@@ -17,7 +17,7 @@ export const currentPasswordCreator =(value)=>({type:PASSWORD_ONCHANGE, symbol:v
 export const currentLoginCreator =(value)=>({type:LOGIN_ONCHANGE, symbol:value});
 export const currentResetLoginCreator =()=>({type:RESET_LOGIN_VALUE});
 export const currentResetPasswordCreator =()=>({type:RESET_PASSWORD_VALUE});
-export const CheckboxCreator =()=>({type:REMEMBER_USER});
+export const rememberUser =(value)=>({type:REMEMBER_USER,value});
 export const setStatus =(status)=>({type:SET_STATUS,status });
 export const setMessage =(message)=>({type:SET_MESSAGE,message });
 
@@ -31,7 +31,7 @@ export const loginAjax = (login, password, rememberMe, captchaUrl)=>(dispatch)=>
         password:password,
         rememberMe:rememberMe
     }).then((res)=>{
-
+debugger
         if(res.data.resultCode===0) {
             dispatch(setStatus(statuses.SUCCES));
             dispatch(setIsAuth(true))
@@ -65,9 +65,9 @@ let initialStateForLoginPage = {
     //without ajax
     login: '',
     password: '',
-    currentRememberMe: false,
-    currentLogin: 'yura_eremok@mail.ru',
-    currentPassword: 'sukinsun2211'
+    currentRememberMe:false,
+    currentLogin: '',
+    currentPassword: ''
 
 }
 
@@ -87,11 +87,9 @@ const loginPageReducer = (state = initialStateForLoginPage, action) => {
                 message:action.message
             }
         }
-
-
-
         case REMEMBER_USER:
-            stateCopy.rememberMe = action.rememberMe;
+debugger
+            stateCopy.currentRememberMe = action.value;
             return stateCopy;
         case RESET_LOGIN_VALUE:
             stateCopy.login = stateCopy.currentLogin;
@@ -102,7 +100,6 @@ const loginPageReducer = (state = initialStateForLoginPage, action) => {
             stateCopy.currentPassword = '';
             return stateCopy;
         case LOGIN_ONCHANGE:
-
             stateCopy.currentLogin = action.symbol
             return stateCopy;
         case PASSWORD_ONCHANGE:

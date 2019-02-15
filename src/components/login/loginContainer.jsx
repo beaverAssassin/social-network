@@ -3,9 +3,10 @@ import {connect} from "react-redux";
 import Login from "./login";
 import {
     currentLoginCreator,
-    currentPasswordCreator,
-    CheckboxCreator, currentResetLoginCreator, currentResetPasswordCreator, loginAjax
+    currentPasswordCreator
+    , currentResetLoginCreator, currentResetPasswordCreator, loginAjax, rememberUser
 } from "../../redux/loginPageReducer";
+import {giveInfoAboutMe} from "../../redux/authReducer";
 
 /*import {loginThunk} from "../../redux/authReducer";*/
 
@@ -57,8 +58,9 @@ const mapDispatchToProps = (dispatch,getState) => {
             },
         rememberUser:
             (e) => {
-                dispatch(CheckboxCreator(e.currentTarget.value));
+                dispatch(rememberUser(e.currentTarget.checked));
             },
+        giveInfo:()=>dispatch(giveInfoAboutMe())
       /*  authUser:
             ()=>{
             dispatch(loginThunk())

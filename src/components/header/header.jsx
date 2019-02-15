@@ -16,19 +16,14 @@ class Header extends Component{
     componentDidMount() {
         new WOW.WOW().init();
     }
-
     componentWillMount(){
-
-
  this.props.giveInfo();
-
     }
 
     render() {
 
 
          if (!this.props.isAuth ) {
-
              return <Redirect to='/'/>
         }
 
@@ -43,7 +38,9 @@ class Header extends Component{
                         className={`${style.header_logo} ${"wow bounceInRight"}`} alt="logo" data-wow-duration="4s" /></Link>
 
                     {/*<Link style={{ textDecoration: 'none' }} to="/">*/}
-                    {this.props.isAuth && <p>{this.props.userInfo.userName}</p> }
+
+                    <div className ={style.logoutField}>{this.props.isAuth && <><p>Welcome,<span className={style.userData}>{this.props.userInfo.userName}</span></p>
+                        <p>your ID:<span className={style.userData}>{this.props.userInfo.userId}</span> </p></>}
                         <div className={`${style.enter} ${"wow hinge"}`} data-wow-duration="5s" data-wow-delay="2s">
                             <FontAwesomeIcon icon="sign-in-alt"/>
                             <button
@@ -51,8 +48,9 @@ class Header extends Component{
                                 type="button">
                                 logOut
                             </button>
-                        </div>
 
+                        </div>
+                    </div>
                     {/*</Link>*/}
                 </div>
 
@@ -62,7 +60,7 @@ class Header extends Component{
     }
 }
 
-const mapStateToProps = (state)=>{
+let mapStateToProps = (state)=>{
     return {
         // isLoggedOut: state.authPage.isLoggedOut,
         // isLoggedIn: state.authPage.isLoggedIn

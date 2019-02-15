@@ -31,3 +31,17 @@ header{
 .enter:hover{
     color: #ffc81e;
 }
+
+
+.logoutField{
+    color:#fff;
+margin-right: 10px;
+}
+
+.logoutField p{
+    margin: 5px;
+}
+
+.userData{
+    color:yellow;
+}

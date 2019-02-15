@@ -9,6 +9,7 @@ import thunk from "redux-thunk";
 import authReducer from "./redux/authReducer";
 import thunkExampleReducer from "./redux/thunkReducer";
 import UsersReducer from "./redux/usersReducer";
+import {composeWithDevTools} from "redux-devtools-extension";
 
 
 
@@ -28,8 +29,7 @@ const superReducer = combineReducers({
 
 });
 
-
-const store = createStore(superReducer,applyMiddleware(thunk));
+const store = createStore(superReducer,composeWithDevTools(applyMiddleware(thunk)),);
 
 
 export default store;

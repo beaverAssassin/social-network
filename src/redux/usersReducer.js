@@ -1,45 +1,59 @@
-const SET_USERS ='USERS/SET_USERS';
-const SET_STATUS ='USERS/SET_STATUS';
+import axios from "../dal/axios-instance";
+
+const SET_USERS = 'USERS/SET_USERS';
+const SET_STATUS = 'USERS/SET_STATUS';
 
 
-export const statuses={
-    NOT_INITIALIZED:'NOT_INITIALIZED',
-    ERROR:'ERROR',
-    INPROGRESS:'INPROGRESS',
-    CAPTCHAREQUIRED:'CAPTCHAREQUIRED',
-    SUCCES:'SUCCES'
+export const statuses = {
+    NOT_INITIALIZED: 'NOT_INITIALIZED',
+    ERROR: 'ERROR',
+    INPROGRESS: 'INPROGRESS',
+    CAPTCHAREQUIRED: 'CAPTCHAREQUIRED',
+    SUCCES: 'SUCCES'
 }
 
 
 let stateForUsers = {
 
     status: statuses.NOT_INITIALIZED,
-    items: [{photo:'https://gc.onliner.by/images/logo/onliner_logo.v3.png?token=1549977790',
-    name:'adddd',
-    id:12
-    }]
+    items: []
+
 }
 
 
-export const setUsers =(users)=>({type:SET_USERS, users});
-export const setStatus =(status)=>({type:SET_STATUS, status});
+export const setUsers = (users) => ({type: SET_USERS, users});
+export const setStatus = (status) => ({type: SET_STATUS, status});
 
-const UsersReducer=(state=stateForUsers,action)=>{
-    switch (action.type){
-        case SET_STATUS:{
-            return{
+
+export const getUsers = (dispatch) => (dispatch) => {
+    dispatch(setStatus(statuses.INPROGRESS));
+    axios.get('users?count=18').then(r => {
+        setStatus(statuses.SUCCESS)
+        dispatch(setUsers(r.data.items));
+    });
+
+
+}
+
+
+const UsersReducer = (state = stateForUsers, action) => {
+    switch (action.type) {
+        case SET_STATUS: {
+
+            return {
                 ...state,
-                status:action.status
+                status: action.status
             }
 
         }
-        case SET_USERS:{
-            return{
+        case SET_USERS: {
+            debugger
+            return {
                 ...state,
-                users:action.users
+                items: action.users
             }
         }
-        default:{
+        default: {
             return state
         }
     }
