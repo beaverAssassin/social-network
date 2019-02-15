@@ -66,7 +66,6 @@ const mapStateToProps = (state)=>{
 }
 
 const mapDispatchToProps = (dispatch)=> {
-    debugger
     return{
         addMessage:(currentTextAreaValue) => {
             let action = addMessageByClick(currentTextAreaValue);

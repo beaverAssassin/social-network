@@ -49,12 +49,10 @@ const profilePageReducer = (state = initialStateForProfilePage, action) => {
             stateCopy.currentTextAreaValue = "";
             return stateCopy;
         case writeTextareaValue:
-            debugger
             stateCopy.currentTextAreaValue = action.symbol;
             return stateCopy;
         case likesCalculate:
             const currentPostsPlus = stateCopy.myPosts.filter((el) => {
-                debugger
                 return el.id === action.postId;
             })
 console.log(currentPostsPlus[0]);
@@ -92,7 +90,6 @@ export const addMessageByClick =(currentTextAreaValue)=>{
 }
 
 export const profileOnChangeTextArea=(event)=>{
-    debugger
     return{
         type: writeTextareaValue,
         symbol: event.target.value

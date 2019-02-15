@@ -31,7 +31,7 @@ export const loginAjax = (login, password, rememberMe, captchaUrl)=>(dispatch)=>
         password:password,
         rememberMe:rememberMe
     }).then((res)=>{
-debugger
+
         if(res.data.resultCode===0) {
             dispatch(setStatus(statuses.SUCCES));
             dispatch(setIsAuth(true))

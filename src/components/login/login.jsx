@@ -13,7 +13,6 @@ class Login extends Component {
 
 
     render() {
-        debugger
         const login = () => {
             this.props.login && this.props.login(this.props.currentLogin, this.props.currentPassword, this.props.rememberMe)
         }

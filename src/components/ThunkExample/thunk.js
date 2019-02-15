@@ -8,7 +8,6 @@ import {compose} from "redux";
 
 
 const Thunk = (props) => {
-    debugger
 
     return (
         <>

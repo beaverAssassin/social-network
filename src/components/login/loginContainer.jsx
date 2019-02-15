@@ -61,7 +61,6 @@ const mapDispatchToProps = (dispatch,getState) => {
             },
       /*  authUser:
             ()=>{
-                debugger
             dispatch(loginThunk())
             },*/
         // logOutUser:

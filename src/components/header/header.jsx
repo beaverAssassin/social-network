@@ -32,8 +32,6 @@ class Header extends Component{
              return <Redirect to='/'/>
         }
 
-
-debugger
         return (
             <header>
 
@@ -50,7 +48,6 @@ debugger
                             <FontAwesomeIcon icon="sign-in-alt"/>
                             <button
                                 onClick={this.props.logOutUser}
-                                className={style.inputLogin}
                                 type="button">
                                 logOut
                             </button>
@@ -81,9 +78,10 @@ const mapDispatchToProps=(dispatch)=>{
     return{
         giveInfo:()=>dispatch(giveInfoAboutMe()),
 
-         logOutUser:
+        logOutUser:
              ()=>{
                  dispatch(logOutThunk())
+                 // ()=>(alert("ddd"))
              }
     }
 

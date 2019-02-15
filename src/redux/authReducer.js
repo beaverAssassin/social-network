@@ -13,33 +13,28 @@ export const setUserInfo = (userId, userName) => ({type: SET_USER_INFO, userId, 
 
 
 // const changeLoginStatus = (value)=>({type:AUTHENTIFICATION,value:value})
-
 /*
 export const loginThunk = () => (dispatch) => {
-debugger
+
     setTimeout(() => {
-
-
         dispatch(changeLoginStatus(true))
-
     }, 3000)
-
 }
-
-
 */
 
 export const logOutThunk = () => (dispatch) => {
 
-    axios.get('auth/login', {}).then((res) => {
-
+    axios.post('auth/logout', {}).then((res) => {
+debugger;
         if (res.data.resultCode === 0) {
             dispatch(setIsAuth(false));
             dispatch(setUserInfo(null, null));
         }
     });
-
 }
+
+
+
 
 // export const logOutThunk = () => (dispatch) => {
 //
@@ -101,8 +96,8 @@ const AuthReducer = (state = initialStateForAuthPAge, action) => {
                     userName: action.userName
                 }
             }
+
         case AUTHENTIFICATION:
-            debugger
             stateCopy = {...state}
             stateCopy.isLoggedIn = action.value;
             return stateCopy;
