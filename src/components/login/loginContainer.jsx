@@ -23,7 +23,9 @@ const mapStateToProps = (state) => {
         rememberMe: state.loginPage.currentRememberMe,
         // CAPTCHA:
         captcha: state.loginPage.captcha,
-        captchaUrl: state.loginPage.captchaUrl
+        captchaUrl: state.loginPage.captchaUrl,
+        captchaText: state.loginPage.captchaText,
+
     }
 }
 
@@ -33,8 +35,8 @@ const mapDispatchToProps = (dispatch, getState) => {
     return {
 
         login:
-            (login, password, rememberMe) => {
-                dispatch(loginAjax(login, password, rememberMe))
+            (login, password, rememberMe,captcha) => {
+                dispatch(loginAjax(login, password, rememberMe,captcha))
 
             },
         onButtonClickLogin:
@@ -59,9 +61,9 @@ const mapDispatchToProps = (dispatch, getState) => {
             (e) => {
                 dispatch(rememberUser(e.currentTarget.checked));
             },
-        giveInfo: () => dispatch(giveInfoAboutMe()),
+        giveInfo:
+            () => dispatch(giveInfoAboutMe()),
         CheckCaptcha:
-
             (event) => {
                 dispatch(getCapcha(event.currentTarget.value));
             },

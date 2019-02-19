@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import style from './header.module.css';
+import style from './header.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import logo from '../../logo.png';
 import {Link} from "react-router-dom";
@@ -61,8 +61,7 @@ class Header extends Component{
 
 let mapStateToProps = (state)=>{
     return {
-        // isLoggedOut: state.authPage.isLoggedOut,
-        // isLoggedIn: state.authPage.isLoggedIn
+
         userInfo:state.authPage.userInfo,
         isAuth:state.authPage.isAuth
     }
@@ -76,16 +75,10 @@ const mapDispatchToProps=(dispatch)=>{
         giveInfo:()=>dispatch(giveInfoAboutMe()),
 
         logOutUser:
-             ()=>{
-                 dispatch(logOutThunk())
-                 // ()=>(alert("ddd"))
-             }
+             ()=>dispatch(logOutThunk())
+
     }
-
-
 }
-
-
 
 
 export default connect(mapStateToProps,mapDispatchToProps) (Header);

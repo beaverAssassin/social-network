@@ -8,13 +8,13 @@ const Messages = ({dialogs}) => {
      //
      //    return <Message dialogs ={props.dialogs} text ={el.text} name ={el.name} id ={el.id} url={el.imageUrl}/>
      // });
-     return(
-          <div>
-              <Message dialogs ={dialogs} />
-             {/*{messages}*/}
-         </div>
+     return  <Message dialogs ={dialogs} />
 
-    );
+
+
+
+
+
 
 }
 

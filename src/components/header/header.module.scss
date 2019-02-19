@@ -4,12 +4,13 @@ header{
 }
 
 .header_container{
-    /*display: flex;*/
-    /*align-items: center;*/
+
     display: grid;
     justify-content: space-between;
     grid-template-columns: 11fr  1fr;
     background:linear-gradient( #4d7fb2, #184b83);
+
+
 
 }
 

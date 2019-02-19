@@ -15,7 +15,7 @@ const Users = ({users = [],status,getUsers}) => {
     }
 
     return (
-        <div>
+        <>
             {!users.length && <span>users not found</span>}
             {
                 users.map(u => <div className={styles.user}>
@@ -29,7 +29,7 @@ const Users = ({users = [],status,getUsers}) => {
                     {/*<NavLink to={`users/${u.id}`}>ssss</NavLink>*/}
                 </div>)
             }
-        </div>
+        </>
     )
 }
 

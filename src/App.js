@@ -7,6 +7,7 @@ import Profile from './components/profile/profile.jsx';
 import Login from "./components/login/loginContainer";
 import Photos from "./components/photos/photos";
 import {Route, Switch} from "react-router-dom";
+import { fab } from '@fortawesome/free-brands-svg-icons'
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faSignInAlt, faHeart, faThumbsDown} from '@fortawesome/free-solid-svg-icons';
 import Snake from "./snake/snakeComponent";
@@ -14,7 +15,7 @@ import Thunk from "./components/ThunkExample/thunk";
 import WrappedComponent from './HOCs/putComponent'
 import Users from "./components/users/users";
 import Footer from "./components/footer/footer";
-library.add(faSignInAlt,faHeart, faThumbsDown);
+library.add(faSignInAlt,faHeart, faThumbsDown,fab);
 
 let App = (props) => {
 
@@ -34,7 +35,7 @@ let App = (props) => {
                 {/*<Sidebar/>*/}
                 <Route  path ='/content' render={() => <Header/>}/>
                 <Route  path ='/content' render={() =>   <Sidebar/>}/>
-                <Route  path ='/content' render={() =>   <Footer/>}/>
+
                 <div className='content'>
                     <Route  path ='/content/profile' render={() => <Profile />}/>
                     <Route  path ='/content/snake' render={() => <Snake />}/>
@@ -46,6 +47,7 @@ let App = (props) => {
                     <Route  path='/content/thunkExample' render={() => <Thunk/>}/>
                     <Route  path='/content/Users' render={() => <Users/>}/>
                 </div>
+                <Route  path ='/content' render={() =>   <Footer/>}/>
 
             </div>
 

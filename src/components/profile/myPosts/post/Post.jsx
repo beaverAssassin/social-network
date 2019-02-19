@@ -6,16 +6,6 @@ import {ADD_MESSAGE, DISLIKES_COUNT, LIKES_COUNT} from "../../../../actiontypes"
 import {connect} from "react-redux";
 let Post = (props) => {
 
-    // let a = 0;
-    //
-    // let countLikes = ()=> {
-    //      a++;
-    //    console.log(a);
-    //
-    //     };
-
-
-
     return (
 
         <div className={style.post}>

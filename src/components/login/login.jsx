@@ -20,13 +20,13 @@ class Login extends Component {
 
     render() {
         const login = () => {
-            this.props.login && this.props.login(this.props.currentLogin, this.props.currentPassword, this.props.rememberMe)
+            this.props.login && this.props.login(this.props.currentLogin, this.props.currentPassword, this.props.rememberMe,this.props.captchaText)
         }
 
         if (this.props.isAuth) {
             return <Redirect to='/content/profile'/>
         }
-        console.log( this.props.captchaText);
+
 
         return (
 
@@ -89,6 +89,8 @@ class Login extends Component {
         )
     }
 }
+
+
 
 
 //disabled={this.props.status === statuses.INPROGRESS}

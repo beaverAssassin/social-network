@@ -27,14 +27,15 @@ export const getCapcha = (text) => ({type: GET_CAPTCHA, text});
 export const captchaFlag = (url) => ({type: CAPTCHA_FLAG, url});
 
 //THUNK login
-export const loginAjax = (login, password, rememberMe, captchaUrl) => (dispatch) => {
+export const loginAjax = (login, password, rememberMe, captcha) => (dispatch) => {
 
     dispatch(setStatus(statuses.INPROGRESS));
 
     axios.post('auth/login', {
         email: login,
         password: password,
-        rememberMe: rememberMe
+        rememberMe: rememberMe,
+        captcha:captcha
     }).then((res) => {
 
         if (res.data.resultCode === 0) {
@@ -90,7 +91,7 @@ let initialStateForLoginPage = {
 
 
 const loginPageReducer = (state = initialStateForLoginPage, action) => {
-    let stateCopy = {...state};
+    let stateCopy;
     switch (action.type) {
         case SET_STATUS: {
             return {
@@ -105,27 +106,33 @@ const loginPageReducer = (state = initialStateForLoginPage, action) => {
             }
         }
         case REMEMBER_USER:
-
+            stateCopy = {...state};
             stateCopy.currentRememberMe = action.value;
             return stateCopy;
         case RESET_LOGIN_VALUE:
+            stateCopy = {...state};
             stateCopy.login = stateCopy.currentLogin;
             stateCopy.currentLogin = '';
             return stateCopy;
         case RESET_PASSWORD_VALUE:
+            stateCopy = {...state};
             stateCopy.password = stateCopy.currentPassword;
             stateCopy.currentPassword = '';
             return stateCopy;
         case LOGIN_ONCHANGE:
+            stateCopy = {...state};
             stateCopy.currentLogin = action.symbol
             return stateCopy;
         case PASSWORD_ONCHANGE:
+            stateCopy = {...state};
             stateCopy.currentPassword = action.symbol;
             return stateCopy;
         case ON_SUBMIT_CLICK:
+            stateCopy = {...state};
             stateCopy = action.password;
             return stateCopy;
         case GET_CAPTCHA:
+            stateCopy = {...state};
             stateCopy.captchaText = action.text;
             return stateCopy;
         case CAPTCHA_FLAG:

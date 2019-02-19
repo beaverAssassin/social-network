@@ -81,7 +81,7 @@ this.globalKeyUpListener = this.globalKeyUpListener.bind(this);
 
 
         return (
-            <div>
+            <>
                 <button onClick={this.func}>L</button>
                 <button onClick={this.func}>R</button>
                 <button onClick={this.func}>D</button>
@@ -97,7 +97,7 @@ this.globalKeyUpListener = this.globalKeyUpListener.bind(this);
 
                     }}></div>
                 </div>
-            </div>
+            </>
         )
     }
 }

@@ -1,0 +1,36 @@
+nav{
+    grid-area: nav;
+}
+
+
+.sidebar_block {
+
+    background: linear-gradient(#4d7fb2, #184b83);
+    height: 79vh;
+
+
+    & a{
+        text-decoration: none;
+        color:#fff;
+        font-size: 18px;
+    }
+
+    & ul{
+        padding: 10px;
+        text-align: center;
+        list-style-type: none;
+
+
+    }
+}
+
+
+
+
+
+
+.sidebar_block a:hover,.sidebar_block a:focus{
+    color:#ffc81e;
+}
+
+

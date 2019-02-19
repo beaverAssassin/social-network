@@ -5,14 +5,14 @@ import React from 'react';
     return (props) => {
 
         return (
-            <div>
+            <>
 
                 <header>Logo,login</header>
                 <aside>Sidebar</aside>
                 <main><WrappedComponent {...props}/>    </main>
 
                 <footer>footer</footer>
-            </div>
+            </>
         )
 
     }
