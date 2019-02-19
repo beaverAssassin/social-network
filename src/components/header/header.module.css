@@ -4,18 +4,18 @@ header{
 }
 
 .header_container{
-    display: flex;
-    align-items: center;
+    /*display: flex;*/
+    /*align-items: center;*/
+    display: grid;
     justify-content: space-between;
-    width: 100%;
-    height: 100px;
+    grid-template-columns: 11fr  1fr;
     background:linear-gradient( #4d7fb2, #184b83);
-
-
 
 }
 
 .header_logo{
+    margin-top: 20px;
+    margin-bottom:20px;
     margin-left: 95px;
     width: 80px;
     height: 80px;
@@ -23,20 +23,21 @@ header{
 }
 
 .enter{
-    margin-right: 50px;
     color:#fff;
     font-size: 18px;
     text-decoration: none;
 }
+
 .enter:hover{
     color: #ffc81e;
 }
 
 
 .logoutField{
+margin:20px 20px 0 0;
     color:#fff;
-margin-right: 10px;
 }
+
 
 .logoutField p{
     margin: 5px;

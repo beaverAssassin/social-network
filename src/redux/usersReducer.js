@@ -28,7 +28,7 @@ export const setStatus = (status) => ({type: SET_STATUS, status});
 export const getUsers = (dispatch) => (dispatch) => {
     dispatch(setStatus(statuses.INPROGRESS));
     axios.get('users?count=18').then(r => {
-        setStatus(statuses.SUCCESS)
+        dispatch(setStatus(statuses.SUCCESS));
         dispatch(setUsers(r.data.items));
     });
 
@@ -47,7 +47,7 @@ const UsersReducer = (state = stateForUsers, action) => {
 
         }
         case SET_USERS: {
-            debugger
+
             return {
                 ...state,
                 items: action.users

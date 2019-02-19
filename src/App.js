@@ -13,6 +13,7 @@ import Snake from "./snake/snakeComponent";
 import Thunk from "./components/ThunkExample/thunk";
 import WrappedComponent from './HOCs/putComponent'
 import Users from "./components/users/users";
+import Footer from "./components/footer/footer";
 library.add(faSignInAlt,faHeart, faThumbsDown);
 
 let App = (props) => {
@@ -33,6 +34,7 @@ let App = (props) => {
                 {/*<Sidebar/>*/}
                 <Route  path ='/content' render={() => <Header/>}/>
                 <Route  path ='/content' render={() =>   <Sidebar/>}/>
+                <Route  path ='/content' render={() =>   <Footer/>}/>
                 <div className='content'>
                     <Route  path ='/content/profile' render={() => <Profile />}/>
                     <Route  path ='/content/snake' render={() => <Snake />}/>

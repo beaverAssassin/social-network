@@ -1,0 +1,19 @@
+@import '~sanitize.css';
+
+
+footer {
+    grid-area: footer;
+}
+
+.footerContainer {
+    display: grid;
+
+    justify-content: center;
+    background: linear-gradient(#4d7fb2, #184b83);
+
+& p{
+    color:white;
+}
+
+}
+

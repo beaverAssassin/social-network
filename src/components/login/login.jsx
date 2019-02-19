@@ -12,19 +12,21 @@ class Login extends Component {
     }
 
 
-    componentWillMount(){
+    componentWillMount() {
         this.props.giveInfo();
     }
 
+    
 
     render() {
         const login = () => {
             this.props.login && this.props.login(this.props.currentLogin, this.props.currentPassword, this.props.rememberMe)
         }
 
-        if(this.props.isAuth){
+        if (this.props.isAuth) {
             return <Redirect to='/content/profile'/>
         }
+        console.log( this.props.captchaText);
 
         return (
 
@@ -41,30 +43,41 @@ class Login extends Component {
                         <input
                             type="email"
                             defaultValue="yura_eremok@mail.ru"
-                             value={this.props.currentLogin}
+                            value={this.props.currentLogin}
                             onChange={(e) => {
                                 this.props.onLoginChange(e)
                             }}/>
                         <label htmlFor="">Password</label>
                         <input
                             type="password"
-                             value={this.props.currentPassword}
+                            value={this.props.currentPassword}
                             defaultValue="sukinsun2211"
                             onChange={(e) => {
                                 this.props.onPasswordChange(e)
                             }}/>
                     </div>
+                    {this.props.captcha ? <div className={style.captcha}>
+                        <img src={this.props.captchaUrl}/>
+                        <input
+                            type='text'
+                            className={style.Rem}
+                            value={this.props.captchaText}
+                            onChange={(el) => {
+                                this.props.CheckCaptcha(el)
+                            }
+                            }
+                        />
+                    </div> : ''}
                     <div className={style.checkbox}>
                         <label htmlFor=""><input type="checkbox" checked={this.props.rememberMe} onChange={(c) => {
+                            this.props.rememberUser(c);}} />remember me</label>
 
-                                this.props.rememberUser(c);
-
-                            }
-                            }
-                        />remember me</label>
-                          {/*<Link to="/content/profile"><input className={style.inputLogin}  type="submit"
+                        {/*<Link to="/content/profile"><input className={style.inputLogin}  type="submit"
                                                            value="Login"/></Link>*/}
-                        <button  disabled={this.props.status === statuses.INPROGRESS} onClick={login}  /*{this.props.authUser}*/ className={style.inputLogin} type="button">login</button>
+                        <button
+                                onClick={login}   className={style.inputLogin}
+                                type="button">login
+                        </button>
                     </div>
                     {this.props.status === statuses.ERROR &&
                     <div className='error'>
@@ -77,5 +90,7 @@ class Login extends Component {
     }
 }
 
+
+//disabled={this.props.status === statuses.INPROGRESS}
 
 export default Login;

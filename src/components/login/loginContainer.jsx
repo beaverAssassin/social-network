@@ -4,7 +4,7 @@ import Login from "./login";
 import {
     currentLoginCreator,
     currentPasswordCreator
-    , currentResetLoginCreator, currentResetPasswordCreator, loginAjax, rememberUser
+    , currentResetLoginCreator, currentResetPasswordCreator, getCapcha, loginAjax, rememberUser
 } from "../../redux/loginPageReducer";
 import {giveInfoAboutMe} from "../../redux/authReducer";
 
@@ -14,30 +14,29 @@ import {giveInfoAboutMe} from "../../redux/authReducer";
 const mapStateToProps = (state) => {
 
     return {
-         isAuth:state.authPage.isAuth,
-        status:state.loginPage.status,
-        message:state.loginPage.message,
-        captchaUrl:state.loginPage.captchaUrl,
-
+        isAuth: state.authPage.isAuth,
+        status: state.loginPage.status,
+        message: state.loginPage.message,
         currentLogin: state.loginPage.currentLogin,
         currentPassword: state.loginPage.currentPassword,
         isLoggedIn: state.authPage.isLoggedIn,
-        rememberMe: state.loginPage.currentRememberMe
-        // Remember:
-
+        rememberMe: state.loginPage.currentRememberMe,
+        // CAPTCHA:
+        captcha: state.loginPage.captcha,
+        captchaUrl: state.loginPage.captchaUrl
     }
 }
 
-const mapDispatchToProps = (dispatch,getState) => {
+const mapDispatchToProps = (dispatch, getState) => {
 
 
     return {
 
         login:
-            (login,password,rememberMe)=> {
-            dispatch(loginAjax(login,password,rememberMe))
+            (login, password, rememberMe) => {
+                dispatch(loginAjax(login, password, rememberMe))
 
-        },
+            },
         onButtonClickLogin:
             () => {
                 dispatch(currentResetLoginCreator())
@@ -60,52 +59,16 @@ const mapDispatchToProps = (dispatch,getState) => {
             (e) => {
                 dispatch(rememberUser(e.currentTarget.checked));
             },
-        giveInfo:()=>dispatch(giveInfoAboutMe())
-      /*  authUser:
-            ()=>{
-            dispatch(loginThunk())
-            },*/
-        // logOutUser:
-        //     ()=>{
-        //     dispatch(logOutThunk())
-        //     }
+        giveInfo: () => dispatch(giveInfoAboutMe()),
+        CheckCaptcha:
+
+            (event) => {
+                dispatch(getCapcha(event.currentTarget.value));
+            },
+
 
     }
 }
-
-// const mapStateToProps = (state) => {
-//
-//     return {
-//         loginPage: state.loginPage
-//     }
-// }
-//
-// const MapDispatchToProps = (dispatch) => {
-//     return {
-//         onLoginChange: (login) => {
-//             dispatch({
-//                 type: loginOnChange,
-//                 login: login
-//             })
-//         },
-//         onPasswordChange: (password) => {
-//             dispatch({
-//                 type: passwordOnChange,
-//                 password: password
-//             })
-//         },
-//         onSubmitButtonClick: (click) => {
-//             dispatch({
-//                 type: onSubmitClick
-//
-//             })
-//         }
-//
-//
-//     }
-// }
-//
-
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

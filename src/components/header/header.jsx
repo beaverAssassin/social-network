@@ -10,7 +10,6 @@ import {Redirect} from "react-router";
 
 
 
-
 class Header extends Component{
 
     componentDidMount() {
