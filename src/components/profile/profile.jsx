@@ -1,6 +1,6 @@
 import React from 'react';
 import mainphoto from '../../mainphoto.jpg';
-import style from './profile.module.css';
+import style from './profile.module.scss';
 import MyPosts from "./myPosts/MyPosts";
 
 

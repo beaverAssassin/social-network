@@ -4,22 +4,19 @@ header{
 }
 
 .header_container{
-
     display: grid;
     justify-content: space-between;
     grid-template-columns: 11fr  1fr;
     background:linear-gradient( #4d7fb2, #184b83);
 
-
-
 }
 
 .header_logo{
-    margin-top: 20px;
-    margin-bottom:20px;
+    margin-top: 10px;
+    margin-bottom:10px;
     margin-left: 95px;
-    width: 80px;
-    height: 80px;
+    width: 10vh;
+    height: 10vh;
     /*margin: 0 0 0 5px;*/
 }
 
@@ -35,7 +32,7 @@ header{
 
 
 .logoutField{
-margin:20px 20px 0 0;
+margin:10px 20px 0 0;
     color:#fff;
 }
 

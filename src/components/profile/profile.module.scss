@@ -1,7 +1,7 @@
 
 .profilebg {
     width: 100%;
-    height: 100px;
+    height: 10vh;
     background-image: url('../../profile.jpg');
     /*background-color:   background:linear-gradient(   #4d7fb2, #184b83);*/
 
@@ -13,21 +13,22 @@
 .personal_data {
     padding-top: 10px;
     display: grid;
-    grid-template-columns: 125px 3fr;
+    grid-template-columns: 1fr 7fr;
 
 }
 
 .profile_img {
-    width: 130px;
-    height: 160px;
+    width: 13vh;
+    height: 16vh;
 }
 
 .description {
-    margin-left: 15px;
+
     font-size: 12px;
 }
 
 .description_name {
+    margin-top:0;
     font-weight: bold;
     font-size: 15px;
 

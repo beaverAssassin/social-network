@@ -9,4 +9,8 @@
 .postContainer{
     position: relative;
     overflow: hidden;
+
+    & h3{
+        margin-top: 0px;
+    }
 }

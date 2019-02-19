@@ -8,15 +8,14 @@ html, body {
 
 
 #root{
-  /*height:100%;*/
+  height:inherit;
 
 }
 
 .App {
   display: grid;
-  /*justify-content: center;*/
-  /*display: flex;*/
-  /*height: 100%;*/
+
+  height: inherit;
 grid-template-areas: "header header header"
 "nav content content"
 "footer footer footer";
@@ -34,7 +33,7 @@ grid-template-areas: "header header header"
 .content {
   grid-area: content;
   background-color:#fff;
-
+  overflow-y:auto;
 
 
 }
