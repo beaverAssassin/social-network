@@ -1,19 +1,30 @@
 
-
-
 footer {
-    grid-area: footer;
+  grid-area: footer;
 }
 
 .footerContainer {
-    display: grid;
 
-    justify-content: center;
-    background: linear-gradient(#4d7fb2, #184b83);
+  display: grid;
+  justify-content: center;
+  background: linear-gradient(#4d7fb2, #184b83);
 
-& p{
-    color:white;
-}
+  > .socialIcons {
 
+    justify-self: center;
+
+  }
+
+  > p {
+    color: white;
+  }
+
+  :nth-child(n+1) {
+    margin: 5px 7px 5px 7px;
+
+    :hover {
+      background-color: yellow;
+    }
+  }
 }
 

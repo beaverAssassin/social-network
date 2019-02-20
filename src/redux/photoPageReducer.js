@@ -26,6 +26,9 @@ const photoPageReducer = (state = initialStateForPhotoPage, action) => {
     }
 
 }
+
+
+
 export default photoPageReducer;
 
 export const addPhotoUrl =(url)=>{
