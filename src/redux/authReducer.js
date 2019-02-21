@@ -6,12 +6,11 @@ export const AUTHENTIFICATION = 'AUTH_REDUCER/AUTHENTIFICATION';
 
 export const SET_IS_AUTH = 'LOGIN/SET_IS_AUTH';
 export const SET_USER_INFO = 'LOGIN/SET_USER_INFO';
-export const GET_PROFILE = 'LOGIN/GET_PROFILE';
+
 
 
 export const setIsAuth = (value) => ({type: SET_IS_AUTH, value});
 export const setUserInfo = (userId, userName) => ({type: SET_USER_INFO, userId, userName});
-export const getProfile = (aboutMe,email)=>({type:GET_PROFILE,aboutMe,email})
 
 
 
@@ -36,11 +35,7 @@ export const giveInfoAboutMe = () => (dispatch) => {
         }
     });
 
-    axios.get('profile/16').then((res)=>{
 
-        dispatch(getProfile(res.data.aboutMe,res.data.contacts.email))
-
-    });
 
 }
                                             //END THUNK//
@@ -52,11 +47,7 @@ let initialStateForAuthPAge = {
         userName: null,
         avatarUrl: ''
     },
-    profileInfo:{
 
-        aboutMe:"",
-        email:""
-    },
 
     //without ajax
     authUser: 1,
@@ -89,12 +80,7 @@ const AuthReducer = (state = initialStateForAuthPAge, action) => {
             stateCopy = {...state}
             stateCopy.isLoggedIn = action.value;
             return stateCopy;
-        case GET_PROFILE:
-            debugger
-            stateCopy = {...state}
-            stateCopy.profileInfo.aboutMe= action.aboutMe;
-            stateCopy.profileInfo.email= action.email;
-            return stateCopy;
+
         // case LOGIN_OUT:
         //     stateCopy.isLoggedIn = false;
         //     return stateCopy;

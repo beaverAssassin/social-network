@@ -1,9 +1,6 @@
 import React from 'react';
-import mainphoto from '../../../../mainphoto.jpg';
 import style from './Post.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {ADD_MESSAGE, DISLIKES_COUNT, LIKES_COUNT} from "../../../../actiontypes";
-import {connect} from "react-redux";
 let Post = (props) => {
 
     return (
