@@ -1,57 +1,58 @@
 import axios from "../dal/axios-instance";
 
 const GET_PROFILE = 'PROFILE/GET_PROFILE';
-const addMessage ="PROFILE/ADD_MESSAGE";
-const writeTextareaValue ="PROFILE/WRITE_TEXTAREA_VALUE";
+const addMessage = "PROFILE/ADD_MESSAGE";
+const writeTextareaValue = "PROFILE/WRITE_TEXTAREA_VALUE";
 const likesCalculate = "PROFILE/LIKES_CALCULATE";
 const disLikesCalculate = "PROFILE/DISLIKES_CALCULATE";
 const EDIT_MODE = "PROFILE/EDIT_MODE";
 const CHANGE_VALUE = "PROFILE/CHANGE_VALUE";
+const LOOK_JOB = "PROFILE/LOOK_JOB";
 
 
-
-
-export const getProfileData = (profileData)=>({type:GET_PROFILE,profileData})
-
-
-
-export const addMessageByClick =(currentTextAreaValue)=>{
-    if(currentTextAreaValue === ""){
+export const getProfileData = (profileData) => ({type: GET_PROFILE, profileData})
+export const addMessageByClick = (currentTextAreaValue) => {
+    if (currentTextAreaValue === "") {
         var av = Number(currentTextAreaValue.length);
     }
-    else{
-        av = currentTextAreaValue.length-2;
+    else {
+        av = currentTextAreaValue.length - 2;
     }
     return {
         type: addMessage,
         text: currentTextAreaValue,
-        likesCount:currentTextAreaValue.length,
+        likesCount: currentTextAreaValue.length,
         dislikeCount: av
     }
 }
-export const profileOnChangeTextArea=(event)=>({type: writeTextareaValue,symbol: event.target.value})
-export const profilelikesCalculate=(postId)=>({type:likesCalculate,postId})
-export const profileDisLikesCalculate=(postId)=>({type: disLikesCalculate,postId})
-export const toggleEditMode = (value)=>({type:EDIT_MODE,value})
-export const onChangeProfileEdit = (value,key)=>({type:CHANGE_VALUE,value,key})
-
-export const giveInfoProfile=()=>(dispatch)=>{
-
-    axios.get('profile/16').then((res)=>{
-
-        dispatch(getProfileData(res.data))
-
-    });
+export const profileOnChangeTextArea = (event) => ({type: writeTextareaValue, symbol: event.target.value})
+export const profilelikesCalculate = (postId) => ({type: likesCalculate, postId})
+export const profileDisLikesCalculate = (postId) => ({type: disLikesCalculate, postId})
+export const toggleEditMode = () => ({type: EDIT_MODE})
+export const onChangeProfileEdit = (value, key) => ({type: CHANGE_VALUE, value, key})
+export const LookForAJobSearch = (event) => ({type: LOOK_JOB, event})
 
 
+export const onSaveInfoProfile = () => (dispatch, getState) => {
+
+    axios.put('profile', getState().profilePage.profileData)
+        .then((res) => {
+
+        });
+    dispatch(toggleEditMode());
 
 }
 
 
+export const giveInfoProfile = () => (dispatch) => {
+    axios.get('profile/16').then((res) => {
+        dispatch(getProfileData(res.data))
+    });
+}
 
 let initialStateForProfilePage = {
-    profileData:"",
-    editMode:false,
+    profileData: "",
+    editMode: false,
     myPosts: [
         {
             id: 1,
@@ -82,16 +83,16 @@ let initialStateForProfilePage = {
 }
 
 
-
-
-
-
 const profilePageReducer = (state = initialStateForProfilePage, action) => {
     let stateCopy;
     switch (action.type) {
         case addMessage:
             stateCopy = {...state}
-            stateCopy.myPosts.unshift({text: action.text, likesCount: action.likesCount,dislikeCount: action.dislikeCount});
+            stateCopy.myPosts.unshift({
+                text: action.text,
+                likesCount: action.likesCount,
+                dislikeCount: action.dislikeCount
+            });
             stateCopy.currentTextAreaValue = "";
             return stateCopy;
         case writeTextareaValue:
@@ -107,34 +108,36 @@ const profilePageReducer = (state = initialStateForProfilePage, action) => {
             return stateCopy;
         case disLikesCalculate:
             stateCopy = {...state}
-
             const currentPostsSubtr = stateCopy.myPosts.filter((el) => {
-
                 return el.id === action.postId;
             })
             currentPostsSubtr[0].dislikeCount++;
             return stateCopy;
         case GET_PROFILE:
-
             stateCopy = {...state}
-            stateCopy.profileData= action.profileData;
+            stateCopy.profileData = action.profileData;
             return stateCopy;
         case EDIT_MODE:
             stateCopy = {...state}
             stateCopy.editMode = !state.editMode
             return stateCopy;
         case CHANGE_VALUE:
-            debugger
-            stateCopy ={...state, profileData: {...state.profileData}}
-            stateCopy.profileData.contacts[action.key]= action.value;
+            stateCopy = {...state, profileData: {...state.profileData}}
+            stateCopy.profileData.contacts[action.key] = action.value;
+            // stateCopy.profileData.aboutMe = action.value;
             return stateCopy;
-
+        case LOOK_JOB:
+            debugger
+            stateCopy = {...state, profileData: {...state.profileData}}
+            stateCopy.profileData.lookingForAJob = action.event;
+            return stateCopy;
         default:
             return state;
 
     }
 
 }
+
 
 export default profilePageReducer;
 

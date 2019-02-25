@@ -13,7 +13,6 @@ import {
 let MyPosts = (props) => {
 
 
-    console.log(props.profilePage.currentTextAreaValue);
     //let message = React.createRef();??????????????????????????? задать вопрос аналог getelementByid рефеаральная ссылка
     let onChangeTextarea = (event) => {
         props.onchangeTextarea(event)

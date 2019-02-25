@@ -3,7 +3,13 @@ import mainphoto from '../../mainphoto.jpg';
 import style from './profile.module.scss';
 import MyPosts from "./myPosts/MyPosts";
 import {connect} from "react-redux";
-import {toggleEditMode, giveInfoProfile, onChangeProfileEdit} from "../../redux/profilePageReducer";
+import {
+    toggleEditMode,
+    giveInfoProfile,
+    onChangeProfileEdit,
+    onSaveInfoProfile,
+    LookForAJobSearch
+} from "../../redux/profilePageReducer";
 
 
 class Profile extends React.Component {
@@ -18,10 +24,7 @@ class Profile extends React.Component {
     render() {
 
 
-
-
-
-        let profile = this.props.profileData;
+       const profile = this.props.profileData;
         if (!profile) {
             return <div>...nothing...</div>
         }
@@ -29,28 +32,30 @@ class Profile extends React.Component {
         let editMode = this.props.editMode;
 
         const aboutMe = (() => {
-            for (let prop in profile) {
+            for (let key in profile) {
                 return <div>
-                    <span className={style.property}>{prop}</span>:{profile[prop]}
+
+                   <span className={style.property}>{key}</span>:
+
+                    {editMode?<input value={profile[key]}
+                                     // onChange={
+                                     //     (event)=>{this.props.onProfileContactChange(event.currentTarget.value)
+                                     //     }}
+
+                    />:<span>{profile[key]}</span>}
                     </div>
             }
         })()
 
 
         const contacts = Object.keys(profile.contacts).map(key => {
-
             return <div>
-
                     <span className={style.property}>{key}</span>:
                 {editMode?<input value={profile.contacts[key]}  onChange={
                         (e)=>{this.props.onProfileContactChange(e.currentTarget.value,key)
                         }}/>:
                 <span>{profile.contacts[key]}</span>}
-
-
                 </div>
-
-
         });
 
 
@@ -61,7 +66,7 @@ class Profile extends React.Component {
         }
 
 
-
+        console.log(profile.lookingForAJob);
 
         /////////////////////////////END INFO FROM AJAX/////////////////////////
         return (
@@ -83,7 +88,15 @@ class Profile extends React.Component {
                         {/*<p><b>Aducation:</b>JJJJ '2040'</p>*/}
                         {/*<p><b>Web-site:</b>https://it-kamasutra.com/JSKMB</p>*/}
                         {aboutMe}
-                        {editMode && <button>save</button>}
+                        {editMode?<input  type="checkbox" checked={profile.lookingForAJob}
+                                          onChange={(e)=>{
+                                              this.props.onLookingForAJobSearch(e.currentTarget.checked);
+                                          }}
+                        />:<div>{profile.lookingForAJob ? 'Ищу работу':""}</div>}
+
+
+                        {editMode && <button onClick={this.props.onSaveClick}>save</button>}
+
 
                     </div>
                 </div>
@@ -103,8 +116,10 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     giveProfileInFo: () => dispatch(giveInfoProfile()),
-    onEditClick: (value) => dispatch(toggleEditMode(value)),
-    onProfileContactChange:(value,key)=>dispatch(onChangeProfileEdit(value,key))
+    onEditClick: () => dispatch(toggleEditMode()),
+    onProfileContactChange:(value,key)=>dispatch(onChangeProfileEdit(value,key)),
+    onSaveClick:()=>dispatch(onSaveInfoProfile()),
+    onLookingForAJobSearch:(event)=>dispatch(LookForAJobSearch(event))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);
