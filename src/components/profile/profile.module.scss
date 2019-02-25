@@ -24,8 +24,13 @@
 
 .description {
 
-    font-size: 12px;
+    font-size: 14px;
+
+    & .property {
+        font-weight: bold;
+    }
 }
+
 
 .description_name {
     margin-top:0;
@@ -37,3 +42,4 @@
 p {
     line-height: 1;
 }
+

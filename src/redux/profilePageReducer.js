@@ -5,6 +5,8 @@ const addMessage ="PROFILE/ADD_MESSAGE";
 const writeTextareaValue ="PROFILE/WRITE_TEXTAREA_VALUE";
 const likesCalculate = "PROFILE/LIKES_CALCULATE";
 const disLikesCalculate = "PROFILE/DISLIKES_CALCULATE";
+const EDIT_MODE = "PROFILE/EDIT_MODE";
+const CHANGE_VALUE = "PROFILE/CHANGE_VALUE";
 
 
 
@@ -30,8 +32,8 @@ export const addMessageByClick =(currentTextAreaValue)=>{
 export const profileOnChangeTextArea=(event)=>({type: writeTextareaValue,symbol: event.target.value})
 export const profilelikesCalculate=(postId)=>({type:likesCalculate,postId})
 export const profileDisLikesCalculate=(postId)=>({type: disLikesCalculate,postId})
-
-
+export const editModeOn = (value)=>({type:EDIT_MODE,value})
+export const onChangeProfileEdit = (value,key)=>({type:CHANGE_VALUE,value,key})
 
 export const giveInfoProfile=()=>(dispatch)=>{
 
@@ -49,7 +51,7 @@ export const giveInfoProfile=()=>(dispatch)=>{
 
 let initialStateForProfilePage = {
     profileData:"",
-
+    editMode:false,
     myPosts: [
         {
             id: 1,
@@ -117,6 +119,16 @@ const profilePageReducer = (state = initialStateForProfilePage, action) => {
             stateCopy = {...state}
             stateCopy.profileData= action.profileData;
             return stateCopy;
+        case EDIT_MODE:
+            stateCopy = {...state}
+            stateCopy.editMode = action.value
+            return stateCopy;
+        case CHANGE_VALUE:
+            debugger
+            stateCopy ={...state}
+            stateCopy.profileData.contacts[action.key]= action.value;
+            return stateCopy;
+
         default:
             return state;
 

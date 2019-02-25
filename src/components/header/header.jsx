@@ -32,11 +32,10 @@ class Header extends Component{
                 <div className={style.header_container}>
                     {/*<a href="#" className={style.enter}>Войти</a>*/}
 
-                    <Link to="/profile"><img
+                    <Link to="/content/profile"><img
                         src="https://cs6.pikabu.ru/images/previews_comm/2015-08_2/1438951906382231414.png"
                         className={`${style.header_logo} ${"wow bounceInRight"}`} alt="logo" data-wow-duration="4s" /></Link>
 
-                    {/*<Link style={{ textDecoration: 'none' }} to="/">*/}
 
                     <div className ={style.logoutField}>{this.props.isAuth && <><p>Welcome,<span className={style.userData}>{this.props.userInfo.userName}</span></p>
                         <p>your ID:<span className={style.userData}>{this.props.userInfo.userId}</span> </p></>}

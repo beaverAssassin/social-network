@@ -3,7 +3,7 @@ import mainphoto from '../../mainphoto.jpg';
 import style from './profile.module.scss';
 import MyPosts from "./myPosts/MyPosts";
 import {connect} from "react-redux";
-import {giveInfoProfile} from "../../redux/profilePageReducer";
+import {editModeOn, giveInfoProfile, onChangeProfileEdit} from "../../redux/profilePageReducer";
 
 
 class Profile extends React.Component {
@@ -13,37 +13,78 @@ class Profile extends React.Component {
         this.props.giveProfileInFo();
     }
 
+
+
     render() {
 
+
+
+
+
         let profile = this.props.profileData;
+        if (!profile) {
+            return <div>...nothing...</div>
+        }
 
-        // Object.keys(profile.contacts).map(key=>{
-        //     return <div>{key}:{profile.contacts[key]}</div>
-        // });
+        let editMode = this.props.editMode;
+
+        const aboutMe = (() => {
+            for (let prop in profile) {
+                return <div>
+                    <span className={style.property}>{prop}</span>:{profile[prop]}
+                    </div>
+            }
+        })()
+
+
+        const contacts = Object.keys(profile.contacts).map(key => {
+
+            return <div>
+
+                    <span className={style.property}>{key}</span>:
+                {editMode?<input value={profile.contacts[key]}  onChange={
+                        (e)=>{this.props.onProfileContactChange(e.currentTarget.value,key)
+                        }}/>:
+                <span>{profile.contacts[key]}</span>}
+
+
+                </div>
+
+
+        });
+
+
+
+        var isOwner;
+        if (this.props.isAuth && this.props.authUserId && profile.userId) {
+            isOwner = true;
+        }
 
 
 
 
-
-
+        /////////////////////////////END INFO FROM AJAX/////////////////////////
         return (
 
+
             <div className={style.profile}>
-
                 <div className={style.profilebg}>
-
                 </div>
                 <div className={style.personal_data}>
                     <img src="https://s.gamer-info.com/gl/f/a/l/l/fallout-2_w240.jpg" className={style.profile_img}
                          alt="profile_img"/>
                     <div className={style.description}>
-                        <p className={style.description_name}>Майкл Иванович Джордан</p>
-                        <p><b>Date of birth:</b> 2 january 2035</p>
-                        <p><b>City:</b>shelter №13</p>
-                        <p><b>Email:</b></p>
-                        <p><b>Aducation:</b>JJJJ '2040'</p>
-                        <p><b>Web-site:</b>https://it-kamasutra.com/JSKMB</p>
-                        <p><b>Обо мне:</b>{this.props.profileData}</p>
+                        {isOwner && <button onClick={this.props.onEditClick} >edit</button>}
+                        <p className={style.description_name}>{profile.fullName}</p>
+                        {contacts}
+                        {/*<p><b>Date of birth:</b> 2 january 2035</p>*/}
+                        {/*<p><b>City:</b>shelter №13</p>*/}
+                        {/*<p><b>Email:</b></p>*/}
+                        {/*<p><b>Aducation:</b>JJJJ '2040'</p>*/}
+                        {/*<p><b>Web-site:</b>https://it-kamasutra.com/JSKMB</p>*/}
+                        {aboutMe}
+                        {editMode && <button>save</button>}
+
                     </div>
                 </div>
                 <MyPosts/>
@@ -54,12 +95,16 @@ class Profile extends React.Component {
 
 
 const mapStateToProps = (state) => ({
-    profileData: state.profilePage.profileData
-
+    profileData: state.profilePage.profileData,
+    isAuth: state.authPage.isAuth,
+    authUserId: state.authPage.userInfo.userId,
+    editMode:state.profilePage.editMode
 })
 
 const mapDispatchToProps = (dispatch) => ({
-        giveProfileInFo: () => dispatch(giveInfoProfile())
+    giveProfileInFo: () => dispatch(giveInfoProfile()),
+    onEditClick: (value) => dispatch(editModeOn(value)),
+    onProfileContactChange:(value,key)=>dispatch(onChangeProfileEdit(value,key))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);

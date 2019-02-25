@@ -22,7 +22,7 @@ let MyPosts = (props) => {
 
     let messageTags = props.profilePage.myPosts.map((el) => {
 
-        return <Post key = {el.id} text={el.text} postId={el.id} likesCount={el.likesCount} dislikeCount={el.dislikeCount} likesCalc={props.likesCalc} dislikeCalc={props.dislikeCalc}/>
+        return <Post key={el.id} text={el.text} postId={el.id} likesCount={el.likesCount} dislikeCount={el.dislikeCount} likesCalc={props.likesCalc} dislikeCalc={props.dislikeCalc}/>
     });
 
 
