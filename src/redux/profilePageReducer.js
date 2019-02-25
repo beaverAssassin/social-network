@@ -32,7 +32,7 @@ export const addMessageByClick =(currentTextAreaValue)=>{
 export const profileOnChangeTextArea=(event)=>({type: writeTextareaValue,symbol: event.target.value})
 export const profilelikesCalculate=(postId)=>({type:likesCalculate,postId})
 export const profileDisLikesCalculate=(postId)=>({type: disLikesCalculate,postId})
-export const editModeOn = (value)=>({type:EDIT_MODE,value})
+export const toggleEditMode = (value)=>({type:EDIT_MODE,value})
 export const onChangeProfileEdit = (value,key)=>({type:CHANGE_VALUE,value,key})
 
 export const giveInfoProfile=()=>(dispatch)=>{
@@ -121,11 +121,11 @@ const profilePageReducer = (state = initialStateForProfilePage, action) => {
             return stateCopy;
         case EDIT_MODE:
             stateCopy = {...state}
-            stateCopy.editMode = action.value
+            stateCopy.editMode = !state.editMode
             return stateCopy;
         case CHANGE_VALUE:
             debugger
-            stateCopy ={...state}
+            stateCopy ={...state, profileData: {...state.profileData}}
             stateCopy.profileData.contacts[action.key]= action.value;
             return stateCopy;
 

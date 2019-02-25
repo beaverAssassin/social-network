@@ -3,7 +3,7 @@ import mainphoto from '../../mainphoto.jpg';
 import style from './profile.module.scss';
 import MyPosts from "./myPosts/MyPosts";
 import {connect} from "react-redux";
-import {editModeOn, giveInfoProfile, onChangeProfileEdit} from "../../redux/profilePageReducer";
+import {toggleEditMode, giveInfoProfile, onChangeProfileEdit} from "../../redux/profilePageReducer";
 
 
 class Profile extends React.Component {
@@ -103,7 +103,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     giveProfileInFo: () => dispatch(giveInfoProfile()),
-    onEditClick: (value) => dispatch(editModeOn(value)),
+    onEditClick: (value) => dispatch(toggleEditMode(value)),
     onProfileContactChange:(value,key)=>dispatch(onChangeProfileEdit(value,key))
 })
 
