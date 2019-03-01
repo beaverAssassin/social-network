@@ -130,6 +130,7 @@ const profilePageReducer = (state = initialStateForProfilePage, action) => {
             debugger
             stateCopy = {...state, profileData: {...state.profileData}}
             stateCopy.profileData.lookingForAJob = action.event;
+            stateCopy.profileData.lookingForAJobDescription = "ищу работу ";
             return stateCopy;
         default:
             return state;

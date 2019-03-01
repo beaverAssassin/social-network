@@ -20,14 +20,14 @@
     <favorites_list name="first-project" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.39338493">
+    <splitter split-orientation="horizontal" split-proportion="0.50421494">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="profile.jsx" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/components/profile/profile.jsx">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="612">
-                  <caret line="96" lean-forward="true" selection-start-line="96" selection-end-line="96" />
+                <state relative-caret-position="535">
+                  <caret line="90" column="43" selection-start-line="90" selection-start-column="43" selection-end-line="90" selection-end-column="43" />
                   <folding>
                     <element signature="e#0#26#0" expanded="true" />
                   </folding>
@@ -38,7 +38,7 @@
           <file leaf-file-name="authReducer.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/redux/authReducer.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1034">
+                <state relative-caret-position="1343">
                   <caret line="80" column="47" selection-start-line="80" selection-start-column="42" selection-end-line="80" selection-end-column="47" />
                 </state>
               </provider>
@@ -77,7 +77,7 @@
           <file leaf-file-name="header.jsx" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/header/header.jsx">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="85">
+                <state relative-caret-position="442">
                   <caret line="34" column="31" selection-start-line="34" selection-start-column="31" selection-end-line="34" selection-end-column="31" />
                 </state>
               </provider>
@@ -99,11 +99,8 @@
           <file leaf-file-name="profilePageReducer.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/redux/profilePageReducer.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="634">
-                  <caret line="136" column="5" lean-forward="true" selection-start-line="136" selection-start-column="5" selection-end-line="136" selection-end-column="5" />
-                  <folding>
-                    <element signature="e#472#786#0" />
-                  </folding>
+                <state relative-caret-position="753">
+                  <caret line="124" column="71" lean-forward="true" selection-start-line="124" selection-end-line="125" />
                 </state>
               </provider>
             </entry>
@@ -111,7 +108,7 @@
           <file leaf-file-name="snakeReducer.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/redux/snakeReducer.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="878">
+                <state relative-caret-position="1309">
                   <caret line="77" selection-start-line="77" selection-end-line="77" />
                 </state>
               </provider>
@@ -120,7 +117,7 @@
           <file leaf-file-name="redux.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/node_modules/redux/dist/redux.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="315">
+                <state relative-caret-position="2431">
                   <caret line="143" column="17" lean-forward="true" selection-start-line="143" selection-start-column="17" selection-end-line="143" selection-end-column="17" />
                 </state>
               </provider>
@@ -129,7 +126,7 @@
           <file leaf-file-name="MyPosts.jsx" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/profile/myPosts/MyPosts.jsx">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="253">
+                <state relative-caret-position="255">
                   <caret line="15" selection-start-line="15" selection-end-line="15" />
                   <folding>
                     <element signature="e#0#26#0" expanded="true" />
@@ -262,10 +259,9 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-2" />
-    <option name="y" value="5" />
-    <option name="width" value="956" />
-    <option name="height" value="1027" />
+    <option name="x" value="6" />
+    <option name="width" value="999" />
+    <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -274,110 +270,13 @@
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="social-network" type="b2602c69:ProjectViewProjectNode" />
-              <item name="social-network" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="social-network" type="b2602c69:ProjectViewProjectNode" />
-              <item name="social-network" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="social-network" type="b2602c69:ProjectViewProjectNode" />
-              <item name="social-network" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="social-network" type="b2602c69:ProjectViewProjectNode" />
-              <item name="social-network" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="profile" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="social-network" type="b2602c69:ProjectViewProjectNode" />
-              <item name="social-network" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="profile" type="462c0819:PsiDirectoryNode" />
-              <item name="myPosts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="social-network" type="b2602c69:ProjectViewProjectNode" />
-              <item name="social-network" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="profile" type="462c0819:PsiDirectoryNode" />
-              <item name="myPosts" type="462c0819:PsiDirectoryNode" />
-              <item name="post" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="social-network" type="b2602c69:ProjectViewProjectNode" />
-              <item name="social-network" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="redux" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="first-project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="first-project" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="first-project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="first-project" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="first-project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="first-project" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="first-project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="first-project" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="dialogs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="first-project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="first-project" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="header" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="first-project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="first-project" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="redux" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SearchEverywhereHistoryKey" value="terminal&#9;ACTION&#9;ActivateTerminalToolWindow&#10;ter&#9;ACTION&#9;ActivateTerminalToolWindow&#10;termina&#9;ACTION&#9;ActivateTerminalToolWindow" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../test" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -495,11 +394,17 @@
       <workItem from="1550679854946" duration="19726000" />
       <workItem from="1550863287311" duration="6513000" />
       <workItem from="1551035141336" duration="5907000" />
+      <workItem from="1551164589836" duration="1415000" />
+      <workItem from="1551175525882" duration="665000" />
+      <workItem from="1551194972338" duration="40000" />
+      <workItem from="1551200095576" duration="205000" />
+      <workItem from="1551210859902" duration="238000" />
+      <workItem from="1551440873271" duration="656000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="806326000" />
+    <option name="totallyTimeSpent" value="810419000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -514,45 +419,32 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49639547" visible="true" weight="0.25131717" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49639547" weight="0.25131717" />
       <window_info anchor="bottom" id="TODO" order="4" weight="0.32850242" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.09371781" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32618025" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.3285273" />
       <window_info id="npm" order="2" sideWeight="0.50382847" side_tool="true" weight="0.40094838" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32749742" />
       <window_info id="Structure" order="1" sideWeight="0.5024155" side_tool="true" weight="0.19599578" />
       <window_info id="Terminal" order="4" sideWeight="0.4961715" weight="0.40094838" />
       <window_info id="Favorites" order="3" sideWeight="0.5024155" side_tool="true" weight="0.19605696" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39975846" />
       <window_info anchor="bottom" id="TypeScript" order="10" />
       <window_info anchor="bottom" id="Thumbnails" order="11" weight="0.3317684" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info id="npm" order="2" sideWeight="0.50382847" side_tool="true" weight="0.40094838" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49639547" weight="0.25131717" />
-      <window_info id="Structure" order="1" sideWeight="0.5024155" side_tool="true" weight="0.19599578" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="TODO" order="4" weight="0.32850242" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.3285273" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32749742" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32618025" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39975846" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.09371781" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
-      <window_info id="Terminal" order="4" sideWeight="0.4961715" weight="0.40094838" />
-      <window_info id="Favorites" order="3" sideWeight="0.5024155" side_tool="true" weight="0.19605696" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32618025" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49742535" visible="true" weight="0.22813489" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info id="npm" order="2" sideWeight="0.5025747" side_tool="true" weight="0.22813489" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32850242" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Thumbnails" order="11" weight="0.3317684" />
       <window_info id="Structure" order="1" sideWeight="0.5024155" side_tool="true" weight="0.19605696" />
@@ -562,6 +454,7 @@
       <window_info anchor="bottom" id="TypeScript" order="10" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32618025" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39975846" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49742535" visible="true" weight="0.22813489" />
       <window_info id="Terminal" order="4" sideWeight="0.49758455" weight="0.40094838" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.09371781" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
@@ -653,9 +546,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
           <caret line="27" column="46" selection-start-line="27" selection-start-column="46" selection-end-line="27" selection-end-column="46" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -695,9 +585,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="486">
           <caret line="298" column="30" selection-start-line="298" selection-start-column="28" selection-end-line="298" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#44#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -782,9 +669,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-442">
           <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -811,7 +695,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/header/header.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
+        <state relative-caret-position="442">
           <caret line="34" column="31" selection-start-line="34" selection-start-column="31" selection-end-line="34" selection-end-column="31" />
         </state>
       </provider>
@@ -827,9 +711,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="21" column="14" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -842,14 +723,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/redux/dist/redux.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
+        <state relative-caret-position="2431">
           <caret line="143" column="17" lean-forward="true" selection-start-line="143" selection-start-column="17" selection-end-line="143" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/redux/authReducer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1034">
+        <state relative-caret-position="1343">
           <caret line="80" column="47" selection-start-line="80" selection-start-column="42" selection-end-line="80" selection-end-column="47" />
         </state>
       </provider>
@@ -863,7 +744,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/redux/snakeReducer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="878">
+        <state relative-caret-position="1309">
           <caret line="77" selection-start-line="77" selection-end-line="77" />
         </state>
       </provider>
@@ -887,18 +768,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/profile/myPosts/MyPosts.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
+        <state relative-caret-position="255">
           <caret line="15" selection-start-line="15" selection-end-line="15" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/profile/profile.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="96" lean-forward="true" selection-start-line="96" selection-end-line="96" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
@@ -907,10 +778,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/redux/profilePageReducer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="634">
-          <caret line="136" column="5" lean-forward="true" selection-start-line="136" selection-start-column="5" selection-end-line="136" selection-end-column="5" />
+        <state relative-caret-position="753">
+          <caret line="124" column="71" lean-forward="true" selection-start-line="124" selection-end-line="125" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/profile/profile.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="535">
+          <caret line="90" column="43" selection-start-line="90" selection-start-column="43" selection-end-line="90" selection-end-column="43" />
           <folding>
-            <element signature="e#472#786#0" />
+            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
