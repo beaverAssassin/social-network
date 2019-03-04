@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './App.css';
 import Header from './components/header/header';
 import Sidebar from './components/navbar/sidebar';
@@ -12,7 +12,6 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { faSignInAlt, faHeart, faThumbsDown} from '@fortawesome/free-solid-svg-icons';
 import Snake from "./snake/snakeComponent";
 import Thunk from "./components/ThunkExample/thunk";
-import WrappedComponent from './HOCs/putComponent'
 import Users from "./components/users/users";
 import Footer from "./components/footer/footer";
 library.add(faSignInAlt,faHeart, faThumbsDown,fab);

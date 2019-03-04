@@ -8,6 +8,7 @@ const disLikesCalculate = "PROFILE/DISLIKES_CALCULATE";
 const EDIT_MODE = "PROFILE/EDIT_MODE";
 const CHANGE_VALUE = "PROFILE/CHANGE_VALUE";
 const LOOK_JOB = "PROFILE/LOOK_JOB";
+const GET_PROFILE_STATUS ="PROFILE/GET_PROFILE_STATUS"
 
 
 export const getProfileData = (profileData) => ({type: GET_PROFILE, profileData})
@@ -31,20 +32,30 @@ export const profileDisLikesCalculate = (postId) => ({type: disLikesCalculate, p
 export const toggleEditMode = () => ({type: EDIT_MODE})
 export const onChangeProfileEdit = (value, key) => ({type: CHANGE_VALUE, value, key})
 export const LookForAJobSearch = (event) => ({type: LOOK_JOB, event})
-
+export const getProfileStatus = (data)=>({type:GET_PROFILE_STATUS, data})
 
 export const onSaveInfoProfile = () => (dispatch, getState) => {
-
     axios.put('profile', getState().profilePage.profileData)
         .then((res) => {
 
         });
+debugger
+    axios.put('profile/status', {status:getState().profilePage.status})
+        .then((res) => {
+
+        });
+
     dispatch(toggleEditMode());
 
 }
 
 
 export const giveInfoProfile = () => (dispatch) => {
+
+    axios.get('profile/status/16').then(result => {
+        dispatch(getProfileStatus(result.data))
+    });
+
     axios.get('profile/16').then((res) => {
         dispatch(getProfileData(res.data))
     });
@@ -53,6 +64,7 @@ export const giveInfoProfile = () => (dispatch) => {
 let initialStateForProfilePage = {
     profileData: "",
     editMode: false,
+    status:"",
     myPosts: [
         {
             id: 1,
@@ -122,16 +134,24 @@ const profilePageReducer = (state = initialStateForProfilePage, action) => {
             stateCopy.editMode = !state.editMode
             return stateCopy;
         case CHANGE_VALUE:
+
             stateCopy = {...state, profileData: {...state.profileData}}
             stateCopy.profileData.contacts[action.key] = action.value;
-            // stateCopy.profileData.aboutMe = action.value;
+            stateCopy.profileData[action.key] = action.value;
+            stateCopy.status = action.value;
+
+            debugger
+
             return stateCopy;
         case LOOK_JOB:
-            debugger
             stateCopy = {...state, profileData: {...state.profileData}}
             stateCopy.profileData.lookingForAJob = action.event;
             stateCopy.profileData.lookingForAJobDescription = "ищу работу ";
             return stateCopy;
+        case GET_PROFILE_STATUS:
+            stateCopy = {...state,status:{...state.status}};
+            stateCopy.status = action.data;
+            return stateCopy
         default:
             return state;
 
