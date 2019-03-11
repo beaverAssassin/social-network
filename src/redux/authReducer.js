@@ -1,5 +1,4 @@
 import axios from "../dal/axios-instance";
-import {setMessage, setStatus} from "./loginPageReducer";
 
 export const AUTHENTIFICATION = 'AUTH_REDUCER/AUTHENTIFICATION';
 

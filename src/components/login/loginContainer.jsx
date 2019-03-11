@@ -1,4 +1,3 @@
-import React, {Component} from 'react';
 import {connect} from "react-redux";
 import Login from "./login";
 import {
@@ -8,7 +7,6 @@ import {
 } from "../../redux/loginPageReducer";
 import {giveInfoAboutMe} from "../../redux/authReducer";
 
-/*import {loginThunk} from "../../redux/authReducer";*/
 
 
 const mapStateToProps = (state) => {

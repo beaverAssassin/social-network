@@ -10,11 +10,7 @@ import authReducer from "./redux/authReducer";
 import thunkExampleReducer from "./redux/thunkReducer";
 import UsersReducer from "./redux/usersReducer";
 import {composeWithDevTools} from "redux-devtools-extension";
-
-
-
-
-
+import { reducer as formReducer } from 'redux-form'
 
 
 const superReducer = combineReducers({
@@ -25,9 +21,11 @@ const superReducer = combineReducers({
     snakePage: snakePageReducer,
     authPage:authReducer,
     thunkPage:thunkExampleReducer,
-    usersPage:UsersReducer
+    usersPage:UsersReducer,
+    form: formReducer
 
 });
+
 
 const store = createStore(superReducer,composeWithDevTools(applyMiddleware(thunk)),);
 

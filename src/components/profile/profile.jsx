@@ -1,8 +1,11 @@
 import React from 'react';
-import mainphoto from '../../mainphoto.jpg';
 import style from './profile.module.scss';
 import MyPosts from "./myPosts/MyPosts";
 import {connect} from "react-redux";
+import ContactForm from "../redux-forms/contactForm.js"
+
+
+
 import {
     toggleEditMode,
     giveInfoProfile,
@@ -12,6 +15,8 @@ import {
 } from "../../redux/profilePageReducer";
 
 
+
+
 class Profile extends React.Component {
 
 
@@ -19,12 +24,19 @@ class Profile extends React.Component {
         this.props.giveProfileInFo();
     }
 
+    submit = values => {
+        // print the form values to the console
+        console.log(values)
+    }
+
 
     render() {
+
         console.log(this.props.status);
 
 
         const profile = this.props.profileData;
+
         if (!profile) {
             return <div>...nothing...</div>
         }
@@ -32,22 +44,22 @@ class Profile extends React.Component {
         let editMode = this.props.editMode;
 
 
-        const aboutMe = (() => {
-            for (let key in profile) {
-                return <div>
-
-                    <span className={style.property}>{key}</span>:
-
-                    {editMode ? <input  value={profile[key]}
-                                       onChange={
-                                           (event) => {
-                                               this.props.onProfileContactChange(event.currentTarget.value,key)
-                                           }}
-
-                    /> : <span>{profile[key]}</span>}
-                </div>
-            }
-        })()
+        // const aboutMe = (() => {
+        //     for (let key in profile) {
+        //         return <div>
+        //
+        //             <span className={style.property}>{key}</span>:
+        //
+        //             {editMode ? <input value={profile[key]}
+        //                                onChange={
+        //                                    (event) => {
+        //                                        this.props.onProfileContactChange(event.currentTarget.value, key)
+        //                                    }}
+        //
+        //             /> : <span>{profile[key]}</span>}
+        //         </div>
+        //     }
+        // })()
 
 
         const contacts = Object.keys(profile.contacts).map(key => {
@@ -62,50 +74,65 @@ class Profile extends React.Component {
         });
 
 
+
+
+        const checkbox = <>{editMode ? <input type="checkbox" checked={profile.lookingForAJob}
+                                              onChange={(e) => {
+                                                  this.props.onLookingForAJobSearch(e.currentTarget.checked);
+                                              }}
+        /> : <div>{profile.lookingForAJob ? 'Ищу работу' : ""}</div>}</>
+
+
+
+
         var isOwner;
+
         if (this.props.isAuth && this.props.authUserId && profile.userId) {
             isOwner = true;
         }
 
 
-        /////////////////////////////END INFO FROM AJAX/////////////////////////
+
+        const contactForm =
+
+          editMode && <ContactForm  initialValues = {this.props} onSubmit={this.submit} />
+          // <><b>status:</b>{editMode ? <ContactForm  initialValues = {this.props} onSubmit={this.submit} />:<span>{this.props.status}</span>}</>
+
+
         return (
+            <>
 
 
-            <div className={style.profile}>
-                <div className={style.profilebg}>
-                </div>
-                <div className={style.personal_data}>
-                    <img src="https://s.gamer-info.com/gl/f/a/l/l/fallout-2_w240.jpg" className={style.profile_img}
-                         alt="profile_img"/>
-                    <div className={style.description}>
-                        {isOwner && <button onClick={this.props.onEditClick}>edit</button>}
-                        <p className={style.description_name}>{profile.fullName}</p>
-                        {editMode ? <input  value={this.props.status} onChange={
-                            (e) => {
-                                this.props.onProfileContactChange(e.currentTarget.value,e)
-                            }}/> : <p>status:{this.props.status}</p>}
-                        {contacts}
-                        {/*<p><b>Date of birth:</b> 2 january 2035</p>*/}
-                        {/*<p><b>City:</b>shelter №13</p>*/}
-                        {/*<p><b>Email:</b></p>*/}
-                        {/*<p><b>Aducation:</b>JJJJ '2040'</p>*/}
-                        {/*<p><b>Web-site:</b>https://it-kamasutra.com/JSKMB</p>*/}
-                        {aboutMe}
-                        {editMode ? <input type="checkbox" checked={profile.lookingForAJob}
-                                           onChange={(e) => {
-                                               this.props.onLookingForAJobSearch(e.currentTarget.checked);
-                                           }}
-                        /> : <div>{profile.lookingForAJob ? 'Ищу работу' : ""}</div>}
-
-
-                        {editMode && <button onClick={this.props.onSaveClick}>save</button>}
-
-
+                <div className={style.profile}>
+                    <div className={style.profilebg}>
                     </div>
+                    <div className={style.personal_data}>
+                        <img src="https://s.gamer-info.com/gl/f/a/l/l/fallout-2_w240.jpg" className={style.profile_img}
+                             alt="profile_img"/>
+                        <div className={style.description}>
+
+                            {isOwner && <button onClick={this.props.onEditClick}>edit</button>}
+                            <p className={style.description_name}>{profile.fullName}</p>
+                          <span><b>status:</b>{this.props.status}</span><br/>
+                          <span><b>aboutMe:</b>{this.props.aboutMe}</span>
+                            {contactForm}
+                            {contacts}
+                            {/*<p><b>Date of birth:</b> 2 january 2035</p>*/}
+                            {/*<p><b>City:</b>shelter №13</p>*/}
+                            {/*<p><b>Email:</b></p>*/}
+                            {/*<p><b>Aducation:</b>JJJJ '2040'</p>*/}
+                            {/*<p><b>Web-site:</b>https://it-kamasutra.com/JSKMB</p>*/}
+                            {/*{aboutMe}*/}
+
+                            {checkbox}
+                            {editMode && <button onClick={this.props.onSaveClick}>save</button>}
+
+
+                        </div>
+                    </div>
+                    <MyPosts/>
                 </div>
-                <MyPosts/>
-            </div>
+            </>
         )
     }
 }
@@ -116,7 +143,8 @@ const mapStateToProps = (state) => ({
     isAuth: state.authPage.isAuth,
     authUserId: state.authPage.userInfo.userId,
     editMode: state.profilePage.editMode,
-    status: state.profilePage.status
+    status: state.profilePage.status,
+  aboutMe:state.profilePage.profileData.aboutMe
 })
 
 const mapDispatchToProps = (dispatch) => ({

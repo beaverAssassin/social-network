@@ -1,9 +1,7 @@
 import React from 'react';
 import styles from './users.module.css';
-import {NavLink} from "react-router-dom";
 import {connect} from "react-redux";
 import {getUsers, statuses} from "../../redux/usersReducer";
-import axios from "../../dal/axios-instance";
 
 
 const Users = ({users = [],status,getUsers}) => {

@@ -8,7 +8,7 @@ let Message = (props) => {
         props.dialogs.currentUserId ?
         <div className={style.message}>
             <span><b>{props.dialogs.currentUserId.name}</b></span><br/>
-            <img className={style.avatarImage} src={props.dialogs.currentUserId.imageUrl}/>
+            <img className={style.avatarImage} src={props.dialogs.currentUserId.imageUrl} alt ="avatarImage"/>
             <span className={style.messageText}>{props.dialogs.currentUserId.text}</span>
 
 

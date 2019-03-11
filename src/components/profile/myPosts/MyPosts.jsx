@@ -5,7 +5,7 @@ import {ADD_MESSAGE, LIKES_COUNT, WRITE_TEXTAREA_VALUE} from "../../../actiontyp
 import {connect} from "react-redux";
 import {
     addMessageByClick,
-     profileDisLikesCalculate, profilelikesCalculate,
+    profileDisLikesCalculate, profilelikesCalculate,
     profileOnChangeTextArea
 } from "../../../redux/profilePageReducer";
 
@@ -21,52 +21,50 @@ let MyPosts = (props) => {
 
     let messageTags = props.profilePage.myPosts.map((el) => {
 
-        return <Post key={el.id} text={el.text} postId={el.id} likesCount={el.likesCount} dislikeCount={el.dislikeCount} likesCalc={props.likesCalc} dislikeCalc={props.dislikeCalc}/>
+        return <Post key={el.id} text={el.text} postId={el.id} likesCount={el.likesCount} dislikeCount={el.dislikeCount}
+                     likesCalc={props.likesCalc} dislikeCalc={props.dislikeCalc}/>
     });
 
 
-
-
-
-
     return (
-        <div className ={style.postContainer}>
+        <div className={style.postContainer}>
             <h3>Мои записи</h3>
-            <textarea value={props.profilePage.currentTextAreaValue} placeholder="to write some else" onChange={onChangeTextarea}
+            <textarea value={props.profilePage.currentTextAreaValue} placeholder="to write some else"
+                      onChange={onChangeTextarea}
                       cols="80" rows="5"></textarea><br/>
             <button onClick={() => {
                 props.addMessage(props.profilePage.currentTextAreaValue)
-                }  } className={style.sentForm}>
+            }} className={style.sentForm}>
                 Отправить
             </button>
-                {messageTags}
+            {messageTags}
         </div>
 
     )
 
 }
 
-const mapStateToProps = (state)=>{
-    return{
+const mapStateToProps = (state) => {
+    return {
         profilePage: state.profilePage
     }
 }
 
-const mapDispatchToProps = (dispatch)=> {
-    return{
-        addMessage:(currentTextAreaValue) => {
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addMessage: (currentTextAreaValue) => {
             let action = addMessageByClick(currentTextAreaValue);
             dispatch(action);
         },
-        onchangeTextarea:(event)=>{
+        onchangeTextarea: (event) => {
             let action = profileOnChangeTextArea(event);
             dispatch(action);
         },
-        likesCalc: (postId)=>{
+        likesCalc: (postId) => {
             let action = profilelikesCalculate(postId);
             dispatch(action);
         },
-        dislikeCalc:(postId)=>{
+        dislikeCalc: (postId) => {
             let action = profileDisLikesCalculate(postId);
             dispatch(action)
 
@@ -75,7 +73,6 @@ const mapDispatchToProps = (dispatch)=> {
 
     }
 }
-
 
 
 const ConnectedMyPosts = connect(mapStateToProps, mapDispatchToProps)(MyPosts)
