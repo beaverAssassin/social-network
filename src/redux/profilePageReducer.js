@@ -35,18 +35,66 @@ export const LookForAJobSearch = (event) => ({ type: LOOK_JOB, event });
 export const getProfileStatus = (data) => ({ type: GET_PROFILE_STATUS, data });
 
 
-export const onSaveInfoProfile = () => (dispatch, getState) => {
 
 
-  axios.put("profile", getState().form.ContactForm.values.profileData)
+
+
+export const onSaveInfoProfile = (profileData) => (dispatch, getState) => {
+
+  const contacts = {...profileData.profileData, ...profileData.profileData.contacts}
+
+
+
+
+let dataToServer = {};
+
+
+  dataToServer.aboutMe = profileData.aboutMe;
+
+debugger
+
+
+// let contacts = {
+//   "skype":profileData.contacts.skype ,
+//   "vk": profileData.contacts.vk,
+//   "facebook": profileData.contacts.facebook,
+//   "icq": profileData.contacts.icq,
+//   "email": profileData.contacts.email,
+//   "googlePlus": profileData.contacts.googlePlus,
+//   "twitter": profileData.contacts.twitter,
+//   "instagram": profileData.contacts.instagram,
+//   "whatsApp": profileData.contacts.whatsApp
+// };
+
+dataToServer.contacts = contacts
+
+  // let aboutMe = getState().form.ContactForm.values.profileData;
+
+
+
+dataToServer.lookingForAJob = getState().profilePage.profileData.lookingForAJob;
+dataToServer.lookingForAJobDescription = 'Ищу работу';
+
+
+  debugger
+  axios.put("profile",dataToServer)
+
     .then((res) => {
 
+      dispatch(giveInfoProfile());
     });
 
   axios.put("profile/status", { status: getState().form.ContactForm.values.status })
     .then((res) => {
 
+      dispatch(giveInfoProfile());
+
     });
+
+
+
+
+
 
   dispatch(toggleEditMode());
 
@@ -136,15 +184,10 @@ const profilePageReducer = (state = initialStateForProfilePage, action) => {
       stateCopy = { ...state };
       stateCopy.editMode = !state.editMode;
       return stateCopy;
-    case CHANGE_VALUE:
 
-      stateCopy = { ...state, profileData: { ...state.profileData } };
-      stateCopy.profileData.contacts[action.key] = action.value;
 // stateCopy.profileData[action.key] = action.value;
 // stateCopy.status = action.value;
 
-      debugger;
-      return stateCopy;
     case LOOK_JOB:
       stateCopy = { ...state, profileData: { ...state.profileData } };
       stateCopy.profileData.lookingForAJob = action.event;

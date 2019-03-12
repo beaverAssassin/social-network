@@ -18,21 +18,25 @@ import {
 
 
 class Profile extends React.Component {
-
-
     componentWillMount() {
         this.props.giveProfileInFo();
     }
 
+
+
+
     submit = values => {
+      debugger
         // print the form values to the console
+      this.props.onSaveClick(values);
         console.log(values)
     }
 
 
+
+
     render() {
 
-        console.log(this.props.status);
 
 
         const profile = this.props.profileData;
@@ -62,16 +66,13 @@ class Profile extends React.Component {
         // })()
 
 
-        const contacts = Object.keys(profile.contacts).map(key => {
-            return <div key={key}>
-                <span className={style.property}>{key}</span>:
-                {editMode ? <input value={profile.contacts[key]} onChange={
-                        (e) => {
-                            this.props.onProfileContactChange(e.currentTarget.value, key)
-                        }}/> :
-                    <span>{profile.contacts[key]}</span>}
-            </div>
-        });
+        // const contacts = Object.keys(profile.contacts).map(key => {
+        //     return <div key={key}>
+        //         <b >{key}</b>:
+        //         {editMode ? <field name={profile.contacts[key]} /> :
+        //             <span>{profile.contacts[key]}</span>}
+        //     </div>
+        // });
 
 
 
@@ -93,9 +94,9 @@ class Profile extends React.Component {
 
 
 
-        const contactForm =
 
-          editMode && <ContactForm  initialValues = {this.props} onSubmit={this.submit} />
+
+
           // <><b>status:</b>{editMode ? <ContactForm  initialValues = {this.props} onSubmit={this.submit} />:<span>{this.props.status}</span>}</>
 
 
@@ -111,21 +112,22 @@ class Profile extends React.Component {
                              alt="profile_img"/>
                         <div className={style.description}>
 
-                            {isOwner && <button onClick={this.props.onEditClick}>edit</button>}
+                            {/*{isOwner && <button onClick={this.props.onEditClick}>edit</button>}*/}
                             <p className={style.description_name}>{profile.fullName}</p>
-                          <span><b>status:</b>{this.props.status}</span><br/>
-                          <span><b>aboutMe:</b>{this.props.aboutMe}</span>
-                            {contactForm}
-                            {contacts}
-                            {/*<p><b>Date of birth:</b> 2 january 2035</p>*/}
-                            {/*<p><b>City:</b>shelter №13</p>*/}
-                            {/*<p><b>Email:</b></p>*/}
-                            {/*<p><b>Aducation:</b>JJJJ '2040'</p>*/}
-                            {/*<p><b>Web-site:</b>https://it-kamasutra.com/JSKMB</p>*/}
-                            {/*{aboutMe}*/}
+                          {/*<span><b>status:</b>{this.props.status}</span><br/>*/}
+                          {/*<span><b>aboutMe:</b>{this.props.aboutMe}</span>*/}
+                          <ContactForm  initialValues = {this.props} onSubmit={this.submit} />
+                          {/*{editMode && <ContactForm  initialValues = {this.props} onSubmit={this.submit} />}*/}
 
-                            {checkbox}
-                            {editMode && <button onClick={this.props.onSaveClick}>save</button>}
+                            {/*/!*<p><b>Date of birth:</b> 2 january 2035</p>*!/*/}
+                            {/*/!*<p><b>City:</b>shelter №13</p>*!/*/}
+                            {/*/!*<p><b>Email:</b></p>*!/*/}
+                            {/*/!*<p><b>Aducation:</b>JJJJ '2040'</p>*!/*/}
+                            {/*/!*<p><b>Web-site:</b>https://it-kamasutra.com/JSKMB</p>*!/*/}
+                              {/*{aboutMe}*/}
+
+                            {/*{checkbox}*/}
+                            {/*{editMode && <button onClick={this.props.onSaveClick}>save</button>}*/}
 
 
                         </div>
@@ -139,20 +141,22 @@ class Profile extends React.Component {
 
 
 const mapStateToProps = (state) => ({
-    profileData: state.profilePage.profileData,
-    isAuth: state.authPage.isAuth,
-    authUserId: state.authPage.userInfo.userId,
-    editMode: state.profilePage.editMode,
-    status: state.profilePage.status,
-  aboutMe:state.profilePage.profileData.aboutMe
+  profileData: state.profilePage.profileData,
+  editMode: state.profilePage.editMode,
+  isAuth: state.authPage.isAuth,
+  authUserId: state.authPage.userInfo.userId,
+  status: state.profilePage.status,
+
 })
 
 const mapDispatchToProps = (dispatch) => ({
     giveProfileInFo: () => dispatch(giveInfoProfile()),
     onEditClick: () => dispatch(toggleEditMode()),
     onProfileContactChange: (value, key) => dispatch(onChangeProfileEdit(value, key)),
-    onSaveClick: () => dispatch(onSaveInfoProfile()),
-    onLookingForAJobSearch: (event) => dispatch(LookForAJobSearch(event))
+    onLookingForAJobSearch: (event) => dispatch(LookForAJobSearch(event)),
+  onSaveClick: (data) => {
+    dispatch(onSaveInfoProfile(data))
+  }
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);
