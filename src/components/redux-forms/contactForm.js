@@ -51,7 +51,7 @@ let ContactForm = (props) => {
       {isOwner && <button type="button" onClick={props.onEditClick}>edit</button>}
       {contacts}
       <p><b>status</b>:{editMode?<Field name="status" component="input" type="text"/>:<span>{props.status}</span>}</p>
-      <p><b>aboutMe</b>:{editMode?<Field name={"profileData.aboutMe"} component="input" type="text"/>:<span>{props.aboutMe}</span>}</p>
+      <p><b>aboutMe</b>:{editMode?<Field name="aboutMe" component="input" type="text"/>:<span>{props.aboutMe}</span>}</p>
       <p>{checkbox}</p>
       <button type="submit">Submit</button>
     </form>

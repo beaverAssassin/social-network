@@ -26,7 +26,7 @@ class Profile extends React.Component {
 
 
     submit = values => {
-      debugger
+
         // print the form values to the console
       this.props.onSaveClick(values);
         console.log(values)
@@ -146,6 +146,7 @@ const mapStateToProps = (state) => ({
   isAuth: state.authPage.isAuth,
   authUserId: state.authPage.userInfo.userId,
   status: state.profilePage.status,
+  aboutMe:state.profilePage.profileData.aboutMe,
 
 })
 

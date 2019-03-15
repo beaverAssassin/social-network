@@ -51,7 +51,7 @@ let dataToServer = {};
 
   dataToServer.aboutMe = profileData.aboutMe;
 
-debugger
+
 
 
 // let contacts = {
@@ -76,7 +76,7 @@ dataToServer.lookingForAJob = getState().profilePage.profileData.lookingForAJob;
 dataToServer.lookingForAJobDescription = 'Ищу работу';
 
 
-  debugger
+
   axios.put("profile",dataToServer)
 
     .then((res) => {
