@@ -3,9 +3,12 @@ import style from './login.module.css';
 import {Link, Redirect} from "react-router-dom";
 import WOW from 'wowjs';
 import {statuses} from "../../redux/thunkReducer";
+import { InputArea, LoginForm, LoginPage } from "./loginStyle/loginStyleComponent";
 
 
 class Login extends Component {
+
+
 
     componentDidMount() {
         new WOW.WOW().init();
@@ -30,15 +33,16 @@ class Login extends Component {
 
         return (
 
-            <div className={`${style.login_page} ${"wow bounceInDown"}`} data-wow-duration="3s">
+            < LoginPage >
+            {/*<div className={`${style.login_page} ${"wow bounceInDown"}`} data-wow-duration="3s">*/}
 
 
-                <form className={style.login_form}>
+                <LoginForm>
                     <div className={style.login_reg}>
                         <a href="#">Login</a>
                         <a href="#">Registration</a>
                     </div>
-                    <div className={style.input_area}>
+                    <InputArea>
                         < label htmlFor=""> Email</label>
                         <input
                             type="email"
@@ -55,7 +59,7 @@ class Login extends Component {
                             onChange={(e) => {
                                 this.props.onPasswordChange(e)
                             }}/>
-                    </div>
+                    </InputArea>
                     {this.props.captcha ? <div className={style.captcha}>
                         <img src={this.props.captchaUrl}/>
                         <input
@@ -84,8 +88,8 @@ class Login extends Component {
                         {this.props.message}
                     </div>
                     }
-                </form>
-            </div>
+                </LoginForm>
+            </LoginPage>
         )
     }
 }
