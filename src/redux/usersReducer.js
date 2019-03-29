@@ -27,7 +27,7 @@ export const setStatus = (status) => ({type: SET_STATUS, status});
 
 export const getUsers = (dispatch) => (dispatch) => {
     dispatch(setStatus(statuses.INPROGRESS));
-    axios.get('users?count=25').then(r => {
+    axios.get('users?count=29').then(r => {
         dispatch(setStatus(statuses.SUCCESS));
         dispatch(setUsers(r.data.items));
     });

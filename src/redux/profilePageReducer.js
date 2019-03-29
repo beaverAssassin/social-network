@@ -11,12 +11,14 @@ const LOOK_JOB = "PROFILE/LOOK_JOB";
 const GET_PROFILE_STATUS = "PROFILE/GET_PROFILE_STATUS";
 
 
-export const getProfileData = (profileData) => ({ type: GET_PROFILE, profileData });
-export const addMessageByClick = (currentTextAreaValue) => {
+
+
+
+
+export const addMessageByClick = currentTextAreaValue => {
   if (currentTextAreaValue === "") {
     var av = Number(currentTextAreaValue.length);
-  }
-  else {
+  } else {
     av = currentTextAreaValue.length - 2;
   }
   return {
@@ -26,6 +28,13 @@ export const addMessageByClick = (currentTextAreaValue) => {
     dislikeCount: av
   };
 };
+
+
+
+/////////////////////////////////////////////////////////////////////////ACTION CREATORS///////////////////////////////////////////////////////////////////////////////////
+
+
+export const getProfileData = (profileData) => ({ type: GET_PROFILE, profileData });
 export const profileOnChangeTextArea = (event) => ({ type: writeTextareaValue, symbol: event.target.value });
 export const profilelikesCalculate = (postId) => ({ type: likesCalculate, postId });
 export const profileDisLikesCalculate = (postId) => ({ type: disLikesCalculate, postId });
@@ -39,9 +48,10 @@ export const getProfileStatus = (data) => ({ type: GET_PROFILE_STATUS, data });
 
 
 
-export const onSaveInfoProfile = (profileData) => (dispatch, getState) => {
 
-  const contacts = {...profileData.profileData, ...profileData.profileData.contacts}
+export const onSaveInfoProfile = (profileData) => (dispatch, getState) => {
+debugger
+  const contacts = {...profileData.profileData.contacts}
 
 
 
@@ -65,7 +75,7 @@ let dataToServer = {};
 //   "instagram": profileData.contacts.instagram,
 //   "whatsApp": profileData.contacts.whatsApp
 // };
-
+debugger
 dataToServer.contacts = contacts
 
   // let aboutMe = getState().form.ContactForm.values.profileData;
@@ -74,6 +84,7 @@ dataToServer.contacts = contacts
 
 dataToServer.lookingForAJob = getState().profilePage.profileData.lookingForAJob;
 dataToServer.lookingForAJobDescription = 'Ищу работу';
+dataToServer.fullName = 'бздашек западловский';
 
 
 
@@ -91,11 +102,7 @@ dataToServer.lookingForAJobDescription = 'Ищу работу';
 
     });
 
-
-
-
-
-
+  
   dispatch(toggleEditMode());
 
 };
@@ -111,6 +118,10 @@ export const giveInfoProfile = () => (dispatch) => {
     dispatch(getProfileData(res.data));
   });
 };
+
+
+
+
 
 let initialStateForProfilePage = {
   profileData: "",
