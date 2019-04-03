@@ -77,3 +77,4 @@ export default App;
 /*<Route exact path='/photos' render={() => <Photos dispatch={props.dispatch}   imagesUrls={props.state.photoPage.photos}/>}/>*/
 /*<Route exact path='/' render={() => <Profile myPosts={props.state.myPosts} dispatch={props.dispatch} currentTextAreaValue={props.state.currentTextAreaValue} currentlikesCount={props.state.currentlikesCount} currentlikesState={props.state.currentlikesState}/>}/>*/
  /*<Route exact path='/profile' render={() => <Profile myPosts={props.state.myPosts} dispatch={props.dispatch} currentTextAreaValue={props.state.currentTextAreaValue} currentlikesCount={props.state.currentlikesCount} currentlikesState={props.state.currentlikesState}/>}/>*/
+

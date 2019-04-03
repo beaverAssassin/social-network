@@ -19,7 +19,7 @@ const Users = ({users = [],status,getUsers}) => {
                 users.map(u => <div className={styles.user}>
                     <div>
 
-                        <img src={u.photos}/>
+                        <img src={u.photos.small}/>
                         {u.name}     status:{u.status}
 
                     </div>

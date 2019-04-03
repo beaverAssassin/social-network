@@ -108,6 +108,22 @@ dataToServer.fullName = 'бздашек западловский';
 };
 
 
+export const uploadAvatar =(file)=>(dispatch)=>{
+
+debugger
+  var formData = new FormData();
+formData.append('image',file.current.files[0])
+  axios.put("profile/photo", formData,{
+    headers:{
+      'Content-Type':'multipart/form-data'
+    }
+  })
+
+
+
+}
+
+
 export const giveInfoProfile = () => (dispatch) => {
 
   axios.get("profile/status/16").then(result => {

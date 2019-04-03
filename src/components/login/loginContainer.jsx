@@ -43,7 +43,7 @@ const mapDispatchToProps = (dispatch, getState) => {
             },
         onButtonClickLogin:
             () => {
-                dispatch(currentgit ResetPasswordCreator())
+                dispatch(currentResetPasswordCreator())
             },
         onLoginChange:
             (event) => {
