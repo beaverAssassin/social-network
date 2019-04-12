@@ -4,6 +4,7 @@ import {Link, Redirect} from "react-router-dom";
 import WOW from 'wowjs';
 import {statuses} from "../../redux/thunkReducer";
 import { InputArea, LoginForm, LoginPage } from "./loginStyle/loginStyleComponent";
+import { withRouter } from "react-router";
 
 
 class Login extends Component {
@@ -27,7 +28,12 @@ class Login extends Component {
         }
 
         if (this.props.isAuth) {
-            return <Redirect to='/content/profile'/>
+
+            const redirectTo = !!this.props.location.state && !!this.props.location.state.from
+          ? this.props.location.state.from : '/content/profile';
+
+
+            return <Redirect to={redirectTo}/>
         }
 
 
@@ -99,4 +105,4 @@ class Login extends Component {
 
 //disabled={this.props.status === statuses.INPROGRESS}
 
-export default Login;
+export default withRouter (Login);

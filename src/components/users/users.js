@@ -1,47 +1,84 @@
-import React from 'react';
-import styles from './users.module.css';
-import {connect} from "react-redux";
-import {getUsers, statuses} from "../../redux/usersReducer";
+import React from "react";
+import styles from "./users.module.css";
+import { connect } from "react-redux";
+import {
+  getFilteredUsersReSelector,
+  getSearchValue,
+  getUsers,
+  setFilter,
+  setSex,
+  statuses
+} from "../../redux/usersReducer";
 
 
-const Users = ({users = [],status,getUsers}) => {
+const Users = ({ users = [], status, getUsers, onChangeSearchInput, search, setFilter,setSex,isMan}) => {
+
+  console.log(search);
+
+  if (status == statuses.NOT_INITIALIZED) {
+    getUsers();
+    return <span>...</span>;
+  }
 
 
-    if (status == statuses.NOT_INITIALIZED) {
-        getUsers();
-        return <span>...</span>
-    }
+  var _filterTimeOutId = null;
 
-    return (
-        <>
-            {!users.length && <span>users not found</span>}
-            {
-                users.map(u => <div className={styles.user}>
-                    <div>
+  let onChangeSearch = e => {
+    let value = e.target.value;
 
-                        <img src={u.photos.small}/>
-                        {u.name}     status:{u.status}
+    onChangeSearchInput(value);
 
-                    </div>
+    clearTimeout(_filterTimeOutId);
 
-                    {/*<NavLink to={`users/${u.id}`}>ssss</NavLink>*/}
-                </div>)
-            }
-        </>
-    )
-}
+    _filterTimeOutId = setTimeout(() => {
+
+      setFilter(value);
+    }, 1000);
+  };
+
+
+  return (
+    <>
+      {!users.length && <span>users not found</span>}
+      <input placeholder="search" value={search} onChange={onChangeSearch}/>
+      <input type="checkbox" checked={isMan} onChange={(e)=>setSex(e.target.checked)}/>
+
+      {
+        users
+
+          .map(u => <div className={styles.user}>
+          <div>
+            <p>{u.name}</p>
+            <img src={u.photos.small}/>
+            <p>status:{u.status}</p>
+
+          </div>
+
+          {/*<NavLink to={`users/${u.id}`}>ssss</NavLink>*/}
+        </div>)
+      }
+    </>
+  );
+};
 
 const mapStateToProps = (state) => ({
-    users: state.usersPage.items,
-    status: state.usersPage.status
-})
+  users: getFilteredUsersReSelector(state),
+  status: getStatus(state),
+  search: state.usersPage.search,
+  filter: state.usersPage.filter,
+  isMan: state.usersPage.isMan
+});
+
 
 const mapDispatchToProps = (dispatch) => ({
+  onChangeSearchInput: (event) => dispatch(getSearchValue(event)),
+  getUsers: () => dispatch(getUsers()),
+  setFilter: (filter) => dispatch(setFilter(filter)),
+  setSex:(isMan)=> dispatch(setSex(isMan))
 
-    getUsers:() => {
-        dispatch(getUsers())
-    }
+});
 
 
-})
+const getStatus = (state) => state.usersPage.status;
+
 export default connect(mapStateToProps, mapDispatchToProps)(Users);

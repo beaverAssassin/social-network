@@ -33,7 +33,6 @@ let ContactForm = (props) => {
 
 
   const contacts = Object.keys(profile.contacts).map(key => {
-    //debugger
     return <div key={key}>
       <b>{key}</b>:
       {editMode ? <Field name={"profileData.contacts." + key} component="input" type="text"/> :

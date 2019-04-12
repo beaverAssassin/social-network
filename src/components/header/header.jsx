@@ -6,7 +6,8 @@ import {Link} from "react-router-dom";
 import WOW from 'wowjs';
 import {giveInfoAboutMe, logOutThunk} from "../../redux/authReducer";
 import {connect} from "react-redux";
-import {Redirect} from "react-router";
+import { Redirect, withRouter } from "react-router";
+import { compose } from "redux";
 
 
 
@@ -19,11 +20,25 @@ class Header extends Component{
  this.props.giveInfo();
     }
 
+
+
+
     render() {
 
 
-         if (!this.props.isAuth ) {
-             return <Redirect to='/'/>
+      let reditectObj = {
+        pathname:'/',
+        state:{
+          from:this.props.location
+        }
+      }
+
+
+
+
+      if (!this.props.isAuth ) {
+
+             return <Redirect to={reditectObj}/>
         }
 
         return (
@@ -80,4 +95,4 @@ const mapDispatchToProps=(dispatch)=>{
 }
 
 
-export default connect(mapStateToProps,mapDispatchToProps) (Header);
+export default compose(withRouter,connect(mapStateToProps,mapDispatchToProps)) (Header);

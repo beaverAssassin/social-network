@@ -50,7 +50,7 @@ export const getProfileStatus = (data) => ({ type: GET_PROFILE_STATUS, data });
 
 
 export const onSaveInfoProfile = (profileData) => (dispatch, getState) => {
-debugger
+
   const contacts = {...profileData.profileData.contacts}
 
 
@@ -75,7 +75,7 @@ let dataToServer = {};
 //   "instagram": profileData.contacts.instagram,
 //   "whatsApp": profileData.contacts.whatsApp
 // };
-debugger
+
 dataToServer.contacts = contacts
 
   // let aboutMe = getState().form.ContactForm.values.profileData;
@@ -110,7 +110,7 @@ dataToServer.fullName = 'бздашек западловский';
 
 export const uploadAvatar =(file)=>(dispatch)=>{
 
-debugger
+
   var formData = new FormData();
 formData.append('image',file.current.files[0])
   axios.put("profile/photo", formData,{

@@ -39,6 +39,7 @@ class Profile extends React.Component {
 
     let editMode = this.props.editMode;
 
+    console.log('render')
 
     // const aboutMe = (() => {
     //     for (let key in profile) {
