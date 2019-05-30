@@ -21,19 +21,21 @@ const Users = ({ users = [], status, getUsers, onChangeSearchInput, search, setF
   }
 
 
-  var _filterTimeOutId = null;
+  let _filterTimeOutId = null;
 
   let onChangeSearch = e => {
     let value = e.target.value;
-
     onChangeSearchInput(value);
-
     clearTimeout(_filterTimeOutId);
+
 
     _filterTimeOutId = setTimeout(() => {
 
       setFilter(value);
     }, 1000);
+
+
+
   };
 
 

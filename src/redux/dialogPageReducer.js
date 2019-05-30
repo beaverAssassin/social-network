@@ -36,7 +36,7 @@ let initialStateForDialog = {
     messagesTexts: [
         {
             id: 1,
-            text: 'Привет,задроты!!',
+            text: ['Привет,задроты!!',"22222222222222222222222"],
             name: "Бздашек Западловский",
             imageUrl:"https://image.shutterstock.com/image-vector/man-character-face-avatar-fallout-450w-1164551314.jpg"
         },

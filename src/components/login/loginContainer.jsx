@@ -49,7 +49,7 @@ const mapDispatchToProps = (dispatch, getState) => {
             (event) => {
                 let action = currentLoginCreator(event.currentTarget.value)
                 dispatch(action)
-            },//currentTarget-эвен событие в котором сидит текст ареа
+            }, //currentTarget-эвен событие в котором сидит текст ареа
         onPasswordChange:
             (event) => {
                 let action = currentPasswordCreator(event.currentTarget.value)
