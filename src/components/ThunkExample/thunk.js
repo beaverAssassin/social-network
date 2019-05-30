@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {SetMessage, SetStatus, start, statuses} from "../../redux/thunkReducer";
+import { start} from "../../redux/thunkReducer";
 
 import putToTemplate1 from "../../HOCs/putComponent";
 import isIEHoc from "../../HOCs/isIEHoc";
@@ -31,8 +31,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
 
-    // setStatus: (status) => dispatch(SetStatus(status)),
-    // setMessage: (message) => dispatch(SetMessage(message)),
+
     start: () => dispatch(start)
 })
 

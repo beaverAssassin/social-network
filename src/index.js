@@ -9,29 +9,15 @@ import {BrowserRouter} from "react-router-dom";
 import {Provider} from "react-redux";
 
 
-// let addMessage = () => {
-//     //копировать массив spread
-//     //изменяем state
-//     myPosts = [...myPosts, currentWritingMessage]
-//     currentWritingMessage="";
-//     //refresh ui стэйт поменялся
-//     renderAll()
-// }
-
-// store.subscribe(() => {
-//     renderAll();
-// });
 
 
-const renderAll = () => {
     ReactDOM.render(
         <Provider store={store}><BrowserRouter>
             <App state={store.getState()} />
         </BrowserRouter></Provider>, document.getElementById('root'));
 
-}
 
-renderAll();
+
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: http://bit.ly/CRA-PWA

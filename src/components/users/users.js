@@ -10,16 +10,22 @@ import {
   statuses
 } from "../../redux/usersReducer";
 
-
-const Users = ({ users = [], status, getUsers, onChangeSearchInput, search, setFilter,setSex,isMan}) => {
-
+const Users = ({
+  users = [],
+  status,
+  getUsers,
+  onChangeSearchInput,
+  search,
+  setFilter,
+  setSex,
+  isMan
+}) => {
   console.log(search);
 
-  if (status == statuses.NOT_INITIALIZED) {
+  if (status === statuses.NOT_INITIALIZED) {
     getUsers();
     return <span>...</span>;
   }
-
 
   let _filterTimeOutId = null;
 
@@ -28,42 +34,36 @@ const Users = ({ users = [], status, getUsers, onChangeSearchInput, search, setF
     onChangeSearchInput(value);
     clearTimeout(_filterTimeOutId);
 
-
     _filterTimeOutId = setTimeout(() => {
-
       setFilter(value);
     }, 1000);
-
-
-
   };
-
 
   return (
     <>
       {!users.length && <span>users not found</span>}
-      <input placeholder="search" value={search} onChange={onChangeSearch}/>
-      <input type="checkbox" checked={isMan} onChange={(e)=>setSex(e.target.checked)}/>
+      <input placeholder="search" value={search} onChange={onChangeSearch} />
+      <input
+        type="checkbox"
+        checked={isMan}
+        onChange={e => setSex(e.target.checked)}
+      />
 
-      {
-        users
-
-          .map(u => <div className={styles.user}>
+      {users.map(u => (
+        <div className={styles.user}>
           <div>
             <p>{u.name}</p>
-            <img src={u.photos.small}/>
+            <img alt={u.name} src={u.photos.small} />
             <p>status:{u.status}</p>
-
           </div>
 
-          {/*<NavLink to={`users/${u.id}`}>ssss</NavLink>*/}
-        </div>)
-      }
+        </div>
+      ))}
     </>
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   users: getFilteredUsersReSelector(state),
   status: getStatus(state),
   search: state.usersPage.search,
@@ -71,16 +71,16 @@ const mapStateToProps = (state) => ({
   isMan: state.usersPage.isMan
 });
 
-
-const mapDispatchToProps = (dispatch) => ({
-  onChangeSearchInput: (event) => dispatch(getSearchValue(event)),
+const mapDispatchToProps = dispatch => ({
+  onChangeSearchInput: event => dispatch(getSearchValue(event)),
   getUsers: () => dispatch(getUsers()),
-  setFilter: (filter) => dispatch(setFilter(filter)),
-  setSex:(isMan)=> dispatch(setSex(isMan))
-
+  setFilter: filter => dispatch(setFilter(filter)),
+  setSex: isMan => dispatch(setSex(isMan))
 });
 
+const getStatus = state => state.usersPage.status;
 
-const getStatus = (state) => state.usersPage.status;
-
-export default connect(mapStateToProps, mapDispatchToProps)(Users);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Users);

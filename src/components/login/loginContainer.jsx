@@ -38,13 +38,10 @@ const mapDispatchToProps = (dispatch, getState) => {
 
             },
         onButtonClickLogin:
-            () => {
-                dispatch(currentResetLoginCreator())
-            },
-        onButtonClickLogin:
-            () => {
-                dispatch(currentResetPasswordCreator())
-            },
+            () => { dispatch(currentResetLoginCreator());
+              dispatch(currentResetPasswordCreator())},
+
+
         onLoginChange:
             (event) => {
                 let action = currentLoginCreator(event.currentTarget.value)
@@ -53,7 +50,7 @@ const mapDispatchToProps = (dispatch, getState) => {
         onPasswordChange:
             (event) => {
                 let action = currentPasswordCreator(event.currentTarget.value)
-                dispatch(action)//currentTarget-эвен событие в котором сидит текст ареа
+                dispatch(action)
             },
         rememberUser:
             (e) => {

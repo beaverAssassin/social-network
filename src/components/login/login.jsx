@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import style from './login.module.css';
-import {Link, Redirect} from "react-router-dom";
+import { Redirect} from "react-router-dom";
 import WOW from 'wowjs';
 import {statuses} from "../../redux/thunkReducer";
 import { InputArea, LoginForm, LoginPage } from "./loginStyle/loginStyleComponent";
@@ -40,19 +40,19 @@ class Login extends Component {
         return (
 
             < LoginPage >
-            {/*<div className={`${style.login_page} ${"wow bounceInDown"}`} data-wow-duration="3s">*/}
+            <div className={`${style.login_page} ${"wow bounceInDown"}`} data-wow-duration="3s">
 
 
                 <LoginForm>
                     <div className={style.login_reg}>
-                        <a href="#">Login</a>
-                        <a href="#">Registration</a>
+                        <a href="#top" onClick={login}>Login</a>
+                        <a href="https://social-network.samuraijs.com">Registration</a>
                     </div>
                     <InputArea>
                         < label htmlFor=""> Email</label>
                         <input
                             type="email"
-                            defaultValue="yura_eremok@mail.ru"
+                            // defaultValue="yura_eremok@mail.ru"
                             value={this.props.currentLogin}
                             onChange={(e) => {
                                 this.props.onLoginChange(e)
@@ -61,13 +61,13 @@ class Login extends Component {
                         <input
                             type="password"
                             value={this.props.currentPassword}
-                            defaultValue="sukinsun2211"
+                            // defaultValue="sukinsun2211"
                             onChange={(e) => {
                                 this.props.onPasswordChange(e)
                             }}/>
                     </InputArea>
                     {this.props.captcha ? <div className={style.captcha}>
-                        <img src={this.props.captchaUrl}/>
+                        <img alt={this.props.captchaUrl} src={this.props.captchaUrl}/>
                         <input
                             type='text'
                             className={style.Rem}
@@ -95,6 +95,7 @@ class Login extends Component {
                     </div>
                     }
                 </LoginForm>
+            </div>
             </LoginPage>
         )
     }
@@ -103,6 +104,5 @@ class Login extends Component {
 
 
 
-//disabled={this.props.status === statuses.INPROGRESS}
 
 export default withRouter (Login);

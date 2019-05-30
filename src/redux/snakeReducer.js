@@ -69,6 +69,8 @@ clearInterval(interval);
                         if(y<state.areaHeight -state.snakeSize)
                             y++;
                         break;
+                  default:
+                      break;
                 }
 
                 dispatch(setSnakePosition(x, y));

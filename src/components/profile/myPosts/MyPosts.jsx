@@ -1,7 +1,6 @@
 import React from 'react';
 import style from './MyPosts.module.scss';
 import Post from "./post/Post";
-import {ADD_MESSAGE, LIKES_COUNT, WRITE_TEXTAREA_VALUE} from "../../../actiontypes";
 import {connect} from "react-redux";
 import {
     addMessageByClick,
@@ -13,10 +12,9 @@ import {
 let MyPosts = (props) => {
 
 
-    //let message = React.createRef();??????????????????????????? задать вопрос аналог getelementByid рефеаральная ссылка
     let onChangeTextarea = (event) => {
         props.onchangeTextarea(event)
-    }
+    };
 
 
     let messageTags = props.profilePage.myPosts.map((el) => {
@@ -72,7 +70,7 @@ const mapDispatchToProps = (dispatch) => {
 
 
     }
-}
+};
 
 
 const ConnectedMyPosts = connect(mapStateToProps, mapDispatchToProps)(MyPosts)

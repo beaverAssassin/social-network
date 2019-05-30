@@ -11,28 +11,7 @@ const selectDialog = 'DIALOG/SELECT_USER';
 let initialStateForDialog = {
 
 
-    // users: [
-    //     {
-    //         dialogId: 1234,
-    //         id: 1,
-    //         name: 'Владлен '
-    //     },
-    //     {
-    //         dialogId: 4321,
-    //         id: 2,
-    //         name: 'Вася'
-    //     },
-    //     {
-    //         dialogId: 4321,
-    //         id: 3,
-    //         name: 'Джан Франко Фердыщенко'
-    //     },
-    //     {
-    //         dialogId: 4321,
-    //         id: 4,
-    //         name: 'Валера'
-    //     }
-    // ],
+
     messagesTexts: [
         {
             id: 1,
@@ -74,7 +53,7 @@ const dialogPageReducer = (state = initialStateForDialog, action) => {
             stateCopy.currentUserId = action.id;
             return stateCopy;
         case selectDialog:
-            stateCopy.currentUserId =  state.messagesTexts.filter(p => p.id == action.id)[0];
+            stateCopy.currentUserId =  state.messagesTexts.filter(p => p.id === action.id)[0];
             return stateCopy;
         default:
             return state;
@@ -84,10 +63,6 @@ const dialogPageReducer = (state = initialStateForDialog, action) => {
 
 export default dialogPageReducer;
 
-// export const setCurrentUserById =(el)=>{
-//
-//     return { type:setCurrentUser, id:el.id};
-// }
 
 export const selectDialogById = (id)=> {
     return {

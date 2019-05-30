@@ -31,6 +31,12 @@ this.globalKeyUpListener = this.globalKeyUpListener.bind(this);
             case "D":
                 return  Directions.down;
 
+          default:
+              break;
+
+
+
+
         }
     }
 
@@ -51,6 +57,8 @@ this.globalKeyUpListener = this.globalKeyUpListener.bind(this);
             case 'ArrowRight':
                 letter = 'R';
                 break;
+          default:
+            break;
 
 
         }
@@ -91,6 +99,7 @@ this.globalKeyUpListener = this.globalKeyUpListener.bind(this);
                 }}>Start
                 </button>
                 <div className={styles.gameArea}>
+
                     <div className={styles.snake} style={{
                         left: this.props.snakePosition.x + 'px',
                         top: this.props.snakePosition.y + 'px'

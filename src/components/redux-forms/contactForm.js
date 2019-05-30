@@ -5,31 +5,21 @@ import { LookForAJobSearch, toggleEditMode } from "../../redux/profilePageReduce
 
 
 let ContactForm = (props) => {
-
   const profile = props.profileData;
-
   const editMode = props.editMode;
-  console.log(editMode);
-
-
-  const { handleSubmit, pristine, reset, submitting, status } = props;
-
-
-  var isOwner;
+  const { handleSubmit } = props;
+  let isOwner;
 
   if (props.isAuth && props.authUserId && profile.userId) {
     isOwner = true;
   }
 
 
-
   const checkbox = <>{editMode ? <input type="checkbox" checked={profile.lookingForAJob}
                                         onChange={(e) => {
                                           props.onLookingForAJobSearch(e.currentTarget.checked);
                                         }}
-  /> : <div>{profile.lookingForAJob ? "Ищу работу" : ""}</div>}</>;
-
-
+  /> : <span>{profile.lookingForAJob ? "Ищу работу" : ""}</span>}</>;
 
 
   const contacts = Object.keys(profile.contacts).map(key => {
@@ -41,16 +31,14 @@ let ContactForm = (props) => {
   });
 
 
-
-
-
-
   return (
     <form onSubmit={handleSubmit}>
       {isOwner && <button type="button" onClick={props.onEditClick}>edit</button>}
       {contacts}
-      <p><b>status</b>:{editMode?<Field name="status" component="input" type="text"/>:<span>{props.status}</span>}</p>
-      <p><b>aboutMe</b>:{editMode?<Field name="aboutMe" component="input" type="text"/>:<span>{props.aboutMe}</span>}</p>
+      <p><b>status</b>:{editMode ? <Field name="status" component="input" type="text"/> : <span>{props.status}</span>}
+      </p>
+      <p><b>aboutMe</b>:{editMode ? <Field name="aboutMe" component="input" type="text"/> :
+        <span>{props.aboutMe}</span>}</p>
       <p>{checkbox}</p>
       <button type="submit">Submit</button>
     </form>
@@ -70,7 +58,7 @@ const mapStateToProps = (state) => {
     isAuth: state.authPage.isAuth,
     authUserId: state.authPage.userInfo.userId,
     status: state.profilePage.status,
-    aboutMe:state.profilePage.profileData.aboutMe
+    aboutMe: state.profilePage.profileData.aboutMe
   };
 
 };
