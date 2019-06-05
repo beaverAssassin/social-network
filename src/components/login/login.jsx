@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import style from './login.module.css';
 import { Redirect} from "react-router-dom";
-import WOW from 'wowjs';
 import {statuses} from "../../redux/thunkReducer";
 import { InputArea, LoginForm, LoginPage } from "./loginStyle/loginStyleComponent";
 import { withRouter } from "react-router";
@@ -12,7 +11,6 @@ class Login extends Component {
 
 
     componentDidMount() {
-        new WOW.WOW().init();
     }
 
 

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import style from "./header.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
-import WOW from "wowjs";
 import { giveInfoAboutMe, logOutThunk } from "../../redux/authReducer";
 import { connect } from "react-redux";
 import { Redirect, withRouter } from "react-router";
@@ -12,13 +11,11 @@ import { compose } from "redux";
 class Header extends Component {
 
   componentDidMount() {
-
-    new WOW.WOW().init();
-  }
-
-  componentWillMount() {
     this.props.giveInfo();
+
+
   }
+
 
 
 

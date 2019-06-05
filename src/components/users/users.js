@@ -11,16 +11,18 @@ import {
 } from "../../redux/usersReducer";
 
 const Users = ({
-  users = [],
-  status,
-  getUsers,
-  onChangeSearchInput,
-  search,
-  setFilter,
-  setSex,
-  isMan
-}) => {
-  console.log(search);
+                 users = [],
+                 status,
+                 getUsers,
+                 onChangeSearchInput,
+                 search,
+                 setFilter,
+                 setSex,
+                 isMan,
+                 totalUsersCount,
+                 pageSize,
+                 currentPage
+               }) => {
 
   if (status === statuses.NOT_INITIALIZED) {
     getUsers();
@@ -39,21 +41,41 @@ const Users = ({
     }, 1000);
   };
 
+
+  let pagesCount = totalUsersCount / pageSize;
+  
+  let pages =[];
+
+
+  for(let i=1;i<pagesCount;i++){
+    
+     pages.push(i)
+    
+  }
+
   return (
     <>
       {!users.length && <span>users not found</span>}
-      <input placeholder="search" value={search} onChange={onChangeSearch} />
+      <input placeholder="search" value={search} onChange={onChangeSearch}/>
       <input
         type="checkbox"
         checked={isMan}
         onChange={e => setSex(e.target.checked)}
       />
+      <div>
+        {pages.map(p=>{
 
+        return <span className={currentPage === p && styles.selectedPage}>{p}</span>
+        })}
+
+
+
+      </div>
       {users.map(u => (
-        <div className={styles.user}>
+        <div key={u.id} className={styles.user}>
           <div>
             <p>{u.name}</p>
-            <img alt={u.name} src={u.photos.small} />
+            <img alt={u.name} src={u.photos.small}/>
             <p>status:{u.status}</p>
           </div>
 
@@ -68,7 +90,10 @@ const mapStateToProps = state => ({
   status: getStatus(state),
   search: state.usersPage.search,
   filter: state.usersPage.filter,
-  isMan: state.usersPage.isMan
+  isMan: state.usersPage.isMan,
+  pageSize: state.usersPage.pageSize,
+  totalUsersCount: state.usersPage.totalUsersCount,
+  currentPage:state.usersPage.currentPage
 });
 
 const mapDispatchToProps = dispatch => ({
