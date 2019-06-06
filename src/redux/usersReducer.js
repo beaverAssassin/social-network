@@ -6,6 +6,7 @@ const SET_STATUS = "USERS/SET_STATUS";
 const GET_VALUE = "USERS/GET_VALUE";
 const SET_FILTER = "USERS/SET_FILTER";
 const SET_SEX = "USERS/SET_SEX";
+const SET_CURRENT_PAGE = "USERS/SET_CURRENT_PAGE";
 
 export const statuses = {
   NOT_INITIALIZED: "NOT_INITIALIZED",
@@ -18,8 +19,8 @@ export const statuses = {
 
 let stateForUsers = {
   pageSize: 5,
-  totalUsersCount: 20,
-currentPage:1,
+  totalUsersCount: 26,
+currentPage:2,
   filter: "",
   status: statuses.NOT_INITIALIZED,
   items: [],
@@ -34,11 +35,17 @@ export const setStatus = (status) => ({ type: SET_STATUS, status });
 export const getSearchValue = (sym) => ({ type: GET_VALUE, sym });
 export const setFilter = (filter) => ({ type: SET_FILTER, filter });
 export const setSex = (isMan) => ({ type: SET_SEX, isMan });
+export const setCurrentPage = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage });
 
 
-export const getUsers = (dispatch) => (dispatch) => {
+export const getUsers = () => (dispatch,getState) => {
+
+ let currentPage =  getState().usersPage.currentPage;
+ let pageSize =  getState().usersPage.pageSize;
+
+
   dispatch(setStatus(statuses.INPROGRESS));
-  axios.get("users?count=40").then(r => {
+  axios.get(`users?page=${currentPage}&count=${pageSize}`).then(r => {
     dispatch(setStatus(statuses.SUCCESS));
     dispatch(setUsers(r.data.items));
   });
@@ -88,6 +95,10 @@ const UsersReducer = (state = stateForUsers, action) => {
         isMan: action.isMan
 
       };
+    }
+
+    case SET_CURRENT_PAGE:{
+      return{...state,currentPage:action.currentPage}
     }
     default: {
       return state;

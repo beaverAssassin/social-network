@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import {
   getFilteredUsersReSelector,
   getSearchValue,
-  getUsers,
+  getUsers, setCurrentPage,
   setFilter,
   setSex,
   statuses
@@ -21,7 +21,8 @@ const Users = ({
                  isMan,
                  totalUsersCount,
                  pageSize,
-                 currentPage
+                 currentPage,
+  setCurrentPage
                }) => {
 
   if (status === statuses.NOT_INITIALIZED) {
@@ -42,7 +43,7 @@ const Users = ({
   };
 
 
-  let pagesCount = totalUsersCount / pageSize;
+  let pagesCount = Math.ceil(totalUsersCount / pageSize);
   
   let pages =[];
 
@@ -51,6 +52,10 @@ const Users = ({
     
      pages.push(i)
     
+  }
+
+  let onPageChanged =(e)=>{
+
   }
 
   return (
@@ -65,7 +70,7 @@ const Users = ({
       <div>
         {pages.map(p=>{
 
-        return <span className={currentPage === p && styles.selectedPage}>{p}</span>
+        return <span key={p} className={currentPage === p ? styles.selectedPage:""} onClick={()=>{setCurrentPage(p)}}>{p}</span>
         })}
 
 
@@ -100,7 +105,8 @@ const mapDispatchToProps = dispatch => ({
   onChangeSearchInput: event => dispatch(getSearchValue(event)),
   getUsers: () => dispatch(getUsers()),
   setFilter: filter => dispatch(setFilter(filter)),
-  setSex: isMan => dispatch(setSex(isMan))
+  setSex: isMan => dispatch(setSex(isMan)),
+  setCurrentPage:(pageNumber)=>dispatch(setCurrentPage(pageNumber))
 });
 
 const getStatus = state => state.usersPage.status;
